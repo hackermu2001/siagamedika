@@ -186,10 +186,36 @@
     selector: '.galelry-lightbox'
   });
 
+  // product_card_header truncate
+  const truncateTitlePrdContent = document.querySelectorAll('.product-content h3.title');
+truncateTitlePrdContent.forEach(element => {
+  const prdContent_title_truncate = element.textContent.split(' ');
+  if (prdContent_title_truncate.length > 20) {
+    element.textContent = prdContent_title_truncate.slice(0, 20).join(' ') + '...';
+  }
+});
+
+// truncate card_blog
+const blog_title = document.querySelectorAll('h4.blog-title');
+blog_title.forEach(element => {
+  const blog_words_title = element.textContent.split(' ');
+  if (blog_words_title.length > 20) {
+    element.textContent = blog_words_title.slice(0, 20).join(' ') + '...';
+  }
+});
+
+const blog_desc = document.querySelectorAll('p.blog-description');
+blog_desc.forEach(element => {
+  const blog_words_desc = element.textContent.split(' ');
+  if (blog_words_desc.length > 150) {
+    element.textContent = blog_words_desc.slice(0, 150).join(' ') + '...';
+  }
+});
+
   /**
-   * Testimonials slider
+   * blogs slider
    */
-  new Swiper('.testimonials-slider', {
+  new Swiper('.blogs-slider', {
     speed: 600,
     loop: true,
     autoplay: {
@@ -209,7 +235,7 @@
       },
 
       1200: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 20
       }
     }
