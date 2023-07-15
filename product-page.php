@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <?php include('koneksi.php')?>
     <?php include('layout/topbar.php')?>
     <?php include('layout/nav_inner.php')?>
 
@@ -36,7 +37,7 @@
 
         <section class="product-page">
             <div class="container">
-            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6">
                         <div class="product-image_ProductPage">
                             <img class="card-img-top mb-5 mb-md-0 prd_pageimg img-fluid" src="assets/img/product_1.png" alt="..." />
