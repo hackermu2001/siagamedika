@@ -1,0 +1,27 @@
+                                    <div class="col-lg-3 col-6">
+                                        <div class="product-grid">
+                                            <div class="product-image">
+                                                <a href="" class="image">
+                                                    <img src="assets/img/product_4.png" class="img-fluid" alt="">
+                                                </a>
+                                                <!-- <span class="product-discount-label">-33%</span> -->
+                                                <ul class="product-links">
+                                                    <li><a href="#" data-tip="Tokopedia"><i
+                                                                class="ft-tokopedia"></i></a></li>
+                                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product-content">
+
+                                                <h3 class="title"><a href="#"
+                                                        title="Serenity Medical Protective Mask 3 Ply Earloop">Serenity
+                                                        Medical Protective Mask 3 Ply Earloop</a></h3>
+                                                <!-- <div class="price"><span>Rp 1.800.000</span> <br> Rp 1.472.000</div> -->
+                                                <div class="price">Rp 25.000</div>
+                                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
+                                                    Contact</a>
+                                            </div>
+                                        </div>
+                                    </div>
+format discount

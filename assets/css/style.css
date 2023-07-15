@@ -138,7 +138,7 @@ h6 {
 
 #topbar .social-links a {
   color: #437099;
-  padding-left: 15px;
+  padding-left: 10px;
   display: inline-block;
   line-height: 1px;
   transition: 0.3s;
@@ -187,9 +187,9 @@ h6 {
 }
 
 /**
-* Appointment Button *
+* login Button *
 */
-.appointment-btn {
+.login-btn {
   margin-left: 25px;
   background: #1977cc;
   color: #fff;
@@ -201,13 +201,13 @@ h6 {
   display: inline-block;
 }
 
-.appointment-btn:hover {
+.login-btn:hover {
   background: #166ab5;
   color: #fff;
 }
 
 @media (max-width: 768px) {
-  .appointment-btn {
+  .login-btn {
     margin: 0 15px 0 0;
     padding: 6px 18px;
   }
@@ -866,52 +866,6 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Counts
---------------------------------------------------------------*/
-.counts {
-  background: #f1f7fd;
-  padding: 70px 0 60px;
-}
-
-.counts .count-box {
-  padding: 30px 30px 25px 30px;
-  width: 100%;
-  position: relative;
-  text-align: center;
-  background: #fff;
-}
-
-.counts .count-box i {
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 20px;
-  background: #1977cc;
-  color: #fff;
-  border-radius: 50px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-}
-
-.counts .count-box span {
-  font-size: 36px;
-  display: block;
-  font-weight: 600;
-  color: #082744;
-}
-
-.counts .count-box p {
-  padding: 0;
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  font-size: 14px;
-}
-
-/*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
 .services{
@@ -996,103 +950,6 @@ section {
 .services .icon-box:hover h4 a,
 .services .icon-box:hover p {
   color: #fff;
-}
-
-/*--------------------------------------------------------------
-# Appointments
---------------------------------------------------------------*/
-.appointment .php-email-form {
-  width: 100%;
-}
-
-.appointment .php-email-form .form-group {
-  padding-bottom: 8px;
-}
-
-.appointment .php-email-form .validate {
-  display: none;
-  color: red;
-  margin: 0 0 15px 0;
-  font-weight: 400;
-  font-size: 13px;
-}
-
-.appointment .php-email-form .error-message {
-  display: none;
-  color: #fff;
-  background: #ed3c0d;
-  text-align: left;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.appointment .php-email-form .error-message br+br {
-  margin-top: 25px;
-}
-
-.appointment .php-email-form .sent-message {
-  display: none;
-  color: #fff;
-  background: #18d26e;
-  text-align: center;
-  padding: 15px;
-  font-weight: 600;
-}
-
-.appointment .php-email-form .loading {
-  display: none;
-  background: #fff;
-  text-align: center;
-  padding: 15px;
-}
-
-.appointment .php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid #18d26e;
-  border-top-color: #eee;
-  animation: animate-loading 1s linear infinite;
-}
-
-.appointment .php-email-form input,
-.appointment .php-email-form textarea,
-.appointment .php-email-form select {
-  border-radius: 0;
-  box-shadow: none;
-  font-size: 14px;
-  padding: 10px !important;
-}
-
-.appointment .php-email-form input:focus,
-.appointment .php-email-form textarea:focus,
-.appointment .php-email-form select:focus {
-  border-color: #1977cc;
-}
-
-.appointment .php-email-form input,
-.appointment .php-email-form select {
-  height: 44px;
-}
-
-.appointment .php-email-form textarea {
-  padding: 10px 12px;
-}
-
-.appointment .php-email-form button[type=submit] {
-  background: #1977cc;
-  border: 0;
-  padding: 10px 35px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 50px;
-}
-
-.appointment .php-email-form button[type=submit]:hover {
-  background: #1c84e3;
 }
 
 /*--------------------------------------------------------------
@@ -1266,16 +1123,6 @@ section {
   -webkit-line-clamp: 2; /* Maximum number of lines to display */
 }
 
-.product-grid .rating{
-  padding: 0;
-  margin: 0 0 8px;
-  list-style: none;
-}
-.product-grid .rating li{
-  color: #1977CC;
-  font-size: 14px;
-}
-.product-grid .rating .far{ color: #808080; }
 .product-grid .title{
   font-size: 18px;
   font-weight: 600;
@@ -1302,7 +1149,7 @@ section {
 .product-grid:hover .price{ opacity: 0; }
 .product-grid .whatsapp-btn{
   color: #fff;
-  background-color: #78A206;
+  background-color: #128C7E;
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
@@ -1317,7 +1164,7 @@ section {
   left: 50%;
   transition: all .4s ease-out;
 }
-.product-grid .whatsapp-btn:hover{ background-color: #5a7a03; }
+.product-grid .whatsapp-btn:hover{ background-color: #0b5c52; }
 .product-grid:hover .whatsapp-btn{
   opacity: 1;
   bottom: 8px;
@@ -1327,181 +1174,119 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Doctors
+# product_page
 --------------------------------------------------------------*/
-.doctors {
-  background: #fff;
-}
 
-.doctors .member {
-  position: relative;
-  box-shadow: 0px 2px 15px rgba(44, 73, 100, 0.08);
-  padding: 30px;
-  border-radius: 10px;
-}
-
-.doctors .member .pic {
-  overflow: hidden;
-  width: 180px;
-  border-radius: 50%;
-}
-
-.doctors .member .pic img {
-  transition: ease-in-out 0.3s;
-}
-
-.doctors .member:hover img {
-  transform: scale(1.1);
-}
-
-.doctors .member .member-info {
-  padding-left: 30px;
-}
-
-.doctors .member h4 {
-  font-weight: 700;
-  margin-bottom: 5px;
-  font-size: 20px;
-  color: #2c4964;
-}
-
-.doctors .member span {
-  display: block;
-  font-size: 15px;
-  padding-bottom: 10px;
-  position: relative;
-  font-weight: 500;
-}
-
-.doctors .member span::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: #b2c8dd;
-  bottom: 0;
-  left: 0;
-}
-
-.doctors .member p {
-  margin: 10px 0 0 0;
-  font-size: 14px;
-}
-
-.doctors .member .social {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.doctors .member .social a {
-  transition: ease-in-out 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  width: 32px;
-  height: 32px;
-  background: #a0bcd5;
-}
-
-.doctors .member .social a i {
+.product_page.whatsapp-btn {
+  background: #128C7E;
   color: #fff;
-  font-size: 16px;
-  margin: 0 2px;
-}
-
-.doctors .member .social a:hover {
-  background: #1977cc;
-}
-
-.doctors .member .social a+a {
-  margin-left: 8px;
-}
-
-/*--------------------------------------------------------------
-# Frequently Asked Questions
---------------------------------------------------------------*/
-.faq .faq-list {
-  padding: 0 100px;
-}
-
-.faq .faq-list ul {
-  padding: 0;
-  list-style: none;
-}
-
-.faq .faq-list li+li {
-  margin-top: 15px;
-}
-
-.faq .faq-list li {
-  padding: 20px;
-  background: #fff;
-  border-radius: 4px;
-  position: relative;
-}
-
-.faq .faq-list a {
-  display: block;
-  position: relative;
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 500;
-  padding: 0 30px;
-  outline: none;
-  cursor: pointer;
-}
-
-.faq .faq-list .icon-help {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  left: 20px;
-  color: #76b5ee;
-}
-
-.faq .faq-list .icon-show,
-.faq .faq-list .icon-close {
-  font-size: 24px;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.faq .faq-list p {
-  margin-bottom: 0;
-  padding: 10px 0 0 0;
-}
-
-.faq .faq-list .icon-show {
-  display: none;
-}
-
-.faq .faq-list a.collapsed {
-  color: #343a40;
-}
-
-.faq .faq-list a.collapsed:hover {
-  color: #1977cc;
-}
-
-.faq .faq-list a.collapsed .icon-show {
+  border-radius: 50px;
+  padding: 8px 15px;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 14px;
   display: inline-block;
 }
 
-.faq .faq-list a.collapsed .icon-close {
-  display: none;
+.product_page.whatsapp-btn:hover {
+  background: #0b5c52;
+  color: #fff;
 }
 
-@media (max-width: 1200px) {
-  .faq .faq-list {
-    padding: 0;
-  }
+span.product_pagePrice{
+  color: #1977CC;
 }
+
+.product-image_ProductPage{
+  position: relative;
+}
+
+/* img.prd_pageimg.img-fluid:hover{
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+
+.prd_pageimg.img-fluid{
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.overlay-product_links{
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.product-image_ProductPage:hover .overlay-product_links {
+  opacity: 1;
+}
+
+.overlay-product_links .product-pageLinks li{
+  display: inline-block;
+  margin: 0 2px;
+}
+.overlay-product_links .product-pageLinks li a{
+  color: #2c2c2c;
+  background: #fff;
+  font-size: 16px;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  display: block;
+  position: relative;
+  transition: all 0.4s ease-out 0s;
+}
+
+.overlay-product_links .product-pageLinks li a:hover{
+  color: #fff;
+  background: #1977CC;
+  box-shadow: 1px 1px 30px 0 rgba(0, 0, 0, 0.2);
+}
+.overlay-product_links .product-pageLinks li a:before,
+.overlay-product_links .product-pageLinks li a:after{
+  content: attr(data-tip);
+  color: #fff;
+  background-color: #555;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  display: none;
+  transform: translateX(-50%);
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  transition: all 0.3s ease 0s;
+}
+
+.overlay-product_links .product-pageLinks li a:after{
+  content: '';
+  height: 10px;
+  width: 10px;
+  padding: 0;
+  transform: translateX(-50%) rotate(45deg);
+  top: -18px;
+  z-index: -1;
+}
+.overlay-product_links .product-pageLinks li a:hover:before,
+.overlay-product_links .product-pageLinks li a:hover:after{
+  display: block;
+}
+
 
 /*--------------------------------------------------------------
 # blogs
@@ -1525,29 +1310,29 @@ section {
 
 
 
-.card {
-  background-color: #fff !important;
-  border-radius: 10px !important;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
-  overflow: hidden !important;
-  width: 320px !important;
+.card.blog-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 320px;
 }
 
-.card-header{
-  padding: 0 !important;
+.card-header.blog-card-header{
+  padding: 0;
 }
 
-.card-header > img {
+.card-header  > img {
   width: 100%;
-  height: 200px !important;
-  object-fit: cover !important;
+  height: 200px;
+  object-fit: cover;
 }
-.card-body {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: start !important;
-  padding: 20px !important;
-  min-height: 250px !important;
+.card-body.blog-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 20px;
+  min-height: 250px;
 }
 
 .card-body > h4.blog-title, 
@@ -1636,6 +1421,14 @@ section {
     overflow: hidden;
   }
 
+}
+
+/*--------------------------------------------------------------
+# Blog Page
+--------------------------------------------------------------*/
+section.comments,
+section.blog-content{
+  padding: 0 !important;
 }
 
 /*--------------------------------------------------------------
@@ -1947,4 +1740,6 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+
 
