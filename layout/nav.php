@@ -18,8 +18,5 @@
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
-
-            <a href="admin_controller/login.php" class="login-btn scrollto d-none d-lg-flex">Login</a>
-
         </div>
     </header><!-- End Header -->
