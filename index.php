@@ -244,106 +244,115 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#tab-6">Disenfecting & Sterilizing</a>
                             </li>
+                            
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-7">Sterile Water</a>
+                                <a class="nav-link" href="product-page.php">Selengkapnya</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-9">
                         <div class="tab-content">
                             <div class="tab-pane active show" id="tab-1">
-                                <div class="row gy-4">
+                            <div class="category-product swiper" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="swiper-wrapper">
 
-
-                                    <div class="col-lg-3 col-6">
-                                        <div class="product-grid">
-                                            <div class="product-image">
-                                                <a href="" class="image">
-                                                    <img src="assets/img/product_1.png" class="img-fluid" alt="">
-                                                </a>
-                                                <ul class="product-links">
-                                                    <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                </ul>
+                                        <div class="swiper-slide">
+                                            <div class="category-wrap">
+                                                <div class="product-grid">
+                                                    <div class="product-image">
+                                                        <a href="" class="image">
+                                                            <img src="assets/img/product_4.png" class="img-fluid" alt="">
+                                                        </a>
+                                                        <ul class="product-links">
+                                                            <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h3 class="title"><a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">Serenity Medical Protective Mask 3 Ply Earloop</a></h3>
+                                                        <div class="price">Rp 25.000</div>
+                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
+                                                            Contact</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="product-content">
-                                                <h3 class="title"><a href="#" title="Decubitus mattress AD III BEAM">Decubitus mattress AD III BEAM</a></h3>
-                                                <div class="price">Rp 5.650.000</div>
-                                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="category-wrap">
+                                                <div class="product-grid">
+                                                    <div class="product-image">
+                                                        <a href="" class="image">
+                                                            <img src="assets/img/product_1.png" class="img-fluid" alt="">
+                                                        </a>
+                                                        <ul class="product-links">
+                                                            <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h3 class="title"><a href="#" title="Decubitus mattress AD III BEAM">Decubitus mattress AD III BEAM</a></h3>
+                                                        <div class="price">Rp 5.650.000</div>
+                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="category-wrap">
+
+                                                <div class="product-grid">
+                                                    <div class="product-image">
+                                                        <a href="" class="image">
+                                                            <img src="assets/img/product_3.jpg" class="img-fluid" alt="">
+                                                        </a>
+                                                        <ul class="product-links">
+                                                            <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h3 class="title"><a href="#" title="Oxygen Concentrator GEA 7F-8">Oxygen Concentrator GEA7F-8</a></h3>
+                                                        <div class="price">Rp 19.000.000</div>
+                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
+                                                            Contact</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="category-wrap">
+
+                                                <div class="product-grid">
+                                                    <div class="product-image">
+                                                        <a href="" class="image">
+                                                            <img src="assets/img/product_2.jpg" class="img-fluid" alt="">
+                                                        </a>
+                                                        <ul class="product-links">
+                                                            <li><a href="#" data-tip="Tokopedia"><i
+                                                                        class="ft-tokopedia"></i></a></li>
+                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="product-content">
+
+                                                        <h3 class="title"><a href="#">Doppler BT – 220 C Bistos Hand held Fetal Doppler</a></h3>
+                                                        <div class="price">Rp 1.472.000</div>
+                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-3 col-6">
-                                        <div class="product-grid">
-                                            <div class="product-image">
-                                                <a href="" class="image">
-                                                    <img src="assets/img/product_2.jpg" class="img-fluid" alt="">
-                                                </a>
-                                                <ul class="product-links">
-                                                    <li><a href="#" data-tip="Tokopedia"><i
-                                                                class="ft-tokopedia"></i></a></li>
-                                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-content">
-
-                                                <h3 class="title"><a href="#">Doppler BT – 220 C Bistos Hand held Fetal Doppler</a></h3>
-                                                <div class="price">Rp 1.472.000</div>
-                                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-6">
-                                        <div class="product-grid">
-                                            <div class="product-image">
-                                                <a href="" class="image">
-                                                    <img src="assets/img/product_3.jpg" class="img-fluid" alt="">
-                                                </a>
-                                                <ul class="product-links">
-                                                    <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-content">
-                                                <h3 class="title"><a href="#" title="Oxygen Concentrator GEA 7F-8">Oxygen Concentrator GEA7F-8</a></h3>
-                                                <div class="price">Rp 19.000.000</div>
-                                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
-                                                    Contact</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-6">
-                                        <div class="product-grid">
-                                            <div class="product-image">
-                                                <a href="" class="image">
-                                                    <img src="assets/img/product_4.png" class="img-fluid" alt="">
-                                                </a>
-                                                <ul class="product-links">
-                                                    <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-content">
-
-                                                <h3 class="title"><a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">Serenity Medical Protective Mask 3 Ply Earloop</a></h3>
-                                                <div class="price">Rp 25.000</div>
-                                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
-                                                    Contact</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                             <div class="tab-pane" id="tab-2">
-
+                                
                             </div>
                             <div class="tab-pane" id="tab-3">
 
