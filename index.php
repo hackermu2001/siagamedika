@@ -376,10 +376,10 @@
 
             // Replace 'YOUR_API_KEY' with your actual API key
             $apiKey = "36f2ed3431e54b28b0fec70ab596099e";
-            $category = "health";
+            $country = "us";
 
             // Fetch news data using the API key and country code
-            $newsData = fetch_news_data($apiKey, $category);
+            $newsData = fetch_news_data($apiKey, $country);
         ?>
 
         <!-- ======= blogs Section ======= -->
