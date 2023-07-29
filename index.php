@@ -1,3 +1,4 @@
+<?php include('forms/news_api.php')?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,7 @@
 
 <body>
 
-
+    
     <?php include('layout/topbar.php')?>
     <?php include('layout/nav.php')?>
 
@@ -370,7 +371,16 @@
             </div>
         </section><!-- End List Product Section -->
 
+        <?php
+            require_once 'forms/news_api.php';
 
+            // Replace 'YOUR_API_KEY' with your actual API key
+            $apiKey = "36f2ed3431e54b28b0fec70ab596099e";
+            $category = "health";
+
+            // Fetch news data using the API key and country code
+            $newsData = fetch_news_data($apiKey, $category);
+        ?>
 
         <!-- ======= blogs Section ======= -->
         <section id="blogs" class="blogs">
@@ -382,37 +392,30 @@
                 <div class="blogs-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
 
-
-                        <div class="swiper-slide">
-                            <div class="blog-wrap">
-                                <div class="card blog-card">
-                                    <div class="card-header blog-card-header">
-                                        <img src="https://s.aolcdn.com/images/dims?client=fh7w6q744eiognjk&signature=d59d0cf6af1d779a3dca451e0ba259c33bbc6115&image_uri=https%3A%2F%2Fs.aolcdn.com%2Fos%2Fab%2F_cms%2F2019%2F08%2F30142658%2F2020-jeep-wrangler-16.jpg&thumbnail=750%2C422&quality=80"
-                                            alt="" />
-                                    </div>
-                                    <div class="card-body blog-card-body">
-                                        <span class="tag tag-teal">Technology</span>
-                                        <h4 class="blog-title"><a href="#">Why is the Tesla Cybertruck designed the way it is ?</a></h4>
-                                        <p class="blog-description">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur
-                                            tenetur distinctio neque?
-                                        </p>
-                                        <div class="user">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Outdoors-man-portrait_%28cropped%29.jpg"
-                                                alt="" />
-                                            <div class="user-info">
-                                                <h5>Jerome Walton</h5>
-                                                <small>2h ago</small>
+                        <?php foreach ($newsData['articles'] as $article) 
+                        if (isset($article['description']) && isset($article['urlToImage']) && $article['description'] && $article['urlToImage']){ ?>
+                            <!-- start blog item -->
+                            <div class="swiper-slide"> 
+                                <div class="blog-wrap">
+                                        <div class="card blog-card">
+                                            <div class="card-header blog-card-header">
+                                                <img src="<?php echo $article['urlToImage']; ?>" alt="" />
+                                            </div>
+                                            <div class="card-body blog-card-body">
+                                                <h4 class="blog-title"><a href="<?php echo $article['url']; ?>"><?php echo $article['title']; ?></a></h4>
+                                                <p class="blog-description"><?php echo $article['description']; ?></p>
+                                                <div class="user">
+                                                    <img src="assets/img/logo1.png" alt="" />
+                                                    <div class="user-info">
+                                                        <h5>Admin</h5>
+                                                        <small>dd/mm/yyyy</small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                 </div>
-                            </div>
-                        </div><!-- End blog item -->
-
-                        
-
-
+                            </div><!-- End blog item -->
+                        <?php } ?>
 
                     </div>
                     <div class="swiper-pagination"></div>

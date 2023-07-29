@@ -250,11 +250,6 @@ truncateTitlePrdContent.forEach(element => {
       disableOnInteraction: false
     },
     slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
     breakpoints: {
       300: {
         slidesPerView: 2,

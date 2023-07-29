@@ -1398,11 +1398,13 @@ scrollbar-width: none;  /* Firefox */
     .product-box .modal-dialog .modal-content .modal-body .modal-image{ height: auto; }
 }
 
-.modal-body .content .prod-list-item{
+.modal-body .content .prod-list-item,
+.share-list{
   margin-top: 15px;
   margin-bottom: 10px;
 }
-.modal-body .content .prod-list-item span {
+.modal-body .content .prod-list-item span,
+.share-list span {
   display: inline-block;
   color: #222222;
   font-family: 'Raleway', sans-serif;
@@ -1410,15 +1412,18 @@ scrollbar-width: none;  /* Firefox */
   font-weight: 600;
   margin-right: 4px;
 }
-.modal-body .content .prod-list-item ul {
+.modal-body .content .prod-list-item ul,
+.share-list ul {
   margin: 0;
   padding: 0;
   display: inline-block;
 }
-.modal-body .content .prod-list-item ul li {
+.modal-body .content .prod-list-item ul li,
+.share-list ul li {
   display: inline-block;
 }
-.modal-body .content .prod-list-item ul li a {
+.modal-body .content .prod-list-item ul li a,
+.share-list ul li a {
   display: inline-block;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -1429,14 +1434,17 @@ scrollbar-width: none;  /* Firefox */
   font-size: 13px;
   font-weight: 500;
 }
-.modal-body .content .prod-list-item ul li a:hover {
+.modal-body .content .prod-list-item ul li a:hover
+.share-list ul li a:hover {
   cursor: pointer;
   color: #1977CC;
 }
-.modal-body .content .prod-list-item ul.product-social li {
+.modal-body .content .prod-list-item ul.product-social li,
+.share-list ul.social-list li {
   margin-left: 2px;
 }
-.modal-body .content .prod-list-item ul.product-social li a {
+.modal-body .content .prod-list-item ul.product-social li a,
+.share-list ul.social-list li a {
   width: 30px;
   height: 30px;
   text-align: center;
@@ -1449,7 +1457,8 @@ scrollbar-width: none;  /* Firefox */
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-.modal-body .content .prod-list-item ul.product-social li a:hover {
+.modal-body .content .prod-list-item ul.product-social li a:hover,
+.share-list ul.social-list li a:hover {
   color: #ffffff;
   border: 1px solid #1977CC;
   background: #1977CC;
@@ -1559,12 +1568,6 @@ section.product-page .product-bar select {
 }
 .tag-teal {
   background-color: #1977cc !important;
-}
-.tag-purple {
-  background-color: #3d1d94 !important;
-}
-.tag-pink {
-  background-color: #c62bcd !important;
 }
 .card-body h4 {
   margin: 10px 0 !important;
