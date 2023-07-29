@@ -15,7 +15,7 @@ mysqli_query($koneksi, "INSERT INTO produk (KodeProduk,NamaProduk,Harga,Gambar,K
 
 $LastKodeProduk = mysqli_query($koneksi, "SELECT KodeProduk FROM produk WHERE KodeProduk=(SELECT MAX(KodeProduk) FROM produk)");
 $LKP = mysqli_fetch_assoc($LastKodeProduk);
-$KodeProduk = $LI['KodeProduk'];
+$KodeProduk = $LKP['KodeProduk'];
 
 if($Keterangan!=null || $Keterangan!=""){
     mysqli_query($koneksi, "UPDATE produk SET Keterangan='$Keterangan' WHERE KodeProduk='$KodeProduk'");
