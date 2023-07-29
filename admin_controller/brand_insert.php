@@ -1,8 +1,9 @@
-<?php 
-include "./koneksi.php";
+<?php
+include '../koneksi.php';
 
-$NamaBrand = $_POST['NamaBrand'];
+$NamaBrand = $_POST['txtNamaBrand'];
 
-mysqli_query($koneksi, "INSERT INTO brand (KodeBrand,NamaBrand) VALUES('','$NamaBrand'");
+mysqli_query($koneksi, "INSERT INTO brand (NamaBrand) VALUES ('$NamaBrand')");
 
 header("location:brand.php");
+

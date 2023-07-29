@@ -2,6 +2,8 @@
 include '../koneksi.php';
 
 $KodeSlide = $_POST['KodeSlide'];
+
+
 $NamaSlide = $_POST['NamaSlide'];
 
 $rand = rand();
