@@ -9,9 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($username === "admin" && $password === "admin123") {
         $_SESSION["loggedin"] = true;
         $_SESSION["username"] = $username;
+        if (isset($_POST["remember"])) {
+            // Set a cookie with the username, valid for 30 days
+            setcookie("remember_username", $username, time() + (30 * 24 * 60 * 60), "/");
+        } else {
+            // Clear the "remember" cookie if it exists
+            setcookie("remember_username", "", time() - 3600, "/");
+        }
+
         header("Location: ../../index.php");
     } else {
-        echo "Invalid username or password.";
+        header("Location: ../../login.php?invalid=true");
     }
 }
 ?>
