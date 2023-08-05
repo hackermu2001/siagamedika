@@ -36,37 +36,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <form class="container-fluid" action="php/function_php/brand_insert.php" method="post">
 
                 <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Brand</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus fa-sm text-white-50"></i> Add Brand</a>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"><i class="fas fa-plus fa-sm text-white-50"></i> Add Brand</button>
                     </div>
-                    <!-- brand form -->
                     
-                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="" class="form-row">
-
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save</button>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                    <!-- /brand form -->
                     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
@@ -89,7 +66,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <td>BRND<span id="total-data">1</span></td>
+                                        <td>BRND000</td>
                                             <td><input type="text" class="border-0 w-100 bg-transparent p-0 m-0" id="new-brand-name" style="color: grey; box-sizing: border-box;" placeholder="Isi Nama Brand..."></td>
                                             <td><input type="hidden" class="form-control border-0 bg-transparent" value="<?php echo date('d-m-Y'); ?>" id="new-creation-date" readonly><?php echo date('d-m-Y'); ?></td>
                                             <td><button class="btn rounded-circle btn-sm btn-primary mx-2" id="add-brand-btn" type="button"><i class="fas fa-plus"></i></button></td>
@@ -101,7 +78,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </div>
                     </div>
                     
-                </div>
+                </form>
                 <!-- /.container-fluid -->
 
             </div>

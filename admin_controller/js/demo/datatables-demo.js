@@ -18,8 +18,8 @@ $(document).ready(function() {
         return;
     }
     var skuPrefix = 'BRND';
-        totalData++; // Increment totalData
-        var newSku = skuPrefix + totalData;
+    var randomSkuNumber = Math.floor(Math.random() * 1000); // Angka acak antara 0 dan 999
+    var newSku = skuPrefix + randomSkuNumber;
         var currentDate = moment().format('DD-MM-YYYY');
 
 
