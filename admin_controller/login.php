@@ -45,7 +45,7 @@ if (isset($_COOKIE["remember_username"])) {
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form method="post" action="vendor/auth_php/auth.php" class="user">
+                                    <form method="post" action="php/auth_php/auth.php" class="user">
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user" id="user_name" value="<?php echo isset($rememberedUsername) ? $rememberedUsername : ''; ?>" aria-describedby="text" placeholder="Enter Username" name="username">
                                         </div>
