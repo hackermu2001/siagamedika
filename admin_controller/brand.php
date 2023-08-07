@@ -36,19 +36,58 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <form class="container-fluid" action="php/function_php/brand_insert.php" method="post">
+                <div class="container-fluid">
 
                 <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Brand</h1>
-                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit"><i class="fas fa-plus fa-sm text-white-50"></i> Add Brand</button>
+                        <button class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#AddBrand"><i class="fas fa-plus fa-sm text-white-50"></i> Brand</button>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="AddBrand" tabindex="-1" aria-labelledby="AddBrandLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="AddBrandLabel">Add Brand</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="php/function_php/brand_insert.php" name="add_brand" id="add_brand" method="post" class="form-row modal-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered brand_input">
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th width="10" >Action</th>
+                                    </tr>
+                                    <tr id="row_input">
+                                        <td><input type="text" name="txtNamaBrand[]" class="border-0 w-100 bg-transparent p-0 m-0" style="color: grey; box-sizing: border-box;" placeholder="Isi Nama Brand..."></td>
+                                        <td><button class="btn btn-circle btn-sm btn-primary mx-2" id="add-row" type="button"><i class="fas fa-plus"></i></button></td>
+                                    </tr>
+                                </table>    
+                            </div>
+                            <input type="button" name="submit_brand" id="submit_brand" type="submit" class="btn btn-primary btn-block my-2" value="Save Changes">
+                        </form>
+                        </div>
+                    </div>
                     </div>
                     
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <p class="mb-4">Anda dapat menekan link ini ketika ingin melihat Website <a target="_blank"
+                            href="../../../index.php">Siagamedika</a>.</p>
 
-                    <!-- DataTales Example -->
+                    <!-- DataTales Brand -->
+                    <?php
+                    include '../koneksi.php';
+
+                    $query = "SELECT SKU_BRND, NamaBrand, Tanggal FROM brand";
+                    $result = mysqli_query($koneksi, $query);
+
+                    $data = array();
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $data[] = $row;
+                    }
+                    ?>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Brand</h6>
@@ -65,20 +104,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        <td>BRND000</td>
-                                            <td><input type="text" class="border-0 w-100 bg-transparent p-0 m-0" id="new-brand-name" style="color: grey; box-sizing: border-box;" placeholder="Isi Nama Brand..."></td>
-                                            <td><input type="hidden" class="form-control border-0 bg-transparent" value="<?php echo date('d-m-Y'); ?>" id="new-creation-date" readonly><?php echo date('d-m-Y'); ?></td>
-                                            <td><button class="btn rounded-circle btn-sm btn-primary mx-2" id="add-brand-btn" type="button"><i class="fas fa-plus"></i></button></td>
-                                        </tr>
-                                        
+                                        <?php foreach ($data as $row): ?>
+                                            <tr>
+                                                <td><?php echo $row['SKU_BRND']; ?></td>
+                                                <td contenteditable="true" class="editable-cell" data-column="NamaBrand"><?php echo $row['NamaBrand']; ?></td>
+                                                <td><?php echo $row['Tanggal']; ?></td>
+                                                <td>    
+                                                    <button class="btn btn-primary btn-circle btn-sm edit-save-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-pen"></i></button>
+                                                    <button class="btn btn-danger btn-circle btn-sm delete-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-trash"></i></button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                     
-                </form>
+                </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -96,5 +139,131 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
+
 </body>
+<script>
+let i = 1;
+function addRow() {
+    const newRow = `
+        <tr id="row${i}">
+            <td><input type="text" name="txtNamaBrand[]" class="border-0 w-100 bg-transparent p-0 m-0" style="color: grey; box-sizing: border-box;" placeholder="Isi Nama Brand..."></td>
+            <td><button class="btn btn-circle btn-sm btn-danger mx-2 remove-row" name="remove" id="${i}" type="button"><i class="fas fa-trash"></i></button></td>
+        </tr>
+    `;
+    i++;
+    $(".brand_input").append(newRow);
+}
+
+function removeRow() {
+    var button_id = $(this).attr("id");
+    $(`#row${button_id}`).remove();
+}
+$(document).ready(function() {
+    // Menambah baris
+    $("#add-row").click(addRow);
+    // Menghapus baris
+    $(document).on("click", ".remove-row", removeRow);
+
+    // Setelah upload, reset form kembali ke satu baris
+    $('#submit_brand').click(function() {
+         // Validasi input
+        let isValid = true;
+        const existingNames = []; // Array untuk melacak nama-nama brand yang sudah ada
+
+        $("input[name='txtNamaBrand[]']").each(function() {
+            const inputVal = $(this).val().trim();
+            if (inputVal === "") {
+                isValid = false;
+                return false; // Keluar dari loop jika ada input kosong
+            }
+
+            const lowerInputVal = inputVal.toLowerCase();
+            if (existingNames.includes(lowerInputVal)) {
+                isValid = false;
+                alert("Nama brand '" + inputVal + "' sudah ada dalam daftar.");
+                return false; // Keluar dari loop jika ada nama yang sama
+            }
+
+            existingNames.push(lowerInputVal);
+        });
+
+        if (!isValid) {
+            return;
+        }            
+        $.ajax({  
+            url: "php/function_php/brand_insert.php",  
+            method: "POST",  
+            data: $('#add_brand').serialize(),  
+            success: function(data)  
+            {  
+                alert("Selamat data kamu telah berhasil di masukkan");
+                    window.location.reload(); // Ini akan memuat ulang halaman  
+                    $('#add_brand')[0].reset();
+                    $(".brand_input tr:not(:first)").remove();
+                    // Mengatur ulang nilai i menjadi 0
+                    i = 0;
+                    const defaultRow = `
+                    <tr id="row_input">
+                        <td><input type="text" name="txtNamaBrand[]" class="border-0 w-100 bg-transparent p-0 m-0" style="color: grey; box-sizing: border-box;" placeholder="Isi Nama Brand..."></td>
+                        <td><button class="btn btn-circle btn-sm btn-primary mx-2" id="add-row" type="button"><i class="fas fa-plus"></i></button></td>
+                    </tr>
+                    `;
+                    $(".brand_input tbody").append(defaultRow);
+                    i++; // Menambah i karena default row baru ditambahkan
+
+                    // Menambah baris
+                    $("#add-row").click(addRow);
+                    // Menghapus baris
+                    $(document).on("click", ".remove-row", removeRow);
+            }  
+        });  
+    });
+    // menghapus data
+    $(document).on("click", ".delete-brand", function() {
+        var skuToDelete = $(this).data("sku"); // Mendapatkan SKU_BRND dari atribut data
+        var $rowToDelete = $(this).closest("tr"); // Mendapatkan elemen baris yang akan dihapus
+        $.ajax({
+            url: "php/function_php/brand_hapus.php", // Ganti dengan URL yang sesuai
+            method: "POST",
+            data: { skuToDelete: skuToDelete },
+            success: function(data) {
+                alert("Data berhasil dihapus");
+                // Lakukan tindakan lain yang Anda perlukan, seperti menghapus baris dari tabel atau me-refresh tampilan
+                $rowToDelete.remove(); // Menghapus baris dari tabel
+                location.reload(); // Me-refresh halaman setelah penghapusan data
+            }
+        });
+    });
+    //edit
+    $(document).on("click", ".edit-save-brand", function() {
+        var $row = $(this).closest("tr");
+        var sku = $(this).data("sku");
+        var $namaCell = $row.find(".editable-cell[data-column='NamaBrand']");
+        var isEditing = $row.hasClass("editing");
+
+        if (isEditing) {
+            // Simpan perubahan
+            var updatedNamaBrand = $namaCell.text();
+
+            $.ajax({
+                url: "php/function_php/brand_update.php", // Ganti dengan URL yang sesuai
+                method: "POST",
+                data: { skuToEdit: sku, updatedNamaBrand: updatedNamaBrand },
+                success: function(data) {
+                    alert("NamaBrand berhasil diperbarui");
+                    location.reload(); // Me-refresh halaman setelah penyimpanan data
+                }
+            });
+        } else {
+            // Aktifkan mode edit
+            $row.addClass("editing");
+            $namaCell.attr("contenteditable", true);
+            $(this).removeClass("btn-primary").addClass("btn-success").html('<i class="fas fa-check"></i>');
+        }
+    });
+
+
+
+});
+</script>
 </html>

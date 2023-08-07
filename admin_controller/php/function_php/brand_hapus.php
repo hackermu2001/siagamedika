@@ -1,11 +1,13 @@
 <?php
-include '../koneksi.php';
+include '../../../koneksi.php';
 
-$KodeBrand = $_GET['id'];
+if (isset($_POST['skuToDelete'])) {
+    $skuToDelete = $_POST['skuToDelete'];
 
-mysqli_query($koneksi, "DELETE FROM brand WHERE KodeBrand = '$KodeBrand'");
+    // Lakukan proses penghapusan berdasarkan SKU_BRND yang diterima
+    $query = "DELETE FROM brand WHERE SKU_BRND = '$skuToDelete'";
+    mysqli_query($koneksi, $query);
 
-mysqli_query($koneksi, "UPDATE produk SET KodeBrand=0 WHERE KodeBrand = '$KodeBrand'");
-
-header("location:brand.php");
-
+    echo "Data berhasil dihapus"; // Pesan ini akan dikirim kembali ke skrip JavaScript
+}
+?>

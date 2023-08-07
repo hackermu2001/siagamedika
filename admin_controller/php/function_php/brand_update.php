@@ -1,10 +1,15 @@
 <?php
 
-include '../koneksi.php';
+// edit_nama_brand.php
+include '../../../koneksi.php';
 
-$KodeBrand = $_POST['id'];
-$NamaBrand = $_POST['NamaBrand'];
+$skuToEdit = $_POST['skuToEdit'];
+$updatedNamaBrand = mysqli_real_escape_string($koneksi, $_POST['updatedNamaBrand']);
 
-mysqli_query($koneksi, "UPDATE brand SET NamaBrand='$NamaBrand' WHERE KodeBranc='$KodeBrand'");
+// Mendapatkan data tanggal saat ini
+$currentDate = date("Y-m-d");
 
-header("location:brand.php");
+// Update data nama dan tanggal
+mysqli_query($koneksi, "UPDATE brand SET NamaBrand='$updatedNamaBrand', Tanggal='$currentDate' WHERE SKU_BRND='$skuToEdit'");
+echo "NamaBrand berhasil diperbarui";
+?>
