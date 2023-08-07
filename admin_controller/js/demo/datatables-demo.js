@@ -7,3 +7,4 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#brand_table').DataTable();
 });
+
