@@ -243,15 +243,24 @@ $(document).ready(function() {
 
         if (isEditing) {
             // Simpan perubahan
-            var updatedNamaBrand = $namaCell.text();
+            // Periksa apakah nama yang dimasukkan tidak kosong
+            var updatedNamaBrand = $namaCell.text().trim();
+            if (updatedNamaBrand === "") {
+                alert("NamaBrand tidak boleh kosong");
+                return;
+            }
 
             $.ajax({
                 url: "php/function_php/brand_update.php", // Ganti dengan URL yang sesuai
                 method: "POST",
                 data: { skuToEdit: sku, updatedNamaBrand: updatedNamaBrand },
                 success: function(data) {
-                    alert("NamaBrand berhasil diperbarui");
-                    location.reload(); // Me-refresh halaman setelah penyimpanan data
+                    if (data === "Brand sudah ada di database") {
+                        alert(data);
+                    } else {
+                        alert("Brand berhasil diperbarui");
+                        location.reload(); // Me-refresh halaman setelah penyimpanan data
+                    }
                 }
             });
         } else {
@@ -261,7 +270,7 @@ $(document).ready(function() {
             $(this).removeClass("btn-primary").addClass("btn-success").html('<i class="fas fa-check"></i>');
         }
     });
-
+    $(".editable-cell").attr("contenteditable", false);
 
 
 });
