@@ -40,4 +40,4 @@ if($Shopee!=null || $Shopee!=""){
     mysqli_query($koneksi, "UPDATE produk SET Shopee='$Shopee' WHERE KodeProduk='$KodeProduk'");
 }
 
-header("location:../../product_add.php");
+header("location:../../product_view.php");
