@@ -40,12 +40,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Form Products</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Edit {{ Nama Product }}</h1>
                         <a href="product_view.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View List</a>
                     </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Form Product</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">{{ id_product }} - {{ Nama Product }}</h6>
                         </div>
                         <div class="card-body">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -54,7 +54,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="php/function_php/produk_insert.php" method="post">
+                            <form action="php/function_php/produk_update.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="NamaProduk">Nama Produk</label>
