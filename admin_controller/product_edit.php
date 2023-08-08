@@ -13,11 +13,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <meta name="description" content="">
     <meta name="author" content=""> 
     <title>SB Admin 2 - Dashboard</title>
-    <?php include('layout/css.php')?>
+    <?php 
+    include('layout/css.php');
+
+    ?>
 </head>
 
 <body id="page-top">
-
+    <?php
+    include '../koneksi.php'; 
+    ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -44,70 +49,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         For more information about DataTables, please visit the <a target="_blank"
                             href="https://datatables.net">official DataTables documentation</a>.</p>
 
-                    <!-- Edit -->
-                    <div class="modal fade" id="Edit" tabindex="-1" aria-labelledby="EditLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-                            <form class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="EditLabel">Edit Form</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="NamaProduk">Nama Produk</label>
-                                                <input type="text" class="form-control" name="NamaProduk">
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                <label for="inputCategory">Category</label>
-                                                <select name="Kategori" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="deskripsi">Deskirpsi</label>
-                                            <textarea type="text" rows="5" class="form-control" name="Deskripsi" placeholder=""></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="LinkGambar">Link Gambar</label>
-                                            <input type="text" class="form-control" name="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg">
-                                            </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="harga">Harga</label>
-                                                <input type="number" class="form-control" name="numHarga" placeholder="Rp.">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="brand">Brand</label>
-                                                <select name="Brand" class="form-control">
-                                                    <option selected>Choose...</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="Tokopedia">Tokopedia</label>
-                                                <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link...">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="Shopee">Shopee</label>
-                                                <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link...">
-                                            </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="Blibli">Blibli</label>
-                                                <input type="text" class="form-control" name="Blibli" placeholder="Isi Produk Link...">
-                                            </div>
-                                        </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary btn-block">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    
                     <!-- hapus Modal -->
                     <div class="modal fade" id="Hapus" tabindex="-1" aria-labelledby="HapusLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
@@ -146,27 +88,51 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $produk = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS Kategori,b.NamaBrand AS Brand,p.Harga AS Harga,
+                                        p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.TokoPedia AS Tokopedia,p.Blibli AS Blibli,p.Shopee AS Shopee FROM produk p 
+                                        INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) WHERE (1=1)");
+                                        $No=1;
+                                        while($p = mysqli_fetch_array($produk)){
+                                        ?>
                                         <tr>
-                                            <td class="align-middle text-center">1</td>
+                                            <td class="align-middle text-center"><?php echo $No++; ?></td>
                                             <td class="align-middle">
                                                 <div class="media">
                                                     <img src="https://i.imgur.com/yQBJ68J.png" width="50" height="50" class="mr-3" alt="https://i.imgur.com/xmO8Lsp.jpg"> 
                                                     <div class="media-body">
-                                                        <h6 class="mb-0">Gluco Dr</h6>
+                                                        <h6 class="mb-0">
+                                                            <?php
+                                                            echo $p['NamaProduk']; 
+                                                            ?>
+                                                        </h6>
                                                         <small class="category">
-                                                            <span class="badge badge-pill badge-primary">Gluco</span>
-                                                            <span class="badge badge-success badge-pill mr-1">Laboratory</span>
+                                                            <span class="badge badge-pill badge-primary">
+                                                                <?php echo $p['Kategori']; ?>
+                                                            </span>
+                                                            <span class="badge badge-success badge-pill mr-1">
+                                                                <?php echo $p['Brand']; ?>
+                                                            </span>
                                                         </small>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="align-middle text-center">Rp. 120.000</td>
-                                            <td class="text-wrap">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus harum, minus nihil expedita, et deserunt vel animi, ipsa adipisci labore eius iste sed distinctio temporibus. Hic a consequuntur quisquam placeat.</td>
+                                            <td class="align-middle text-center"><?php echo "Rp. ".number_format($p['Harga']) ?></td>
+                                            <td class="text-wrap">
+                                                <?php echo $p['Keterangan']; ?>
+                                            </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-primary btn-circle" data-toggle="modal" data-target="#Edit"><i class="fas fa-pen"></i></button>
-                                                <button class="btn btn-danger btn-circle" data-toggle="modal" data-target="#Hapus"><i class="fas fa-trash"></i></button>
+                                                <a href="product_editForm.php?id=<?php echo $p['KodeProduk']; ?>" class="btn btn-primary btn-circle">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                                <button class="btn btn-danger btn-circle" data-toggle="modal" data-target="#Hapus">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
                                             </td>
                                         </tr>
+                                        <?php
+                                        } 
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -178,6 +144,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 
             </div>
             <!-- End of Main Content -->
+            <!-- Edit Modal -->
+                    
 
             <!-- Footer -->
            <?php include('layout/footer.php')?>

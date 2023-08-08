@@ -36,17 +36,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <!-- Topbar -->
                <?php include ('layout/nav.php') ?>
                 <!-- End of Topbar -->
-
+                <?php
+                $KodeProduk = $_GET['id'];
+                $produk = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS Kategori,
+                b.NamaBrand AS Brand,p.Harga AS Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.TokoPedia AS Tokopedia,p.Blibli AS Blibli,
+                p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
+                WHERE (1=1) AND p.KodeProduk='$KodeProduk'"); 
+                $p = mysqli_fetch_assoc($produk);
+                ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Edit {{ Nama Product }}</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Edit <?php echo $p['NamaProduk']; ?></h1>
                         <a href="product_view.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View List</a>
                     </div>
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">{{ id_product }} - {{ Nama Product }}</h6>
-                        </div>
+                        
                         <div class="card-body">
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <strong>Holy guacamole!</strong> You should check in on some of those fields below.
@@ -57,8 +62,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <form action="php/function_php/produk_update.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
+                                        <input type="hidden" class="form-control" name="KodeProduk" value="<?php echo $KodeProduk; ?>">
                                         <label for="NamaProduk">Nama Produk</label>
-                                        <input type="text" class="form-control" name="NamaProduk">
+                                        <input type="text" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
@@ -80,16 +86,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskirpsi</label>
-                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" placeholder=""></textarea>
+                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" placeholder="" ><?php echo $p['Keterangan'] ?></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="LinkGambar">Link Gambar</label>
-                                    <input type="text" class="form-control" name="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg">
+                                    <input type="text" class="form-control" name="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg" 
+                                        value="<?php echo $p['Gambar'] ?>">
                                     </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
-                                        <input type="number" class="form-control" name="numHarga" placeholder="Rp.">
+                                        <input type="number" class="form-control" name="numHarga" placeholder="Rp." value="<?php echo $p['Harga']; ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
@@ -112,18 +119,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="Tokopedia">Tokopedia</label>
-                                        <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link...">
+                                        <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link..." 
+                                            value="<?php echo $p['Tokopedia']; ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Shopee">Shopee</label>
-                                        <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link...">
+                                        <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link..." 
+                                            value="<?php echo $p['Shopee']; ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Blibli">Blibli</label>
-                                        <input type="text" class="form-control" name="Blibli" placeholder="Isi Produk Link...">
+                                        <input type="text" class="form-control" name="Blibli" placeholder="Isi Produk Link..." 
+                                            value="<?php echo $p['Blibli']; ?>">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-block my-2 btn-primary">Sign in</button>
+                                <button type="submit" class="btn btn-block my-2 btn-primary">Save Changes</button>
                             </form>
                         </div>
                     </div>
