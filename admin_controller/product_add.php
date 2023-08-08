@@ -63,7 +63,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
                                         <select name="Kategori" class="form-control">
-                                            <option selected>Choose...</option>
+                                            <option selected value="">Choose...</option>
                                             <?php
                                             $kategori = mysqli_query($koneksi,"SELECT kode_kategori,
                                                         NamaKategori FROM kategori");
@@ -94,7 +94,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
                                         <select name="Brand" class="form-control">
-                                            <option selected>Choose...</option>
+                                            <option selected value="">Choose...</option>
                                             <?php
                                             $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand 
                                             FROM brand");

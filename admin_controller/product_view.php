@@ -67,7 +67,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $No=1;
+                                        $No = 1;
                                         $produk = mysqli_query($koneksi, "SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS Kategori,b.NamaBrand AS Brand,p.Harga AS Harga,
                                         p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.TokoPedia AS Tokopedia,p.Blibli AS Blibli,p.Shopee AS Shopee FROM produk p 
                                         INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) WHERE (1=1)"); 
@@ -89,7 +89,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="align-middle text-center"><?php echo $p['Harga'] ?></td>
+                                            <td class="align-middle text-center">
+                                                <?php
+                                                $Harga = number_format($p['Harga'],0,',','.'); 
+                                                echo "Rp ".$Harga; 
+                                                ?>
+                                            </td>
                                             <td class="text-wrap"><?php echo $p['Keterangan']; ?></td>
                                             <td class="align-middle text-center">
                                                 <button class="btn btn-primary btn-circle"><i class="ft-tokopedia"></i></button>
