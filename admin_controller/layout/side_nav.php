@@ -51,6 +51,11 @@
                     <i class="fas fa-fw fa-list"></i>
                     <span>Category</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kategori.php">
+                    <i class="fas fa-fw fa-images"></i>
+                    <span>Imgur</span></a>
+            </li>
            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
