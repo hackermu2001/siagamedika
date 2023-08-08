@@ -8,6 +8,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php include('layout/head.php') ?>
     <meta name="description" content="">
@@ -23,6 +24,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
         <!-- Sidebar -->
         <?php include('layout/side_nav.php') ?> 
+        <?php include'../koneksi.php';?>
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -62,7 +64,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <label for="inputCategory">Category</label>
                                         <select name="Kategori" class="form-control">
                                             <option selected>Choose...</option>
-                                            <option>...</option>
+                                            <?php
+                                            $kategori = mysqli_query($koneksi,"SELECT kade_kategori,
+                                                        NamaKategori FROM kategori");
+                                            while($k = mysqli_fetch_array($kategori)){
+                                            ?>
+                                            <option value="<?php echo $k['KodeKategori']; ?>">
+                                                <?php echo $k['NamaKategori']; ?>
+                                            </option>
+                                            <?php
+                                            } 
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -83,7 +95,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <label for="harga">Brand</label>
                                         <select name="brand" class="form-control">
                                             <option selected>Choose...</option>
-                                            <option>...</option>
+                                            <?php
+                                            $Brand = mysqli_query($koneksi,"SELECT SKUBRAND,NamaBrand 
+                                            FROM brand");
+                                            while($b = mysqli_fetch_array($Brand)){ 
+                                            ?>
+                                            <option value="<?php echo $b['KodeBrand'] ?>">
+                                                <?php echo $b['NamaBrand']; ?>
+                                            </option>
+                                            <?php
+                                            } 
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
