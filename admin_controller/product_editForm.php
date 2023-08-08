@@ -59,10 +59,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="php/function_php/produk_update.php" method="post">
+                            <form action="php/function_php/produk_update.php" method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="hidden" class="form-control" name="KodeProduk" value="<?php echo $KodeProduk; ?>">
+                                        <input type="number" class="form-control" name="Kode" value="<?php echo $KodeProduk; ?>">
                                         <label for="NamaProduk">Nama Produk</label>
                                         <input type="text" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>">
                                         </div>

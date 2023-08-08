@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2023 at 09:24 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Aug 08, 2023 at 05:23 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,7 @@ CREATE TABLE `brand` (
 
 INSERT INTO `brand` (`SKU_BRND`, `NamaBrand`, `Tanggal`) VALUES
 ('BRND525', 'Solida', '2023-08-08'),
+('BRND548', 'Polytron', '2023-08-08'),
 ('BRND581', 'ABN', '2023-08-08'),
 ('BRND653', 'Serenity', '2023-08-08'),
 ('BRND722', 'GEA', '2023-08-08');
@@ -50,24 +51,24 @@ INSERT INTO `brand` (`SKU_BRND`, `NamaBrand`, `Tanggal`) VALUES
 --
 
 CREATE TABLE `kategori` (
-  `NamaKategori` varchar(100) NOT NULL,
   `kode_kategori` varchar(300) NOT NULL,
+  `NamaKategori` varchar(100) CHARACTER SET utf8mb4 NOT NULL,
   `Tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`NamaKategori`, `kode_kategori`, `Tanggal`) VALUES
-('ICU/HCU', 'CAT209', '2023-08-08'),
-('WARD', 'CAT258', '2023-08-08'),
-('Diagnostic', 'CAT291', '2023-08-08'),
-('Laundry', 'CAT357', '2023-08-08'),
-('NICU/PICU', 'CAT589', '2023-08-08'),
-('CSSD', 'CAT702', '2023-08-08'),
-('Operating Theater', 'CAT814', '2023-08-08'),
-('Laboratory', 'CAT883', '2023-08-08');
+INSERT INTO `kategori` (`kode_kategori`, `NamaKategori`, `Tanggal`) VALUES
+('CAT209', 'ICU/HCU', '2023-08-08'),
+('CAT258', 'WARD', '2023-08-08'),
+('CAT291', 'Diagnostic', '2023-08-08'),
+('CAT357', 'Laundry', '2023-08-08'),
+('CAT589', 'NICU/PICU', '2023-08-08'),
+('CAT702', 'CSSD', '2023-08-08'),
+('CAT814', 'Operating Theater', '2023-08-08'),
+('CAT883', 'Laboratory', '2023-08-08');
 
 -- --------------------------------------------------------
 
@@ -76,29 +77,27 @@ INSERT INTO `kategori` (`NamaKategori`, `kode_kategori`, `Tanggal`) VALUES
 --
 
 CREATE TABLE `produk` (
-  `KodeProduk` int(11) NOT NULL AUTO_INCREMENT,
+  `KodeProduk` int(11) NOT NULL,
   `NamaProduk` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
-  `kode_kategori` varchar(300) NOT NULL,
-  `SKU_BRND` varchar(200) NOT NULL,
+  `kode_kategori` varchar(300) CHARACTER SET utf32 NOT NULL,
+  `SKU_BRND` varchar(200) CHARACTER SET utf32 NOT NULL,
   `Harga` double NOT NULL,
   `Gambar` varchar(350) CHARACTER SET utf8mb4 NOT NULL,
-  `Keterangan` varchar(500) DEFAULT NULL,
-  `TokoPedia` varchar(300) DEFAULT NULL,
-  `Blibli` varchar(300) DEFAULT NULL,
-  `Shopee` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`KodeProduk`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf32;
+  `Keterangan` varchar(500) CHARACTER SET utf32 DEFAULT NULL,
+  `Tokopedia` varchar(300) COLLATE utf32_bin DEFAULT NULL,
+  `Blibli` varchar(300) CHARACTER SET utf32 DEFAULT NULL,
+  `Shopee` varchar(300) CHARACTER SET utf32 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_bin;
 
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`KodeProduk`, `NamaProduk`, `kode_kategori`, `SKU_BRND`, `Harga`, `Gambar`, `Keterangan`, `Tokopedia`, `Blibli`, `Shopee`) VALUES
+(8, 'Gluco DR', 'CAT291', 'BRND525', 0, '$Gambar', '$Keterangan', '$Tokopedia', '$Blibli', '$Shopee'),
+(9, 'Gluco DR', 'CAT291', 'BRND653', 476690, 'https://i.imgur.com/xmO8Lsp.jpg', 'Baterai 1/4, Berat 1 kg, kecepatan 21', 'eurufjfjodkkd', 'kdkdkfjjdkdk', 'djfjfddkfjj');
 
 -- --------------------------------------------------------
-
-/*
--- Query: SELECT * FROM siagamedika.produk
--- Date: 2023-08-08 22:02
-*/
-INSERT INTO `produk` (`KodeProduk`,`NamaProduk`,`kode_kategori`,`SKU_BRND`,`Harga`,`Gambar`,`Keterangan`,`TokoPedia`,`Blibli`,`Shopee`) VALUES (8,'Gluco DR','CAT291','BRND525',4889000,'https://i.imgur.com/xmO8Lsp.jpg','Baterai 1/4','drufjfjddkdkk','kdkdkfjjdkdk',NULL);
-INSERT INTO `produk` (`KodeProduk`,`NamaProduk`,`kode_kategori`,`SKU_BRND`,`Harga`,`Gambar`,`Keterangan`,`TokoPedia`,`Blibli`,`Shopee`) VALUES (9,'Gluco DR','CAT291','BRND653',476690,'https://i.imgur.com/xmO8Lsp.jpg','Baterai 1/4, Berat 1 kg, kecepatan 21','eurufjfjodkkd','kdkdkfjjdkdk','djfjfddkfjj');
-
 
 --
 -- Table structure for table `user`
@@ -147,7 +146,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT; 
+  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
