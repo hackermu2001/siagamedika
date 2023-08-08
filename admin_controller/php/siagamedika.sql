@@ -76,17 +76,19 @@ INSERT INTO `kategori` (`NamaKategori`, `kode_kategori`, `Tanggal`) VALUES
 --
 
 CREATE TABLE `produk` (
-  `KodeProduk` int(11) NOT NULL,
+  `KodeProduk` int(11) NOT NULL AUTO_INCREMENT,
   `NamaProduk` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
-  `KodeKategori` int(11) NOT NULL,
-  `KodeBrand` int(11) NOT NULL,
+  `kode_kategori` varchar(300) NOT NULL,
+  `SKU_BRND` varchar(200) NOT NULL,
   `Harga` double NOT NULL,
   `Gambar` varchar(350) CHARACTER SET utf8mb4 NOT NULL,
   `Keterangan` varchar(500) DEFAULT NULL,
   `TokoPedia` varchar(300) DEFAULT NULL,
   `Blibli` varchar(300) DEFAULT NULL,
-  `Shoppee` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+  `Shopee` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`KodeProduk`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf32;
+
 
 -- --------------------------------------------------------
 
