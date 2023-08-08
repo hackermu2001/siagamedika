@@ -52,7 +52,7 @@
                     <span>Category</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="kategori.php">
+                <a class="nav-link" target="_blank" href="https://imgur.com/">
                     <i class="fas fa-fw fa-images"></i>
                     <span>Imgur</span></a>
             </li>
