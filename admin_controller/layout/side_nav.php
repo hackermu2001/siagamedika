@@ -36,18 +36,18 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Add Products</a>
-                        <a class="collapse-item" href="#">Update</a>
+                        <a class="collapse-item" href="#">Update Products</a>
                         <a href="" class="collapse-item">View Products</a>
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="brand.php">
                     <i class="fas fa-fw fa-cookie"></i>
                     <span>Brand</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="kategori.php">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Category</span></a>
             </li>
