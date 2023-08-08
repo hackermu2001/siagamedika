@@ -90,6 +90,14 @@ CREATE TABLE `produk` (
 
 -- --------------------------------------------------------
 
+/*
+-- Query: SELECT * FROM siagamedika.produk
+-- Date: 2023-08-08 22:02
+*/
+INSERT INTO `produk` (`KodeProduk`,`NamaProduk`,`kode_kategori`,`SKU_BRND`,`Harga`,`Gambar`,`Keterangan`,`TokoPedia`,`Blibli`,`Shopee`) VALUES (8,'Gluco DR','CAT291','BRND525',4889000,'https://i.imgur.com/xmO8Lsp.jpg','Baterai 1/4','drufjfjddkdkk','kdkdkfjjdkdk',NULL);
+INSERT INTO `produk` (`KodeProduk`,`NamaProduk`,`kode_kategori`,`SKU_BRND`,`Harga`,`Gambar`,`Keterangan`,`TokoPedia`,`Blibli`,`Shopee`) VALUES (9,'Gluco DR','CAT291','BRND653',476690,'https://i.imgur.com/xmO8Lsp.jpg','Baterai 1/4, Berat 1 kg, kecepatan 21','eurufjfjodkkd','kdkdkfjjdkdk','djfjfddkfjj');
+
+
 --
 -- Table structure for table `user`
 --
