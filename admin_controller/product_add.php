@@ -54,7 +54,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form>
+                            <form action="php/function_php/produk_insert.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="NamaProduk">Nama Produk</label>
@@ -65,11 +65,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <select name="Kategori" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
-                                            $kategori = mysqli_query($koneksi,"SELECT kade_kategori,
+                                            $kategori = mysqli_query($koneksi,"SELECT kode_kategori,
                                                         NamaKategori FROM kategori");
                                             while($k = mysqli_fetch_array($kategori)){
                                             ?>
-                                            <option value="<?php echo $k['KodeKategori']; ?>">
+                                            <option value="<?php echo $k['kode_kategori']; ?>">
                                                 <?php echo $k['NamaKategori']; ?>
                                             </option>
                                             <?php
@@ -80,7 +80,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskirpsi</label>
-                                    <textarea type="text" rows="5" class="form-control" name="deskripsi" placeholder=""></textarea>
+                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" placeholder=""></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="LinkGambar">Link Gambar</label>
@@ -89,18 +89,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
-                                        <input type="number" class="form-control" name="harga" placeholder="Rp.">
+                                        <input type="number" class="form-control" name="numHarga" placeholder="Rp.">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="harga">Brand</label>
-                                        <select name="brand" class="form-control">
+                                        <label for="brand">Brand</label>
+                                        <select name="Brand" class="form-control">
                                             <option selected>Choose...</option>
                                             <?php
-                                            $Brand = mysqli_query($koneksi,"SELECT SKUBRAND,NamaBrand 
+                                            $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand 
                                             FROM brand");
                                             while($b = mysqli_fetch_array($Brand)){ 
                                             ?>
-                                            <option value="<?php echo $b['KodeBrand'] ?>">
+                                            <option value="<?php echo $b['SKU_BRND']; ?>">
                                                 <?php echo $b['NamaBrand']; ?>
                                             </option>
                                             <?php

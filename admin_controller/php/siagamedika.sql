@@ -137,7 +137,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT; 
 
 --
 -- AUTO_INCREMENT for table `user`

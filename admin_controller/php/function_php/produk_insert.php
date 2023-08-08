@@ -1,5 +1,5 @@
 <?php
-include '../koneksi.php';
+include '../../../koneksi.php';
 
 $NamaProduk = $_POST['NamaProduk'];
 $Kategori = $_POST['Kategori'];
@@ -9,14 +9,15 @@ $Keterangan = $_POST['Deskripsi'];
 
 $LinkGambar = $_POST['LinkGambar'];
 
-mysqli_query($koneksi, "INSERT INTO produk (KodeProduk,NamaProduk,Harga,Gambar,Keterangan) 
-                            VALUES (NULL,'$NamaProduk','$Harga','','')");
+mysqli_query($koneksi, "INSERT INTO produk (KodeProduk,NamaProduk,kode_kategori,SKU_BRND,Harga,Gambar,Keterangan) 
+                            VALUES (NULL,'$NamaProduk','$Kategori','$Brand','$Harga','','')");
 
 $LastKodeProduk = mysqli_query($koneksi, "SELECT KodeProduk FROM produk WHERE 
                                     KodeProduk=(SELECT MAX(KodeProduk) FROM produk)");
 
 $LKP = mysqli_fetch_assoc($LastKodeProduk);
 $KodeProduk = $LKP['KodeProduk'];
+
 if($LinkGambar!=null || $LinkGambar!=""){
     mysqli_query($koneksi, "UPDATE produk SET Gambar='$LinkGambar' WHERE KodeProduk='$KodeProduk'");
 }
@@ -39,4 +40,4 @@ if($Shopee!=null || $Shopee!=""){
     mysqli_query($koneksi, "UPDATE produk SET Shopee='$Shopee' WHERE KodeProduk='$KodeProduk'");
 }
 
-header("location:produk.php");
+header("location:../../product_add.php");
