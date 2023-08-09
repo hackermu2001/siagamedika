@@ -1,7 +1,7 @@
 <?php 
-include '../../koneksi.php';
+include '../../../koneksi.php';
 
-$KodeProduk = $_GET['Kode'];
+$KodeProduk = $_POST['Kode'];
 $NamaProduk = $_POST['NamaProduk'];
 $Kategori = $_POST['Kategori'];
 $Keterangan = $_POST['Deskripsi'];

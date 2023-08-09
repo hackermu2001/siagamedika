@@ -117,7 +117,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td class="align-middle text-center"><?php echo "Rp. ".number_format($p['Harga']) ?></td>
+                                            <td class="align-middle text-center"><?php echo "Rp. ".number_format($p['Harga']); ?></td>
                                             <td class="text-wrap">
                                                 <?php echo $p['Keterangan']; ?>
                                             </td>

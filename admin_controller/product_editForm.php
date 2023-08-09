@@ -62,7 +62,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <form action="php/function_php/produk_update.php" method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <input type="number" class="form-control" name="Kode" value="<?php echo $KodeProduk; ?>">
+                                        <input type="number" class="form-control" name="Kode" value="<?php echo $p['KodeProduk']; ?>">
                                         <label for="NamaProduk">Nama Produk</label>
                                         <input type="text" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>">
                                         </div>
