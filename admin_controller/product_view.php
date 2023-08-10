@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$current_page = 'product_view';
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;
@@ -12,7 +14,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <?php include('layout/head.php') ?>
     <meta name="description" content="">
     <meta name="author" content=""> 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Siagamedika - View Product</title>
     <?php 
     include('layout/css.php');
     ?>
@@ -95,9 +97,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 ?>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-primary btn-circle"><i class="ft-tokopedia"></i></button>
-                                                <button class="btn btn-primary btn-circle"><i class="ft-shopee"></i></button>
-                                                <button class="btn btn-primary btn-circle"><i class="ft-blibli"></i></button>
+                                                <button class="btn btn-primary btn-circle btn-sm"><i class="ft-tokopedia"></i></button>
+                                                <button class="btn btn-primary btn-circle btn-sm"><i class="ft-shopee"></i></button>
+                                                <button class="btn btn-primary btn-circle btn-sm"><i class="ft-blibli"></i></button>
                                             </td>
                                         </tr>
                                         <?php

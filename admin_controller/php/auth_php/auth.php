@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST["password"];
 
     // Check if the entered username and password match the expected values
-    if ($username === "admin" && $password === "admin123") {
+    if ($username === "siagamedika" && $password === "siagamedika") {
         $_SESSION["loggedin"] = true;
         $_SESSION["username"] = $username;
         if (isset($_POST["remember"])) {

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$current_page = 'product_edit';
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;
@@ -12,7 +14,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <?php include('layout/head.php') ?>
     <meta name="description" content="">
     <meta name="author" content=""> 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Siagamedika - Product Edit</title>
     <?php 
     include('layout/css.php');
 
@@ -98,10 +100,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             <td class="align-middle text-center"><?php echo "Rp. ".number_format($p['Harga']); ?></td>
                                             
                                             <td class="align-middle text-center">
-                                                <a href="get_product_form.php?id=<?php echo $p['KodeProduk']; ?>" class="btn btn-primary btn-circle edit-btn">
+                                                <a href="get_product_form.php?id=<?php echo $p['KodeProduk']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <button class="btn btn-danger btn-circle delete-btn" data-toggle="modal" data-target="#Hapus"  data-id="<?php echo $p['KodeProduk']; ?>">
+                                                <button class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#Hapus"  data-id="<?php echo $p['KodeProduk']; ?>">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                                 <!-- hapus Modal -->

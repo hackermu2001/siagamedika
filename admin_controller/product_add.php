@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$current_page = 'product_add';
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;

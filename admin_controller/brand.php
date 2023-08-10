@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$current_page = 'brand';
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;

@@ -24,7 +24,7 @@ header("Expires: 0");
     <?php include('layout/head.php') ?>
     <meta name="description" content="">
     <meta name="author" content=""> 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Siagamedika - Edit Form</title>
     <?php include('layout/css.php')?>
 </head>
 
@@ -50,8 +50,8 @@ header("Expires: 0");
                 <?php
                 $KodeProduk = $_GET['id'];
                 $produk = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS Kategori,
-                b.NamaBrand AS Brand,p.Harga AS Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.TokoPedia AS Tokopedia,p.Blibli AS Blibli,
-                p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
+                b.NamaBrand AS Brand,p.SKU_BRND AS SKU_BRND ,p.Harga AS Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.TokoPedia AS Tokopedia,p.Blibli AS Blibli,
+                p.Shopee AS Shopee,p.kode_kategori AS KodeKategori FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
                 WHERE (1=1) AND p.KodeProduk='$KodeProduk'"); 
                 $p = mysqli_fetch_assoc($produk);
                 ?>
@@ -80,7 +80,7 @@ header("Expires: 0");
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
                                         <select id="Kategori" name="Kategori" class="form-control" required>
-                                            <option selected disabled value=""><?php echo $p['Kategori']; ?></option>
+                                            <option selected value="<?php echo $p['KodeKategori']; ?>"><?php echo $p['Kategori']; ?></option>
                                             <?php
                                             $kategori = mysqli_query($koneksi,"SELECT kode_kategori, NamaKategori FROM kategori"); 
                                             while($k = mysqli_fetch_array($kategori)){
@@ -110,7 +110,7 @@ header("Expires: 0");
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
                                         <select id="Brand" name="Brand" class="form-control">
-                                            <option value="" disabled selected><?php echo $p['Brand']; ?></option>
+                                            <option value="<?php echo $p['SKU_BRND']; ?>"><?php echo $p['Brand']; ?></option>
                                             <?php
                                             $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand 
                                             FROM brand");
