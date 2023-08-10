@@ -5,7 +5,7 @@
                 <div class="sidebar-brand-icon">
                     <img src="img/favicon.png" alt="">
                 </div>
-                <div class="sidebar-brand-text mx-3">SM Admin</div>
+                <div class="sidebar-brand-text mx-3">SM Panel</div>
             </a>
 
             <!-- Divider -->
@@ -35,9 +35,9 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Add Products</a>
-                        <a class="collapse-item" href="#">Update Products</a>
-                        <a href="" class="collapse-item">View Products</a>
+                        <a class="collapse-item" href="product_add.php">Add Products</a>
+                        <a class="collapse-item" href="product_edit.php">Update Products</a>
+                        <a href="product_view.php" class="collapse-item">View Products</a>
                     </div>
                 </div>
             </li>

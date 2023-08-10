@@ -61,7 +61,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             <th>No.</th>
                                             <th class="w-auto">Nama Barang</th>
                                             <th>Harga</th>
-                                            <th>Keterangan</th>
                                             <th width="10">Marketplace</th>
                                         </tr>
                                     </thead>
@@ -79,7 +78,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             </td>
                                             <td class="align-middle">
                                                 <div class="media">
-                                                    <img src="https://i.imgur.com/yQBJ68J.png" width="50" height="50" class="mr-3" alt="https://i.imgur.com/xmO8Lsp.jpg"> 
+                                                    <img src="<?php echo $p['Gambar']?>" width="50" height="50" class="mr-3" alt="https://i.imgur.com/xmO8Lsp.jpg"> 
                                                     <div class="media-body">
                                                         <h6 class="mb-0"><?php echo $p['NamaProduk'];  ?></h6>
                                                         <small class="category">
@@ -95,7 +94,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 echo "Rp ".$Harga; 
                                                 ?>
                                             </td>
-                                            <td class="text-wrap"><?php echo $p['Keterangan']; ?></td>
                                             <td class="align-middle text-center">
                                                 <button class="btn btn-primary btn-circle"><i class="ft-tokopedia"></i></button>
                                                 <button class="btn btn-primary btn-circle"><i class="ft-shopee"></i></button>

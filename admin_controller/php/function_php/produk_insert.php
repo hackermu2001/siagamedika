@@ -1,43 +1,39 @@
 <?php
 include '../../../koneksi.php';
 
-$NamaProduk = $_POST['NamaProduk'];
-$Kategori = $_POST['Kategori'];
-$Brand = $_POST['Brand'];
-$Harga = $_POST['numHarga'];
-$Keterangan = $_POST['Deskripsi'];
+$NamaProduk = mysqli_real_escape_string($koneksi, $_POST['NamaProduk']);
+$Kategori = mysqli_real_escape_string($koneksi, $_POST['Kategori']);
+$Brand = mysqli_real_escape_string($koneksi, $_POST['Brand']);
+$Harga = floatval($_POST['numHarga']); // Pastikan Harga adalah angka positif
+$Keterangan = mysqli_real_escape_string($koneksi, $_POST['Deskripsi']);
+$Keterangan = nl2br($Keterangan);  // Mengubah baris baru menjadi tag <br>
+$LinkGambar = mysqli_real_escape_string($koneksi, $_POST['LinkGambar']);
 
-$LinkGambar = $_POST['LinkGambar'];
+// Insert data ke tabel produk dengan prepared statement
+$stmt = $koneksi->prepare("INSERT INTO produk (KodeProduk, NamaProduk, kode_kategori, SKU_BRND, Harga) 
+                        VALUES (NULL, ?, ?, ?, ?)");
+$stmt->bind_param("sssd", $NamaProduk, $Kategori, $Brand, $Harga);
+$stmt->execute();
 
-mysqli_query($koneksi, "INSERT INTO produk (KodeProduk,NamaProduk,kode_kategori,SKU_BRND,Harga,Gambar,Keterangan) 
-                            VALUES (NULL,'$NamaProduk','$Kategori','$Brand','$Harga','','')");
+$KodeProduk = mysqli_insert_id($koneksi);
 
-$LastKodeProduk = mysqli_query($koneksi, "SELECT KodeProduk FROM produk WHERE 
-                                    KodeProduk=(SELECT MAX(KodeProduk) FROM produk)");
+// Update data tambahan (jika ada)
+$additionalFields = array(
+    'Gambar' => $LinkGambar,
+    'Keterangan' => $Keterangan,
+    'Tokopedia' => $_POST['Tokopedia'],
+    'Blibli' => $_POST['Blibli'],
+    'Shopee' => $_POST['Shopee']
+);
 
-$LKP = mysqli_fetch_assoc($LastKodeProduk);
-$KodeProduk = $LKP['KodeProduk'];
-
-if($LinkGambar!=null || $LinkGambar!=""){
-    mysqli_query($koneksi, "UPDATE produk SET Gambar='$LinkGambar' WHERE KodeProduk='$KodeProduk'");
-}
-if($Keterangan!=null || $Keterangan!=""){
-    mysqli_query($koneksi, "UPDATE produk SET Keterangan='$Keterangan' WHERE KodeProduk='$KodeProduk'");
-}
-
-$Tokopedia = $_POST['Tokopedia'];
-if($Tokopedia!=null || $Tokopedia!=""){
-    mysqli_query($koneksi, "UPDATE produk SET Tokopedia='$Tokopedia' WHERE KodeProduk='$KodeProduk'");
-}
-
-$Blibli = $_POST['Blibli'];
-if($Blibli!=null || $Blibli!=""){
-    mysqli_query($koneksi, "UPDATE produk SET Blibli='$Blibli' WHERE KodeProduk='$KodeProduk'");
-}
-
-$Shopee = $_POST['Shopee'];
-if($Shopee!=null || $Shopee!=""){
-    mysqli_query($koneksi, "UPDATE produk SET Shopee='$Shopee' WHERE KodeProduk='$KodeProduk'");
+foreach ($additionalFields as $field => $value) {
+    $value = mysqli_real_escape_string($koneksi, $value); // Escape nilai
+    if (!empty($value)) {
+        $stmt = $koneksi->prepare("UPDATE produk SET $field=? WHERE KodeProduk=?");
+        $stmt->bind_param("si", $value, $KodeProduk);
+        $stmt->execute();
+    }
 }
 
-header("location:../../product_view.php");
+header("location:../../product_edit.php");
+?>

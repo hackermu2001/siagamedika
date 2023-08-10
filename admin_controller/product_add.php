@@ -13,7 +13,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <?php include('layout/head.php') ?>
     <meta name="description" content="">
     <meta name="author" content=""> 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Siagamedika - Add Product</title>
     <?php include('layout/css.php')?>
 </head>
 
@@ -48,22 +48,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <h6 class="m-0 font-weight-bold text-primary">Form Product</h6>
                         </div>
                         <div class="card-body">
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+
+                            <div class="alert alert-warning alert-dismissible d-none fade show" role="alert" id="alertMessage">
+                                <strong>Please enter a valid data in this form</strong>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form action="php/function_php/produk_insert.php" method="post">
+
+                            <form id="productForm" action="php/function_php/produk_insert.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="NamaProduk">Nama Produk</label>
-                                        <input type="text" class="form-control" name="NamaProduk">
+                                        <input type="text" class="form-control" name="NamaProduk" id="NamaProduk">
                                         </div>
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
-                                        <select name="Kategori" class="form-control">
-                                            <option selected value="">Choose...</option>
+                                        <select name="Kategori" id="Kategori" class="form-control">
+                                            <option value="">Choose...</option>
                                             <?php
                                             $kategori = mysqli_query($koneksi,"SELECT kode_kategori,
                                                         NamaKategori FROM kategori");
@@ -80,21 +82,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskirpsi</label>
-                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" placeholder=""></textarea>
+                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" id="Deskripsi" placeholder=""></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="LinkGambar">Link Gambar</label>
-                                    <input type="text" class="form-control" name="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg">
+                                    <input type="text" class="form-control" name="LinkGambar" id="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg">
                                     </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
-                                        <input type="number" class="form-control" name="numHarga" placeholder="Rp.">
+                                        <input type="number" class="form-control" name="numHarga" id="numHarga" placeholder="Rp.">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
-                                        <select name="Brand" class="form-control">
-                                            <option selected value="">Choose...</option>
+                                        <select name="Brand" id="Brand" class="form-control">
+                                            <option value="0">Choose...</option>
                                             <?php
                                             $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand 
                                             FROM brand");
