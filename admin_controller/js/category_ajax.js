@@ -75,7 +75,8 @@ let i = 1;
               }  
           });  
       });
-      // menghapus data
+      // menghapus data tambahkan button di bawah saja pasang di table category
+    //   <button class="btn btn-danger btn-circle btn-sm delete-cat" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-trash"></i></button>
       $(document).on("click", ".delete-cat", function() {
           var CatToDelete = $(this).data("id_cat"); // Mendapatkan id_cat_BRND dari atribut data
           var $rowToDelete = $(this).closest("tr"); // Mendapatkan elemen baris yang akan dihapus

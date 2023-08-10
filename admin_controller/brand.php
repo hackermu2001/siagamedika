@@ -74,9 +74,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </div>
                     </div>
                     </div>
-                    
-                    <p class="mb-4">Anda dapat menekan link ini ketika ingin melihat Website <a target="_blank"
-                            href="../../../index.php">Siagamedika</a>.</p>
 
                     <!-- DataTales Brand -->
                     <?php
@@ -91,8 +88,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     }
                     ?>
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Data Brand</h6>
+                            <button class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" onclick="location.reload();"><i class="fas fa-sync fa-sm text-white-50"></i> Refresh</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -111,9 +109,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 <td><?php echo $row['SKU_BRND']; ?></td>
                                                 <td contenteditable="true" class="editable-cell" data-column="NamaBrand"><?php echo $row['NamaBrand']; ?></td>
                                                 <td><?php echo $row['Tanggal']; ?></td>
-                                                <td>    
+                                                <td class="text-center align-middle">    
                                                     <button class="btn btn-primary btn-circle btn-sm edit-save-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-pen"></i></button>
-                                                    <button class="btn btn-danger btn-circle btn-sm delete-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

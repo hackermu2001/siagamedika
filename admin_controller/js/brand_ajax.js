@@ -75,7 +75,8 @@ let i = 1;
               }  
           });  
       });
-      // menghapus data
+      // menghapus data: ambil button di bawah pasang di table brand
+    //   <button class="btn btn-danger btn-circle btn-sm delete-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-trash"></i></button>
       $(document).on("click", ".delete-brand", function() {
           var skuToDelete = $(this).data("sku"); // Mendapatkan SKU_BRND dari atribut data
           var $rowToDelete = $(this).closest("tr"); // Mendapatkan elemen baris yang akan dihapus

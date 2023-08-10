@@ -64,12 +64,6 @@ header("Expires: 0");
                     <div class="card shadow mb-4">
                         
                         <div class="card-body">
-                            <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div> -->
                             <form id="productForm" action="php/function_php/produk_update.php" method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
@@ -80,17 +74,19 @@ header("Expires: 0");
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
                                         <select id="Kategori" name="Kategori" class="form-control" required>
-                                            <option selected value="<?php echo $p['KodeKategori']; ?>"><?php echo $p['Kategori']; ?></option>
-                                            <?php
-                                            $kategori = mysqli_query($koneksi,"SELECT kode_kategori, NamaKategori FROM kategori"); 
-                                            while($k = mysqli_fetch_array($kategori)){
+                                        <?php
+                                        $kategori = mysqli_query($koneksi,"SELECT kode_kategori, NamaKategori FROM kategori");
+                                        $selectedKategori = isset($_POST['Kategori']) ? $_POST['Kategori'] : $p['KodeKategori']; // Ambil kategori yang dipilih dari POST data, atau gunakan yang ada pada $p
+
+                                        while ($k = mysqli_fetch_array($kategori)) {
+                                            $isSelected = ($k['kode_kategori'] == $selectedKategori) ? "selected" : "";
                                             ?>
-                                            <option value="<?php echo $k['kode_kategori']; ?>" <?php echo ($k['NamaKategori'] == $kategori) ? "selected" : "";?>>
+                                            <option value="<?php echo $k['kode_kategori']; ?>" <?php echo $isSelected; ?>>
                                                 <?php echo $k['NamaKategori']; ?>
                                             </option>
                                             <?php
-                                            } 
-                                            ?>
+                                        }
+                                        ?>
                                         </select>
                                     </div>
                                 </div>
@@ -110,18 +106,19 @@ header("Expires: 0");
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
                                         <select id="Brand" name="Brand" class="form-control">
-                                            <option value="<?php echo $p['SKU_BRND']; ?>"><?php echo $p['Brand']; ?></option>
-                                            <?php
-                                            $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand 
-                                            FROM brand");
-                                            while($b = mysqli_fetch_array($Brand)){ 
+                                        <?php
+                                        $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand FROM brand");
+                                        $selectedBrand = isset($_POST['Brand']) ? $_POST['Brand'] : $p['SKU_BRND'];
+
+                                        while ($b = mysqli_fetch_array($Brand)) {
+                                            $isSelected = ($b['SKU_BRND'] == $selectedBrand) ? "selected" : "";
                                             ?>
-                                            <option value="<?php echo $b['SKU_BRND']; ?>">
+                                            <option value="<?php echo $b['SKU_BRND']; ?>" <?php echo $isSelected; ?>>
                                                 <?php echo $b['NamaBrand']; ?>
                                             </option>
                                             <?php
-                                            } 
-                                            ?>
+                                        }
+                                        ?>
                                         </select>
                                     </div>
                                 </div>
