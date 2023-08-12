@@ -284,12 +284,12 @@
                                                             </ul>
                                                         </div>
                                                         <div class="product-content">
-                                                            <h3 class="title">
-                                                                <a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">
+                                                            <h5 class="title">
+                                                                <a href="#" title="<?php echo $p['NamaProduk']; ?>">
                                                                     <?php echo $p['NamaProduk']; ?>
                                                                 </a>
-                                                            </h3>
-                                                            <div class="price"><?php echo $p['Harga']; ?></div>
+                                                            </h5>
+                                                            <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
                                                             <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
                                                                 Contact</a>
                                                         </div>
@@ -298,6 +298,9 @@
                                             </div>
                                         <?php
                                             }
+                                        }
+                                        else{
+                                            echo "Data Tidak Ditemukan";
                                         } 
                                         ?>
                                         <div class="swiper-slide">
@@ -314,7 +317,11 @@
                                                         </ul>
                                                     </div>
                                                     <div class="product-content">
-                                                        <h3 class="title"><a href="#" title="Decubitus mattress AD III BEAM">Decubitus mattress AD III BEAM</a></h3>
+                                                        <h3 class="title">
+                                                            <a href="#" title="Decubitus mattress AD III BEAM">
+                                                                Decubitus mattress AD III BEAM
+                                                            </a>
+                                                        </h3>
                                                         <div class="price">Rp 5.650.000</div>
                                                         <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
                                                     </div>
