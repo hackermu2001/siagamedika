@@ -10,14 +10,15 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <?php include('layout/header.php')?>
+    <?php include('layout/header.php');?>
 </head>
 
 <body>
 
     
-    <?php include('layout/topbar.php')?>
-    <?php include('layout/nav.php')?>
+    <?php include('layout/topbar.php');?>
+    <?php include('layout/nav.php');?>
+    <?php include './koneksi.php';?>
 
    
 
@@ -68,7 +69,7 @@
                                         <p>Layanan pelanggan yang ramah, yang ditujukan untuk memberikan pengalaman
                                             positif kepada setiap pelanggan yang datang</p>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="col-xl-4 d-flex align-items-stretch">
                                     <div class="icon-box mt-4 mt-xl-0">
                                         <i class='bx bxs-truck'></i>
@@ -217,6 +218,9 @@
 
         <!-- ======= list_product Section ======= -->
         <section id="list_product" class="list_product">
+            <?php
+             
+            ?>
             <div class="container">
 
                 <div class="section-title">
@@ -256,29 +260,46 @@
                             <div class="tab-pane active show" id="tab-1">
                             <div class="category-product swiper" data-aos="fade-up" data-aos-delay="100">
                                     <div class="swiper-wrapper">
+                                        <?php
+                                        $produk = mysqli_query($koneksi, "SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,p.kode_kategori AS 
+                                        KodeKategori,k.NamaKategori AS NamaKategori,p.SKU_BRND AS SKU_BRND,b.NamaBrand AS NamaBrand,p.Harga AS 
+                                        Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.Tokopedia AS Tokopedia,p.Blibli AS Blibli,p.Shopee 
+                                        AS Shopee FROM produk p INNER JOIN brand b INNER JOIN kategori k ON (p.SKU_BRND=b.SKU_BRND AND 
+                                        k.kode_kategori=p.kode_kategori) WHERE (1=1)");
 
-                                        <div class="swiper-slide">
-                                            <div class="category-wrap">
-                                                <div class="product-grid">
-                                                    <div class="product-image">
-                                                        <a href="" class="image">
-                                                            <img src="assets/img/product_4.png" class="img-fluid" alt="">
-                                                        </a>
-                                                        <ul class="product-links">
-                                                            <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <h3 class="title"><a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">Serenity Medical Protective Mask 3 Ply Earloop</a></h3>
-                                                        <div class="price">Rp 25.000</div>
-                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
-                                                            Contact</a>
+                                        if(mysqli_num_rows($produk) > 0){
+                                            foreach($produk AS $p){
+                                        ?>
+                                            <div class="swiper-slide">
+                                                <div class="category-wrap">
+                                                    <div class="product-grid">
+                                                        <div class="product-image">
+                                                            <a href="" class="image">
+                                                                <img src="assets/img/<?php echo $p['Gambar']; ?>" class="img-fluid" alt="">
+                                                            </a>
+                                                            <ul class="product-links">
+                                                                <li><a href="<?php echo $p['Tokopedia']; ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                                                <li><a href="<?php echo $p['Blibli']; ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                                                <li><a href="<?php echo $p['Shopee']; ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="product-content">
+                                                            <h3 class="title">
+                                                                <a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">
+                                                                    <?php echo $p['NamaProduk']; ?>
+                                                                </a>
+                                                            </h3>
+                                                            <div class="price"><?php echo $p['Harga']; ?></div>
+                                                            <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
+                                                                Contact</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php
+                                            }
+                                        } 
+                                        ?>
                                         <div class="swiper-slide">
                                             <div class="category-wrap">
                                                 <div class="product-grid">
