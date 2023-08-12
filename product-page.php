@@ -46,26 +46,46 @@
                     </div>
                 </div>
                 <div class="row gy-4">
+                    <?php
+                    $produk = mysqli_query($koneksi, "SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,p.kode_kategori AS 
+                            KodeKategori,k.NamaKategori AS NamaKategori,p.SKU_BRND AS SKU_BRND,b.NamaBrand AS NamaBrand,p.Harga AS 
+                            Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.Tokopedia AS Tokopedia,p.Blibli AS Blibli,p.Shopee 
+                            AS Shopee FROM produk p INNER JOIN brand b INNER JOIN kategori k ON (p.SKU_BRND=b.SKU_BRND AND 
+                            k.kode_kategori=p.kode_kategori) WHERE (1=1)"); 
+                    if(mysqli_num_rows($produk) > 0){
+                        foreach($produk AS $p){
+                    ?>
                     <div class="col-md-3 col-sm-12">
                         <div class="product-grid">
                             <div class="product-image">
                                 <a href="" class="image" data-bs-toggle="modal" data-bs-target="#product_1">
-                                    <img src="assets/img/product_1.png" class="img-fluid" style="height: 250px;" alt="">
+                                    <img src="assets/img/<?php echo $p['Gambar']; ?>" class="img-fluid" style="height: 250px;" alt="">
                                 </a>
                                 <ul class="product-links">
-                                    <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                    <li><a href="<?php echo $p['Tokopedia']; ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                    <li><a href="<?php echo $p['Shopee']; ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                    <li><a href="<?php echo $p['Blibli']; ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-content">
-                                <h3 class="title"><a href="#" title="Decubitus mattress AD III BEAM" data-bs-toggle="modal" data-bs-target="#product_1">Decubitus mattress AD III BEAM</a></h3>
-                                <div class="price">Rp 5.250.000</div>
+                                <h5 class="title">
+                                    <a href="#" title="<?php echo $p['NamaProduk']; ?>" data-bs-toggle="modal" data-bs-target="#product_1">
+                                        <?php echo $p['NamaProduk']; ?>
+                                    </a>
+                                </h5>
+                                <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
                                 <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
                                     Contact</a>
                             </div>
                         </div>
                     </div>
+                    <?php
+                        }
+                    }
+                    else{
+                        echo "Tida ada data ditemukan.";
+                    } 
+                    ?>
                     <div class="col-md-3 col-sm-12">
                         <div class="product-grid">
                             <div class="product-image">
