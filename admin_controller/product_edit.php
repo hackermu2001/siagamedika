@@ -1,4 +1,6 @@
 <?php
+// product_edit.php
+
 session_start();
 
 $current_page = 'product_edit';
@@ -7,6 +9,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;
 }
+
+include '../koneksi.php';
+
+$searchQuery = isset($_GET['search_query']) ? $_GET['search_query'] : '';
+
+$query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS Kategori, b.NamaBrand AS Brand, p.Harga AS Harga,
+        p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.TokoPedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
+        FROM produk p INNER JOIN kategori k INNER JOIN brand b 
+        ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
+        WHERE p.NamaProduk LIKE '%$searchQuery%'";
+
+$result = mysqli_query($koneksi, $query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,15 +60,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Edit Barang</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                    <?php
+                    if (!empty($searchQuery)) {
+                        echo '<h1 class="h3 mb-4 text-gray-800">Search Result "' . $searchQuery . '"</h1>';
+                    } else {
+                        echo '<h1 class="h3 mb-4 text-gray-800">Edit Barang</h1>';
+                    }
+                    ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Daftar Edit Barang</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -68,12 +84,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        $produk = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS Kategori,b.NamaBrand AS Brand,p.Harga AS Harga,
-                                        p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.TokoPedia AS Tokopedia,p.Blibli AS Blibli,p.Shopee AS Shopee FROM produk p 
-                                        INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) WHERE (1=1)");
-                                        $No=1;
-                                        while($p = mysqli_fetch_array($produk)){
+                                    <?php
+                                    $No = 1;
+                                    while ($p = mysqli_fetch_array($result)) {
                                         ?>
                                         <tr>
                                             <td class="align-middle text-center"><?php echo $No++; ?></td>
@@ -98,7 +111,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center"><?php echo "Rp. ".number_format($p['Harga']); ?></td>
-                                            
                                             <td class="align-middle text-center">
                                                 <a href="get_product_form.php?id=<?php echo $p['KodeProduk']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                     <i class="fas fa-pen"></i>

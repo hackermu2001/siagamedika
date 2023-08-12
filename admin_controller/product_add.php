@@ -7,6 +7,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,24 +51,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <h6 class="m-0 font-weight-bold text-primary">Form Product</h6>
                         </div>
                         <div class="card-body">
-
-                            <div class="alert alert-warning alert-dismissible d-none fade show" role="alert" id="alertMessage">
-                                <strong>Please enter a valid data in this form</strong>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <form id="productForm" action="php/function_php/produk_insert.php" method="post">
+                            <form id="productForm" class="needs-validation" novalidate action="php/function_php/produk_insert.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="NamaProduk">Nama Produk</label>
-                                        <input type="text" class="form-control" name="NamaProduk" id="NamaProduk">
+                                        <input type="text" class="form-control" placeholder="Isi Nama Produk..." name="NamaProduk" id="NamaProduk" required>
+                                        <div class="invalid-feedback">
+                                            Nama Produk harus diisi!
                                         </div>
+                                    </div>
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
-                                        <select name="Kategori" id="Kategori" class="form-control">
-                                            <option value="">Choose...</option>
+                                        <select name="Kategori" id="Kategori" class="form-control" required>
+                                            <option selected disabled value="">Choose...</option>
                                             <?php
                                             $kategori = mysqli_query($koneksi,"SELECT kode_kategori,
                                                         NamaKategori FROM kategori");
@@ -80,25 +76,37 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             } 
                                             ?>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Pilih Kategori Valid!
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="deskripsi">Deskirpsi</label>
-                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" id="Deskripsi" placeholder=""></textarea>
+                                    <label for="deskripsi">Deskripsi</label>
+                                    <textarea type="text" rows="5" class="form-control" name="Deskripsi" id="Deskripsi" placeholder="Isi Deskripsi..." required></textarea>
+                                    <div class="invalid-feedback">
+                                        Deskripsi harus diisi!
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="LinkGambar">Link Gambar</label>
-                                    <input type="text" class="form-control" name="LinkGambar" id="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg">
+                                    <input type="text" class="form-control" name="LinkGambar" id="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg" required pattern="https://i\.imgur\.com/.*">
+                                        <div class="invalid-feedback">
+                                            Link Gambar harus diisi dan dimulai dengan https://i.imgur.com/.
+                                        </div>
                                     </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
-                                        <input type="number" class="form-control" name="numHarga" id="numHarga" placeholder="Rp.">
+                                        <input type="number" class="form-control" name="numHarga" id="numHarga" placeholder="Rp." required min="0">
+                                        <div class="invalid-feedback">
+                                            Harga Harus diisi.
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
-                                        <select name="Brand" id="Brand" class="form-control">
-                                            <option value="0">Choose...</option>
+                                        <select name="Brand" id="Brand" class="form-control" required>
+                                            <option value="" disabled selected>Choose...</option>
                                             <?php
                                             $Brand = mysqli_query($koneksi,"SELECT SKU_BRND,NamaBrand 
                                             FROM brand");
@@ -111,20 +119,28 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             } 
                                             ?>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Pilih Brand Valid!
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="Tokopedia">Tokopedia</label>
-                                        <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link...">
+                                        <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link..." pattern="(https:\/\/(www\.)?tokopedia\.com\/.*)?">
+                                        <div class="invalid-feedback">
+                                            Harus diawali dengan https://tokopedia.com/
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Shopee">Shopee</label>
-                                        <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link...">
+                                        <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link..." pattern="(https:\/\/(www\.)?shopee\.co\.id\/.*)?">
+                                        <div class="invalid-feedback">Harus diawali dengan https://shopee.co.id/</div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Blibli">Blibli</label>
-                                        <input type="text" class="form-control" name="Blibli" placeholder="Isi Produk Link...">
+                                        <input type="text" class="form-control" name="Blibli" placeholder="Isi Produk Link..." pattern="(https:\/\/(www\.)?blibli\.com\/.*)?">
+                                        <div class="invalid-feedback">Harus diawali dengan https://blibli.com/</div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-block my-2 btn-primary">Sign in</button>
@@ -148,7 +164,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </div>
     <!-- End of Page Wrapper -->
 
-    
     <?php include('layout/script.php') ?>
 </body>
 </html>

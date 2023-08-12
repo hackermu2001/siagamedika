@@ -64,12 +64,15 @@ header("Expires: 0");
                     <div class="card shadow mb-4">
                         
                         <div class="card-body">
-                            <form id="productForm" action="php/function_php/produk_update.php" method="post" enctype="multipart/form-data">
+                            <form id="productForm" class="needs-validation" novalidate action="php/function_php/produk_update.php" method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <input type="hidden" class="form-control" name="Kode" value="<?php echo $KodeProduk; ?>">
                                         <label for="NamaProduk">Nama Produk</label>
                                         <input id="NamaProduk" type="text" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>" required>
+                                        <div class="invalid-feedback">
+                                            Nama Produk harus diisi!
+                                        </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
@@ -88,20 +91,32 @@ header("Expires: 0");
                                         }
                                         ?>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Pilih Kategori Valid!
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi</label>
                                     <textarea id="Deskripsi" type="text" rows="5" class="form-control" name="Deskripsi" placeholder="" required><?php echo $p['Keterangan'] ?></textarea>
+                                    <div class="invalid-feedback">
+                                        Deskripsi harus diisi!
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="LinkGambar">Link Gambar</label>
-                                    <input id="LinkGambar" type="text" class="form-control" name="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg" value="<?php echo $p['Gambar'] ?>" required>
+                                    <input id="LinkGambar" type="text" class="form-control" name="LinkGambar" placeholder="Ex: https://i.imgur.com/xmO8Lsp.jpg" value="<?php echo $p['Gambar'] ?>" required pattern="https://i\.imgur\.com/.*">
+                                    <div class="invalid-feedback">
+                                        Link Gambar harus diisi dan dimulai dengan https://i.imgur.com/.
+                                    </div>
                                     </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
                                         <input id="numHarga" type="number" class="form-control" name="numHarga" placeholder="Rp." value="<?php echo $p['Harga']; ?>" min="0" required>
+                                        <div class="invalid-feedback">
+                                            Harga Harus diisi.
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="brand">Brand</label>
@@ -120,23 +135,27 @@ header("Expires: 0");
                                         }
                                         ?>
                                         </select>
+                                        <div class="invalid-feedback">
+                                            Pilih Brand Valid!
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="Tokopedia">Tokopedia</label>
-                                        <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link..." 
-                                            value="<?php echo $p['Tokopedia']; ?>">
+                                        <input type="text" class="form-control" name="Tokopedia" placeholder="Isi Produk Link..." value="<?php echo $p['Tokopedia']; ?>" pattern="(https:\/\/(www\.)?tokopedia\.com\/.*)?">
+                                        <div class="invalid-feedback">Harus diawali dengan https://tokopedia.com/</div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Shopee">Shopee</label>
-                                        <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link..." 
-                                            value="<?php echo $p['Shopee']; ?>">
+                                        <input type="text" class="form-control" name="Shopee" placeholder="Isi Produk Link..." value="<?php echo $p['Shopee']; ?>" pattern="(https:\/\/(www\.)?shopee\.co\.id\/.*)?">
+                                        <div class="invalid-feedback">Harus diawali dengan https://shopee.co.id/</div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Blibli">Blibli</label>
                                         <input type="text" class="form-control" name="Blibli" placeholder="Isi Produk Link..." 
-                                            value="<?php echo $p['Blibli']; ?>">
+                                            value="<?php echo $p['Blibli']; ?>" pattern="(https:\/\/(www\.)?blibli\.com\/.*)?">
+                                            <div class="invalid-feedback">Harus diawali dengan https://blibli.com/</div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-block my-2 btn-primary">Save Changes</button>

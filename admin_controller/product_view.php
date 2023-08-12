@@ -43,17 +43,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Daftar Barang</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-4 text-gray-800">Daftar Barang</h1>
                     <?php
                     include '../koneksi.php'; 
                     ?>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -97,9 +94,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 ?>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <button class="btn btn-primary btn-circle btn-sm"><i class="ft-tokopedia"></i></button>
-                                                <button class="btn btn-primary btn-circle btn-sm"><i class="ft-shopee"></i></button>
-                                                <button class="btn btn-primary btn-circle btn-sm"><i class="ft-blibli"></i></button>
+                                                <?php if ($p['Tokopedia']) { ?>
+                                                    <a href="<?php echo $p['Tokopedia']; ?>" class="btn btn-primary btn-circle btn-sm"><i class="ft-tokopedia"></i></a>
+                                                <?php } ?>
+                                                <?php if ($p['Shopee']) { ?>
+                                                    <a href="<?php echo $p['Shopee']; ?>" class="btn btn-primary btn-circle btn-sm"><i class="ft-shopee"></i></a>
+                                                <?php } ?>
+                                                <?php if ($p['Blibli']) { ?>
+                                                    <a href="<?php echo $p['Blibli']; ?>" class="btn btn-primary btn-circle btn-sm"><i class="ft-blibli"></i></a>
+                                                <?php } ?>
+                                                <?php if (!$p['Tokopedia'] && !$p['Shopee'] && !$p['Blibli']) { ?>
+                                                    <a href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20" target="_blank" class="btn btn-success btn-sm rounded-pill"><i class="fab fa-md fa-whatsapp"></i> Whatsapp</a>
+                                                <?php } ?>
                                             </td>
                                         </tr>
                                         <?php
