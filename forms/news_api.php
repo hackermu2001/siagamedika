@@ -1,7 +1,7 @@
 <?php
-function fetch_news_data($apiKey, $category) {
+function fetch_news_data($apiKey, $country) {
     $apiEndpoint = 'https://newsapi.org/v2/top-headlines';
-    $requestUrl = "$apiEndpoint?category=$category&apiKey=$apiKey";
+    $requestUrl = "$apiEndpoint?country=$country&apiKey=$apiKey";
 
     // Initialize cURL session
     $ch = curl_init();

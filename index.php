@@ -18,7 +18,7 @@
     
     <?php include('layout/topbar.php');?>
     <?php include('layout/nav.php');?>
-    <?php include './koneksi.php';?>
+    <?php include ('koneksi.php');?>
 
    
 
@@ -218,177 +218,11 @@
 
         <!-- ======= list_product Section ======= -->
         <section id="list_product" class="list_product">
-            <?php
-             
-            ?>
             <div class="container">
-
                 <div class="section-title">
                     <h2>Daftar Produk</h2>
                 </div>
-
-                <div class="row gy-4">
-                    <div class="col-lg-3">
-                        <ul class="nav nav-tabs flex-column">
-                            <!-- Kategori Produk -->
-                            <li class="nav-item">
-                                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Crtical Care</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Operating Theater</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Laboratiorium</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Medical Disposable</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Medical Equipment</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tab-6">Disenfecting & Sterilizing</a>
-                            </li>
-                            
-                            <li class="nav-item">
-                                <a class="nav-link" href="product-page.php">Selengkapnya</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="tab-content">
-                            <div class="tab-pane active show" id="tab-1">
-                            <div class="category-product swiper" data-aos="fade-up" data-aos-delay="100">
-                                    <div class="swiper-wrapper">
-                                        <?php
-                                        $produk = mysqli_query($koneksi, "SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,p.kode_kategori AS 
-                                        KodeKategori,k.NamaKategori AS NamaKategori,p.SKU_BRND AS SKU_BRND,b.NamaBrand AS NamaBrand,p.Harga AS 
-                                        Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.Tokopedia AS Tokopedia,p.Blibli AS Blibli,p.Shopee 
-                                        AS Shopee FROM produk p INNER JOIN brand b INNER JOIN kategori k ON (p.SKU_BRND=b.SKU_BRND AND 
-                                        k.kode_kategori=p.kode_kategori) WHERE (1=1)");
-
-                                        if(mysqli_num_rows($produk) > 0){
-                                            foreach($produk AS $p){
-                                        ?>
-                                            <div class="swiper-slide">
-                                                <div class="category-wrap">
-                                                    <div class="product-grid">
-                                                        <div class="product-image">
-                                                            <a href="" class="image">
-                                                                <img src="assets/img/<?php echo $p['Gambar']; ?>" class="img-fluid" alt="">
-                                                            </a>
-                                                            <ul class="product-links">
-                                                                <li><a href="<?php echo $p['Tokopedia']; ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                                <li><a href="<?php echo $p['Blibli']; ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                                <li><a href="<?php echo $p['Shopee']; ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="product-content">
-                                                            <h3 class="title">
-                                                                <a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">
-                                                                    <?php echo $p['NamaProduk']; ?>
-                                                                </a>
-                                                            </h3>
-                                                            <div class="price"><?php echo $p['Harga']; ?></div>
-                                                            <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
-                                                                Contact</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php
-                                            }
-                                        } 
-                                        ?>
-                                        <div class="swiper-slide">
-                                            <div class="category-wrap">
-                                                <div class="product-grid">
-                                                    <div class="product-image">
-                                                        <a href="" class="image">
-                                                            <img src="assets/img/product_1.png" class="img-fluid" alt="">
-                                                        </a>
-                                                        <ul class="product-links">
-                                                            <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <h3 class="title"><a href="#" title="Decubitus mattress AD III BEAM">Decubitus mattress AD III BEAM</a></h3>
-                                                        <div class="price">Rp 5.650.000</div>
-                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="category-wrap">
-
-                                                <div class="product-grid">
-                                                    <div class="product-image">
-                                                        <a href="" class="image">
-                                                            <img src="assets/img/product_3.jpg" class="img-fluid" alt="">
-                                                        </a>
-                                                        <ul class="product-links">
-                                                            <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-content">
-                                                        <h3 class="title"><a href="#" title="Oxygen Concentrator GEA 7F-8">Oxygen Concentrator GEA7F-8</a></h3>
-                                                        <div class="price">Rp 19.000.000</div>
-                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
-                                                            Contact</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="category-wrap">
-
-                                                <div class="product-grid">
-                                                    <div class="product-image">
-                                                        <a href="" class="image">
-                                                            <img src="assets/img/product_2.jpg" class="img-fluid" alt="">
-                                                        </a>
-                                                        <ul class="product-links">
-                                                            <li><a href="#" data-tip="Tokopedia"><i
-                                                                        class="ft-tokopedia"></i></a></li>
-                                                            <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                                            <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="product-content">
-
-                                                        <h3 class="title"><a href="#">Doppler BT – 220 C Bistos Hand held Fetal Doppler</a></h3>
-                                                        <div class="price">Rp 1.472.000</div>
-                                                        <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tab-2">
-                                
-                            </div>
-                            <div class="tab-pane" id="tab-3">
-
-                            </div>
-                            <div class="tab-pane" id="tab-4">
-
-                            </div>
-                            <div class="tab-pane" id="tab-5">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <?php include('category_section.php')?>
             </div>
         </section><!-- End List Product Section -->
 
@@ -397,10 +231,10 @@
 
             // Replace 'YOUR_API_KEY' with your actual API key
             $apiKey = "36f2ed3431e54b28b0fec70ab596099e";
-            $category = "health";
+            $country = "us";
 
             // Fetch news data using the API key and country code
-            $newsData = fetch_news_data($apiKey, $category);
+            $newsData = fetch_news_data($apiKey, $country);
         ?>
 
         <!-- ======= blogs Section ======= -->
@@ -413,8 +247,31 @@
                 <div class="blogs-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
 
-                        <?php foreach ($newsData['articles'] as $article) 
-                        if (isset($article['description']) && isset($article['urlToImage']) && $article['description'] && $article['urlToImage']){ ?>
+                    <?php
+                        $count = 0;
+                        foreach ($newsData['articles'] as $article) {
+                            $title = $article['title'];
+                            $description = $article['description'];
+                            $urlToImage = $article['urlToImage'];
+                            $url = $article['url'];
+
+                            $publishedAt = $article['publishedAt'];
+                            $dateTime = new DateTime($publishedAt);
+                            $formattedDate = $dateTime->format('d-m-Y');
+
+                            // Skip the article if either description or image URL is empty
+                            if (empty($description) || empty($urlToImage)) {
+                                continue;
+                            }
+
+                            $count++;
+
+                            // Stop the loop if at least 4 blog cards have been displayed
+                            if ($count > 4) {
+                                break;
+                            }
+                        ?>
+
                             <!-- start blog item -->
                             <div class="swiper-slide"> 
                                 <div class="blog-wrap">
@@ -429,7 +286,7 @@
                                                     <img src="assets/img/logo1.png" alt="" />
                                                     <div class="user-info">
                                                         <h5>Admin</h5>
-                                                        <small>dd/mm/yyyy</small>
+                                                        <small><?php echo $formattedDate; ?></small>
                                                     </div>
                                                 </div>
                                             </div>
