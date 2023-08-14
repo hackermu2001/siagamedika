@@ -70,9 +70,15 @@
                                             <img src="<?php echo $p['Gambar']; ?>" class="img-fluid" style="height: 250px;" alt="">
                                         </a>
                                         <ul class="product-links">
+                                        <?php if (!empty($p['Tokopedia'])) { ?>
                                             <li><a href="<?php echo $p['Tokopedia']; ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                        <?php } ?>
+                                        <?php if (!empty($p['Shopee'])) { ?>
                                             <li><a href="<?php echo $p['Shopee']; ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                        <?php } ?>
+                                        <?php if (!empty($p['Blibli'])) { ?>
                                             <li><a href="<?php echo $p['Blibli']; ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                        <?php } ?>
                                         </ul>
                                     </div>
                                     <div class="product-content">
@@ -87,7 +93,7 @@
                                 }
                             }
                             else{
-                                echo "Tida ada data ditemukan.";
+                                echo "Tidak ada data ditemukan.";
                             } 
                             ?>
                             

@@ -104,7 +104,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                     <a href="<?php echo $p['Blibli']; ?>" class="btn btn-primary btn-circle btn-sm"><i class="ft-blibli"></i></a>
                                                 <?php } ?>
                                                 <?php if (!$p['Tokopedia'] && !$p['Shopee'] && !$p['Blibli']) { ?>
-                                                    <a href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20" target="_blank" class="btn btn-success btn-sm rounded-pill"><i class="fab fa-md fa-whatsapp"></i> Whatsapp</a>
+                                                    <a href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20" target="_blank" class="btn btn-success btn-sm rounded-pill"><i class="fab fa-md fa-whatsapp mr-1"></i>Contact</a>
                                                 <?php } ?>
                                             </td>
                                         </tr>

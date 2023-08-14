@@ -120,31 +120,31 @@ $result = mysqli_query($koneksi, $query);
                                                 <a href="get_product_form.php?id=<?php echo $p['KodeProduk']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
-                                                <button class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#Hapus"  data-id="<?php echo $p['KodeProduk']; ?>">
+                                                <button class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#Hapus<?php echo $p['KodeProduk']; ?>">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
-                                                <!-- hapus Modal -->
-                                                <div class="modal fade" id="Hapus" tabindex="-1" aria-labelledby="HapusLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="HapusLabel">Delete Data</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body text-left">
-                                                        Are you sure to delete this <b></b> ?
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button id="deleteButton" type="button" class="btn btn-danger"><i class="fas fa-trash mr-2"></i>Delete</button>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>
                                             </td>
                                         </tr>
+                                        <!-- hapus Modal -->
+                                                <div class="modal fade" id="Hapus<?php echo $p['KodeProduk']; ?>" tabindex="-1" aria-labelledby="HapusLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="HapusLabel">Delete Data</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body text-left">
+                                                                Are you sure to delete <b><?php echo $p['NamaProduk']; ?></b>?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <a href="php/function_php/produk_delete.php?id=<?php echo $p['KodeProduk']; ?>" class="btn btn-danger delete-btn"><i class="fas fa-trash mr-2"></i>Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         <?php
                                         } 
                                         ?>
