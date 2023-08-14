@@ -2,6 +2,8 @@
 .sidebar {
     width: $sidebar-collapsed-width;
     min-height: 100vh;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
 
     .nav-item {
         position: relative;
@@ -140,8 +142,8 @@
         letter-spacing: 0.05rem;
         z-index: 1;
 
-        .sidebar-brand-icon i {
-            font-size: 2rem;
+        .sidebar-brand-icon img {
+            width: 3rem;
         }
 
         .sidebar-brand-text {
@@ -255,7 +257,7 @@
         }
 
         .sidebar-brand {
-            .sidebar-brand-icon i {
+            .sidebar-brand-icon img {
                 font-size: 2rem;
             }
 
@@ -326,7 +328,7 @@
             }
 
             .sidebar-brand {
-                .sidebar-brand-icon i {
+                .sidebar-brand-icon img {
                     font-size: 2rem;
                 }
 
