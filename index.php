@@ -267,7 +267,7 @@
                             $count++;
 
                             // Stop the loop if at least 4 blog cards have been displayed
-                            if ($count > 4) {
+                            if ($count > 6) {
                                 break;
                             }
                         ?>
@@ -285,7 +285,7 @@
                                                 <div class="user">
                                                     <img src="assets/img/logo1.png" alt="" />
                                                     <div class="user-info">
-                                                        <h5>Admin</h5>
+                                                        <h5>News</h5>
                                                         <small><?php echo $formattedDate; ?></small>
                                                     </div>
                                                 </div>

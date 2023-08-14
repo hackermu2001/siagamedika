@@ -60,17 +60,22 @@ $result = mysqli_query($koneksi, $query);
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <?php
                     if (!empty($searchQuery)) {
-                        echo '<h1 class="h3 mb-4 text-gray-800">Search Result "' . $searchQuery . '"</h1>';
+                        echo '<h1 class="h3 mb-0 text-gray-800">Search Result "' . $searchQuery . '"</h1>';
                     } else {
-                        echo '<h1 class="h3 mb-4 text-gray-800">Edit Barang</h1>';
+                        echo '<h1 class="h3 mb-0 text-gray-800">Edit Barang</h1>';
                     }
                     ?>
+                        <a href="product_add.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Add Product</a>
+                    </div>
+                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
+                        <div class="card-header d-sm-flex align-items-center justify-content-between py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Daftar Edit Barang</h6>
+                            <a href="product_edit.php" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-sync fa-sm text-white-50"></i> Refresh</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

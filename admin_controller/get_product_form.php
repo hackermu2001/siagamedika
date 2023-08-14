@@ -58,7 +58,7 @@ header("Expires: 0");
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Edit <?php echo $p['NamaProduk']; ?></h1>
+                        <h1 class="h3 mb-0 text-gray-800">Edit PRD-<?php echo $KodeProduk; ?></h1>
                         <a href="product_view.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View List</a>
                     </div>
                     <div class="card shadow mb-4">
@@ -69,10 +69,8 @@ header("Expires: 0");
                                     <div class="form-group col-md-6">
                                         <input type="hidden" class="form-control" name="Kode" value="<?php echo $KodeProduk; ?>">
                                         <label for="NamaProduk">Nama Produk</label>
-                                        <input id="NamaProduk" type="text" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>" required>
-                                        <div class="invalid-feedback">
-                                            Nama Produk harus diisi!
-                                        </div>
+                                        <input id="NamaProduk" type="text" placeholder="Contoh: Sepatu Pria (Jenis/Kategori Produk) + Tokostore (Merek) + Kanvas Hitam (Keterangan)" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>" required>
+                                        <div class="invalid-feedback">Nama Produk harus diisi!</div>
                                         </div>
                                         <div class="form-group col-md-6">
                                         <label for="inputCategory">Category</label>
@@ -98,7 +96,7 @@ header("Expires: 0");
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <textarea id="Deskripsi" type="text" rows="5" class="form-control" name="Deskripsi" placeholder="" required><?php echo $p['Keterangan'] ?></textarea>
+                                    <textarea id="Deskripsi" type="text" rows="5" class="form-control" name="Deskripsi" style="white-space: pre-line !important;" placeholder="" required><?php echo nl2br($p['Keterangan']); ?></textarea>
                                     <div class="invalid-feedback">
                                         Deskripsi harus diisi!
                                     </div>

@@ -209,7 +209,7 @@ const truncateTitlePrdContent = document.querySelectorAll('.product-content h3.t
 truncateTitlePrdContent.forEach(element => {
   const prdContent_title_truncate = element.textContent.split(' ');
   if (prdContent_title_truncate.length > 20) {
-    element.textContent = prdContent_title_truncate.slice(0, 20).join(' ') + '...';
+    element.textContent = prdContent_title_truncate.slice(0, 20).join(' ') + '..';
   }
 });
 
@@ -218,7 +218,7 @@ truncateTitlePrdContent.forEach(element => {
    */
   new Swiper('.blogs-slider', {
     speed: 600,
-    loop: true,
+    loop: false,
     autoplay: {
       delay: 5000,
       disableOnInteraction: false
@@ -244,7 +244,7 @@ truncateTitlePrdContent.forEach(element => {
 
   new Swiper('.category-product', {
     speed: 600,
-    loop: true,
+    loop: false,
     autoplay: {
       delay: 5000,
       disableOnInteraction: false

@@ -39,7 +39,9 @@
                             <?php
                             $produk = mysqli_query($koneksi, "SELECT * FROM produk WHERE kode_kategori = '{$index}'");
                             if (mysqli_num_rows($produk) > 0) {
+                                $slideCount = 0;
                                 foreach ($produk as $p) {
+                                    if ($slideCount < 4) {
                             ?>
                                     <div class="swiper-slide">
                                         <div class="category-wrap">
@@ -56,13 +58,15 @@
                                                 </div>
                                                 <div class="product-content">
                                                     <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
-                                                    <div class="price"><?php echo $p['Harga']; ?></div>
+                                                    <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
                                                     <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                             <?php
+                                    $slideCount++;
+                                    }
                                 }
                             }
                             ?>

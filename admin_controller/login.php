@@ -9,7 +9,7 @@ if (isset($_COOKIE["remember_username"])) {
     <?php include('layout/head.php') ?>
     <meta name="description" content="">
     <meta name="author" content=""> 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Siagamedika - Login</title>
     <?php include('layout/css.php')?>
 </head>
 

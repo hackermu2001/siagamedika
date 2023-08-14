@@ -1136,7 +1136,7 @@ section {
 .product-grid .title a:hover{ color: #1977CC; }
 .product-grid .price{
   color: #1977CC;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   display: block;
   transition: all 0.4s ease-in-out;
@@ -1407,7 +1407,7 @@ scrollbar-width: none;  /* Firefox */
 .share-list span {
   display: inline-block;
   color: #222222;
-  font-family: 'Raleway', sans-serif;
+
   font-size: 14px;
   font-weight: 600;
   margin-right: 4px;
@@ -1480,10 +1480,10 @@ scrollbar-width: none;  /* Firefox */
 
 section.product-page .product-bar {
   overflow: hidden;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 section.product-page .product-bar p {
-  float: left;
+  /* float: left; */
   font-size: 12px;
   text-transform: uppercase;
   margin-top: 5px;
@@ -1500,6 +1500,55 @@ section.product-page .product-bar select {
   outline: none;
 }
 
+.product-sidebar {
+  padding-left: 40px;
+  margin-left: 10px;
+  border-left: 1px solid #eeeeee;
+  padding-top: 5px;
+}
+
+.product-sidebar .category-widget ul {
+  margin: 0;
+  padding: 0;
+}
+.product-sidebar .category-widget ul li {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.product-sidebar .category-widget ul li a {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  color: #999999;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0;
+}
+.product-sidebar .category-widget ul li a:hover {
+  color: #1977CC;
+}
+.product-sidebar .category-widget ul li a:before {
+  content: '\f105';
+  color: #999999;
+  font-size: 12px;
+  font-family: "FontAwesome";
+  margin-right: 15px;
+}
+.product-sidebar h1 {
+  color: #222222;
+  font-size: 14px;  
+  font-weight: 600;
+  margin: 0 0 10px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.product-sidebar .product-widget {
+  margin-bottom: 40px;
+  padding: 18px 6px 12px;
+}
 
 
 /*--------------------------------------------------------------

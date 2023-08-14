@@ -5,13 +5,18 @@ $NamaProduk = mysqli_real_escape_string($koneksi, $_POST['NamaProduk']);
 $Kategori = mysqli_real_escape_string($koneksi, $_POST['Kategori']);
 $Brand = mysqli_real_escape_string($koneksi, $_POST['Brand']);
 $Harga = floatval($_POST['numHarga']); // Pastikan Harga adalah angka positif
-$Keterangan = mysqli_real_escape_string($koneksi, $_POST['Deskripsi']);
-$Keterangan = nl2br($Keterangan);  // Mengubah baris baru menjadi tag <br>
+$Keterangan = nl2br($_POST['Deskripsi']); // Mengubah baris baru menjadi tag <br>
+$Keterangan = str_replace("\r\n", "", $Keterangan);   // Mengganti \r\n dengan tag <br>
 $LinkGambar = mysqli_real_escape_string($koneksi, $_POST['LinkGambar']);
 
+// Validasi panjang karakter nama produk
+if (strlen($NamaProduk) < 20) {
+    header("location:../../product_add.php?error=Nama produk harus minimal 20 huruf");
+    exit;
+}
+
 // Insert data ke tabel produk dengan prepared statement
-$stmt = $koneksi->prepare("INSERT INTO produk (KodeProduk, NamaProduk, kode_kategori, SKU_BRND, Harga) 
-                        VALUES (NULL, ?, ?, ?, ?)");
+$stmt = $koneksi->prepare("INSERT INTO produk (KodeProduk, NamaProduk, kode_kategori, SKU_BRND, Harga) VALUES (NULL, ?, ?, ?, ?)");
 $stmt->bind_param("sssd", $NamaProduk, $Kategori, $Brand, $Harga);
 $stmt->execute();
 
