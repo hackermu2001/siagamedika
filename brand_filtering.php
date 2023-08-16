@@ -15,10 +15,24 @@
 
 <body>
     <?php include('koneksi.php');
-    $queryBarang = "SELECT COUNT(*) as total_barang FROM produk";
-    $resultBarang = mysqli_query($koneksi, $queryBarang);
-    $rowBarang = mysqli_fetch_assoc($resultBarang);
-    $totalBarang = $rowBarang['total_barang'];
+    $selectedBrand = isset($_GET['brand']) ? $_GET['brand'] : '';
+    if (!$selectedBrand) {
+        header("Location: product-page.php");
+        exit(); // Make sure to exit after redirection
+    }
+    $targetSKU_BRND = $_GET['brand'];
+
+    // Query to count the total number of products associated with the specified brand
+    $queryBarangBrand = "SELECT COUNT(*) as total_barangBrand FROM produk WHERE SKU_BRND = '$targetSKU_BRND'";
+
+    $resultBarangBrand = mysqli_query($koneksi, $queryBarangBrand);
+
+    if (!$resultBarangBrand) {
+        die("Query failed: " . mysqli_error($koneksi));
+    }
+
+    $totalBarangBrandRow = mysqli_fetch_assoc($resultBarangBrand);
+    $totalBarangBrand = $totalBarangBrandRow['total_barangBrand'];
     ?>
     <?php include('layout/topbar.php')?>
     <?php include('layout/nav_inner.php')?>
@@ -33,7 +47,10 @@
                     <h2>Daftar Produk</h2>
                     <ol>
                         <li><a href="index.php">Home</a></li>
-                        <li>All Categories</li>
+                        <li>Brand</li>
+                        <?php if (!empty($selectedBrand)) { ?>
+                        <li><?php echo $selectedBrand; ?></li>
+                        <?php } ?>
                     </ol>
                 </div>
 
@@ -45,45 +62,48 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-7">
                             <div class="product-bar d-flex align-items-center justify-content-md-between justify-content-center flex-wrap">
-                                <p>showing <?php echo $totalBarang; ?> result</p>
+                                <p>showing <?php echo $totalBarangBrand;?> result</p>
                                 <select onchange="handleBrandChange(this)">
-                                    <option disabled selected>Pilih Brand...</option>
                                     <?php
-                                    $brands = mysqli_query($koneksi, "SELECT SKU_BRND, NamaBrand FROM brand");
-                                    while ($brand = mysqli_fetch_assoc($brands)) {
-                                        echo '<option value="' . $brand['SKU_BRND'] . '">' . $brand['NamaBrand'] . '</option>';
-                                    }
-                                    ?>
+                                        $brands = mysqli_query($koneksi, "SELECT SKU_BRND, NamaBrand FROM brand");
+                                        while ($brand = mysqli_fetch_assoc($brands)) {
+                                            $selected = '';
+                                            if ($selectedBrand === $brand['SKU_BRND']) {
+                                                $selected = 'selected';
+                                            }
+                                            echo '<option value="' . $brand['SKU_BRND'] . '" ' . $selected . '>' . $brand['NamaBrand'] . '</option>';
+                                        }
+                                        ?>
                                 </select>
-
                             </div>
                         <div class="row gy-4">
                             <?php
-                            $produkPerPage = 9; // Jumlah produk per halaman
-                            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Halaman saat ini
+                                $selectedBrand = isset($_GET['brand']) ? $_GET['brand'] : '';
 
-                            $offset = ($currentPage - 1) * $produkPerPage; // Hitung offset
-                             // Initialize the counter
-                            $counter = $offset + 1;
-                            // Query untuk mendapatkan total jumlah produk
-                            $totalProdukQuery = "SELECT COUNT(*) AS total FROM produk";
-                            $totalProdukResult = mysqli_query($koneksi, $totalProdukQuery);
-                            $totalProdukRow = mysqli_fetch_assoc($totalProdukResult);
-                            $totalProduk = $totalProdukRow['total'];
-
-                            $totalPages = ceil($totalProduk / $produkPerPage); // Hitung total halaman
-
-                            // Query untuk mendapatkan data produk dengan batasan pagination
-                            $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
-                                FROM produk p 
-                                INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
-                                INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
-                                WHERE (1=1)
-                                LIMIT $offset, $produkPerPage";
-
-                            $result = mysqli_query($koneksi, $query);
-
-                            if(mysqli_num_rows($result) > 0) {
+                                if (!empty($selectedBrand)) {
+                                    // Query to fetch the brand name
+                                    $brandNameQuery = "SELECT NamaBrand FROM brand WHERE SKU_BRND = '$selectedBrand'";
+                                    $brandNameResult = mysqli_query($koneksi, $brandNameQuery);
+                                    $brandNameRow = mysqli_fetch_assoc($brandNameResult);
+                                    $selectedBrandName = $brandNameRow['NamaBrand'];
+                                }
+                                
+                                // Pagination setup
+                                $produkPerPage = 9; // Number of products per page
+                                $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Current page
+                                
+                                $offset = ($currentPage - 1) * $produkPerPage; // Calculate offset
+                                
+                                // Query to fetch products based on the selected brand with pagination
+                                $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
+                                    FROM produk p 
+                                    INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
+                                    INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
+                                    WHERE b.SKU_BRND = '$selectedBrand'
+                                    LIMIT $offset, $produkPerPage";
+                                
+                                $result = mysqli_query($koneksi, $query);
+                                if(mysqli_num_rows($result) > 0) {
                                 while ($p = mysqli_fetch_array($result)) { 
                                     ?>
                                     <div class="col-md-4">
@@ -113,8 +133,6 @@
                                         <?php include('layout/modal_prd_desc.php')?>
                                     </div>
                                     <?php
-                                    // Increment the counter
-                                    $counter++;
                                 }
                             } else {
                                 echo '<center> <span class="m-0 my-5">Tidak ada produk ditemukan.</span> </center>';
@@ -124,30 +142,23 @@
                             <div class="product-pagination d-flex justify-content-center">
                                 <ul>
                                     <?php if ($currentPage > 1) { ?>
-                                        <li><a href="?page=<?php echo $currentPage - 1; ?>"><i class="bi bi-arrow-left"></i></a></li>
+                                        <li><a href="?brand=<?php echo $selectedBrand; ?>&page=<?php echo $currentPage - 1; ?>"><i class="bi bi-arrow-left"></i></a></li>
                                     <?php } ?>
 
                                     <?php
-                                    // Tentukan nomor halaman pertama dan terakhir yang akan ditampilkan
-                                    $firstPage = max(1, $currentPage - 1);
-                                    $lastPage = min($totalPages, $currentPage + 1);
-
-                                    // Tampilkan tautan halaman
-                                    for ($page = $firstPage; $page <= $lastPage; $page++) {
+                                    // Generate pagination links
+                                    $totalPages = ceil(mysqli_num_rows($result) / $produkPerPage);
+                                    for ($page = 1; $page <= $totalPages; $page++) {
                                         $isActive = $page == $currentPage ? 'active' : '';
                                     ?>
-                                        <li><a href="?page=<?php echo $page; ?>" class="<?php echo $isActive; ?>"><?php echo $page; ?></a></li>
+                                        <li><a href="?brand=<?php echo $selectedBrand; ?>&page=<?php echo $page; ?>" class="<?php echo $isActive; ?>"><?php echo $page; ?></a></li>
                                     <?php } ?>
 
                                     <?php if ($currentPage < $totalPages) { ?>
-                                        <li><a href="?page=<?php echo $currentPage + 1; ?>"><i class="bi bi-arrow-right"></i></a></li>
+                                        <li><a href="?brand=<?php echo $selectedBrand; ?>&page=<?php echo $currentPage + 1; ?>"><i class="bi bi-arrow-right"></i></a></li>
                                     <?php } ?>
                                 </ul>
                             </div>
-
-
-
-
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-5">

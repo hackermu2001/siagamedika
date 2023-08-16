@@ -16,9 +16,15 @@
                     <div class="prod-list-item">
                         <span>Connect to us :</span>
                         <ul class="product-social">
-                            <li><a href="<?php echo $p['Tokopedia']; ?>"><i class="ft-tokopedia"></i></a></li>
-                            <li><a href="<?php echo $p['Blibli']; ?>"><i class="ft-blibli"></i></a></li>
-                            <li><a href="<?php echo $p['Shopee']; ?>"><i class="ft-shopee"></i></a></li>
+                            <?php if (!empty($p['Tokopedia'])) { ?>
+                                <li><a href="<?php echo $p['Tokopedia']; ?>"><i class="ft-tokopedia"></i></a></li>
+                            <?php } ?>
+                            <?php if (!empty($p['Shopee'])) { ?>
+                                <li><a href="<?php echo $p['Shopee']; ?>"><i class="ft-shopee"></i></a></li>
+                            <?php } ?>
+                            <?php if (!empty($p['Blibli'])) { ?>
+                                <li><a href="<?php echo $p['Blibli']; ?>"><i class="ft-blibli"></i></a></li>
+                            <?php } ?>
                             <li><a href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
                         </ul>
                     </div>

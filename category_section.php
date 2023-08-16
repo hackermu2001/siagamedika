@@ -63,7 +63,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
+                                                    <h3 class="title"><a href="product-page.php" title="<?php echo $p['NamaProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
                                                     <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
                                                     <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i> Contact</a>
                                                 </div>

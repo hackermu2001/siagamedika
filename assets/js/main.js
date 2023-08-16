@@ -273,3 +273,10 @@ truncateTitlePrdContent.forEach(element => {
   new PureCounter();
 
 })()
+
+function handleBrandChange(selectElement) {
+  const selectedBrand = selectElement.value;
+  if (selectedBrand) {
+      window.location.href = 'brand_filtering.php?brand=' + selectedBrand;
+  }
+}

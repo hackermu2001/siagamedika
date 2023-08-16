@@ -247,8 +247,31 @@
                 <div class="blogs-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
 
-                        <?php foreach ($newsData['articles'] as $article) 
-                        if (isset($article['description']) && isset($article['urlToImage']) && $article['description'] && $article['urlToImage']){ ?>
+                    <?php
+                        $count = 0;
+                        foreach ($newsData['articles'] as $article) {
+                            $title = $article['title'];
+                            $description = $article['description'];
+                            $urlToImage = $article['urlToImage'];
+                            $url = $article['url'];
+
+                            $publishedAt = $article['publishedAt'];
+                            $dateTime = new DateTime($publishedAt);
+                            $formattedDate = $dateTime->format('d-m-Y');
+
+                            // Skip the article if either description or image URL is empty
+                            if (empty($description) || empty($urlToImage) || empty($url)) {
+                                continue;
+                            }
+
+                            $count++;
+
+                            // Stop the loop if at least 4 blog cards have been displayed
+                            if ($count > 6) {
+                                break;
+                            }
+                        ?>
+
                             <!-- start blog item -->
                             <div class="swiper-slide"> 
                                 <div class="blog-wrap">
@@ -263,7 +286,7 @@
                                                     <img src="assets/img/logo1.png" alt="" />
                                                     <div class="user-info">
                                                         <h5>Admin</h5>
-                                                        <small>dd/mm/yyyy</small>
+                                                        <small><?php echo $formattedDate; ?></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -333,7 +356,7 @@
                                         placeholder="Your Name" required>
                                 </div>
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
-                                    <input type="email" class="form-control" name="email" id="email"
+                                    <input type="email" class="form-control" name="senderMail" id="senderMail"
                                         placeholder="Your Email" required>
                                 </div>
                             </div>
@@ -348,7 +371,7 @@
                             <div class="my-3">
                                 <div class="loading">Loading</div>
                                 <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
+                                <div class="sent-message"></div>
                             </div>
                             <div class="text-center"><button type="submit">Send Message</button></div>
                         </form>
@@ -359,7 +382,7 @@
 
             </div>
         </section><!-- End Contact Section -->
-
+        
     </main><!-- End #main -->
 
     <?php include('layout/footer.php')?>

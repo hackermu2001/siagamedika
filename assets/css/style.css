@@ -1199,6 +1199,13 @@ section.product-page .product-pagination ul li a {
   font-weight: 600;
   color: #999999;
 }
+
+section.product-page .product-pagination ul li a.active {
+  color: #ffffff;
+  background: #1977CC;
+  border: 1px solid #1977CC;
+}
+
 section.product-page .product-pagination ul li a:hover {
   color: #ffffff;
   background: #1977CC;
@@ -1530,6 +1537,12 @@ section.product-page .product-bar select {
 .product-sidebar .category-widget ul li a:hover {
   color: #1977CC;
 }
+
+.product-sidebar .category-widget ul li a.active {
+  color: #1977CC;
+  font-weight: bold;
+}
+
 .product-sidebar .category-widget ul li a:before {
   content: '\f105';
   color: #999999;
