@@ -1,6 +1,8 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
-
+<?php
+include 'koneksi.php'; 
+?>
 <div class="footer-top d-none d-md-flex">
     <div class="container">
         <div class="row">
@@ -19,20 +21,29 @@
             <div class="col-lg-2 col-md-6 footer-links">
                 <h4>Category</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Laboratory</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">CSSD</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Laundry</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Diagnostic</a></li>
+                    <?php
+                        $categories = mysqli_query($koneksi, "SELECT kode_kategori, NamaKategori FROM kategori LIMIT 4");
+                        while ($category = mysqli_fetch_assoc($categories)) {
+                            $categoryLink = "categories_filtering.php?category=" . $category['kode_kategori'];
+                            echo '<li><i class="bx bx-chevron-right"></i> <a class="text-truncate" href="' . $categoryLink . '">' . $category['NamaKategori'] . '</a></li>';
+                        }
+                    ?>
+
                     </ul>
             </div>
 
             <div class="col-lg-3 col-md-6 footer-links">
                 <h4>Brand</h4>
                 <ul>
-                    <li><i class="bx bx-chevron-right"></i> <a href="#">Operating Theater</a></li>
-                    <li><i class="bx bx-chevron-right"></i> <a href="#">ICU/HCU</a></li>
-                    <li><i class="bx bx-chevron-right"></i> <a href="#">NICU/PICU</a></li>
-                    <li><i class="bx bx-chevron-right"></i> <a href="#">WARD</a></li>
+                    <?php
+                    $Brand = mysqli_query($koneksi, "SELECT SKU_BRND,NamaBrand FROM brand LIMIT 4");
+                    while($b = mysqli_fetch_array($Brand)){
+
+                    ?>
+                    <li><i class="bx bx-chevron-right"></i> <a href="brand_filtering.php?brand=<?php echo $b['SKU_BRND']; ?>"><?php echo $b['NamaBrand']; ?></a></li>
+                    <?php 
+                    }
+                    ?>
                 </ul>
             </div>
 
