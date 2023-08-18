@@ -16,33 +16,25 @@
                 </p>
             </div>
 
-            <div class="col-lg-5 col-md-6 footer-links">
+            <div class="col-lg-2 col-md-6 footer-links">
                 <h4>Category</h4>
-                <ul class="row">
-                    <div class="col-sm-6 col-12">
+                    <ul>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Laboratory</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">CSSD</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Laundry</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Diagnostic</a></li>
-                    </div>
-                    <div class="col-sm-6 col-12">
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Operating Theater</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">ICU/HCU</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">NICU/PICU</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">WARD</a></li>
-                    </div>
-                </ul>
-                <ul>
-
-                </ul>
+                    </ul>
             </div>
 
-            <!-- <div class="col-lg-3 col-md-6 footer-links">
-    <h4 class="text-white">Category</h4>
-    <ul>
-      
-    </ul>
-  </div> -->
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Brand</h4>
+                <ul>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">Operating Theater</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">ICU/HCU</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">NICU/PICU</a></li>
+                    <li><i class="bx bx-chevron-right"></i> <a href="#">WARD</a></li>
+                </ul>
+            </div>
 
             <div class="col-lg-4 col-md-6 footer-newsletter">
                 <h4>Join Our Newsletter</h4>
