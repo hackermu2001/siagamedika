@@ -106,7 +106,7 @@
                                 if(mysqli_num_rows($result) > 0) {
                                 while ($p = mysqli_fetch_array($result)) { 
                                     ?>
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4 col-md-6 col-12">
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="" class="image" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>">
