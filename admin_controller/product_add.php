@@ -56,6 +56,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <div class="form-group col-md-6">
                                         <label for="NamaProduk">Nama Produk</label>
                                         <input type="text" class="form-control" placeholder="Isi Nama Produk..." name="NamaProduk" id="NamaProduk" required>
+                                        <div class="valid-feedback"></div>
                                         <div class="invalid-feedback">Nama Produk harus diisi!</div>
                                     </div>
                                         <div class="form-group col-md-6">

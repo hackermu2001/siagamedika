@@ -110,11 +110,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah user</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                                                Jumlah Barang</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalBarang; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                            <i class="fas fa-box-open fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -127,12 +127,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Jumlah Barang</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalBarang; ?></div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Jumlah User</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-box-open fa-2x text-gray-300"></i>
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

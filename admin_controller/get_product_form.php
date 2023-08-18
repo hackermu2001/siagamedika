@@ -69,7 +69,8 @@ header("Expires: 0");
                                     <div class="form-group col-md-6">
                                         <input type="hidden" class="form-control" name="Kode" value="<?php echo $KodeProduk; ?>">
                                         <label for="NamaProduk">Nama Produk</label>
-                                        <input id="NamaProduk" type="text" placeholder="Contoh: Sepatu Pria (Jenis/Kategori Produk) + Tokostore (Merek) + Kanvas Hitam (Keterangan)" class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>" required>
+                                        <input id="NamaProduk" type="text" placeholder="Isi Nama Produk..." class="form-control" name="NamaProduk" value="<?php echo $p['NamaProduk']; ?>" required>
+                                        <div class="valid-feedback"></div>
                                         <div class="invalid-feedback">Nama Produk harus diisi!</div>
                                         </div>
                                         <div class="form-group col-md-6">
