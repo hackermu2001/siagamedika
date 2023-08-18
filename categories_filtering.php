@@ -80,7 +80,7 @@ $result = mysqli_query($koneksi, $query);
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-7">
-                            <div class="product-bar d-flex align-items-center justify-content-md-between justify-content-center flex-wrap">
+                            <div class="product-bar d-flex align-items-center flex-wrap">
                                 <p>showing <?php echo $totalBarangKategori;?> result</p>
                                 <select onchange="handleBrandChange(this)">
                                     <option disabled selected>Pilih Brand...</option>

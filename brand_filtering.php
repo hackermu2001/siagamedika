@@ -61,7 +61,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-7">
-                            <div class="product-bar d-flex align-items-center justify-content-md-between justify-content-center flex-wrap">
+                            <div class="product-bar d-flex align-items-center flex-wrap">
                                 <p>showing <?php echo $totalBarangBrand;?> result</p>
                                 <select onchange="handleBrandChange(this)">
                                     <?php

@@ -44,7 +44,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-sm-7">
-                            <div class="product-bar d-flex align-items-center justify-content-md-between justify-content-center flex-wrap">
+                            <div class="product-bar d-flex align-items-center flex-wrap">
                                 <p>showing <?php echo $totalBarang; ?> result</p>
                                 <select onchange="handleBrandChange(this)">
                                     <option disabled selected>Pilih Brand...</option>
@@ -55,7 +55,6 @@
                                     }
                                     ?>
                                 </select>
-
                             </div>
                         <div class="row gy-4">
                             <?php
@@ -86,7 +85,7 @@
                             if(mysqli_num_rows($result) > 0) {
                                 while ($p = mysqli_fetch_array($result)) { 
                                     ?>
-                                    <div class="col-md-4">
+                                    <div class="col-lg-4 col-md-6 col-12">
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="" class="image" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>">
