@@ -126,8 +126,22 @@ let i = 1;
               $row.addClass("editing");
               $namaCell.attr("contenteditable", true);
               $(this).removeClass("btn-primary").addClass("btn-success").html('<i class="fas fa-check"></i>');
+               $row.find(".cancel-edit-brand").show(); // Tampilkan tombol Cancel
           }
       });
-      $(".editable-cell").attr("contenteditable", false);
+      // Tambahkan event handler untuk tombol "Cancel"
+    $(document).on("click", ".cancel-edit-brand", function() {
+    var $row = $(this).closest("tr");
+    $row.removeClass("editing");
+    var $namaCell = $row.find(".editable-cell[data-column='NamaKategori']");
+    $namaCell.attr("contenteditable", false);
+    $row.find(".edit-save-brand").removeClass("btn-success").addClass("btn-primary").html('<i class="fas fa-pen"></i>');
+    $(this).hide(); // Sembunyikan tombol Cancel
+    // Reset nilai dalam sel ke nilai asli sebelum edit
+    $namaCell.text($namaCell.data("original-value"));
+});
+
+// Inisialisasi tombol "Cancel" menjadi tersembunyi saat memuat halaman
+$(".cancel-edit-brand").hide();
   });
 // penutupan ajax php sql - BRAND

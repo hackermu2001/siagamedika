@@ -62,6 +62,28 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     $totalBrand = $rowBrand['total_brand'];
                     $totalKategori = $rowKategori['total_kategori'];
                     $totalBarang = $rowBarang['total_barang'];
+
+                    $query = "SELECT DATE(date_access) AS visit_date, COUNT(*) AS visitor_count
+                            FROM ip_data
+                            WHERE date_access >= DATE_SUB(NOW(), INTERVAL 6 DAY)
+                            GROUP BY DATE(date_access)
+                            ORDER BY DATE(date_access) ASC";
+
+                    $result = mysqli_query($koneksi, $query);
+
+                    $tanggal_kunjungan = array();
+                    $data_visitor = array();
+
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $formatted_date = date("d M", strtotime($row['visit_date']));
+                        $tanggal_kunjungan[] = $formatted_date;
+                        $data_visitor[] = $row['visitor_count'];
+                    }
+
+                    // Mengubah data tanggal menjadi format yang sesuai untuk grafik
+                    $tanggal_kunjungan = json_encode($tanggal_kunjungan);
+                    $data_visitor = json_encode($data_visitor);
+
                     ?>
 
                     <!-- Content Row -->
@@ -206,6 +228,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <script>
+        var tanggal_kunjungan = <?php echo $tanggal_kunjungan; ?>;
+        var data_visitor = <?php echo $data_visitor; ?>;
         var totalBrand = <?php echo $totalBrand; ?>;
         var totalKategori = <?php echo $totalKategori; ?>;
         var totalBarang = <?php echo $totalBarang; ?>;

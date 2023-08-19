@@ -3,17 +3,17 @@ history.pushState(null, null, location.href);
       history.go(1);
   };
 
-// Disable right-click context menu
-window.addEventListener('contextmenu', function (e) {
-  e.preventDefault();
-});
+// // Disable right-click context menu
+// window.addEventListener('contextmenu', function (e) {
+//   e.preventDefault();
+// });
 
-// Disable F12 key and Ctrl+Shift+I
-window.addEventListener('keydown', function (e) {
-  if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-      e.preventDefault();
-  }
-});
+// // Disable F12 key and Ctrl+Shift+I
+// window.addEventListener('keydown', function (e) {
+//   if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+//       e.preventDefault();
+//   }
+// });
 
 $(document).ready(function() {
     $('#numHarga').on('input', function() {

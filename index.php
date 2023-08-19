@@ -388,7 +388,37 @@
     <?php include('layout/footer.php')?>
 
    <?php include('layout/script.php')?>
+   <script>
+   // Get JSON data from the given URL
+   $.getJSON('https://ipapi.co/json/', function(ip){
+        var data = {
+          ip: ip.ip,
+          isp: ip.org,
+          country: ip.country_name,
+          city: ip.region
+        };
+
+        $.ajax({
+          url: 'index.php',
+          type: 'post',
+          data: data
+        })
+      })
+   </script>
 
 </body>
 
 </html>
+
+<?php
+if(isset($_POST["ip"])){
+  $ip = $_POST["ip"];
+  $isp = $_POST["isp"];
+  $country = $_POST["country"];
+  $city = $_POST["city"];
+  $date_access = date('Y-m-d'); // Get current date and time in the format 'YYYY-MM-DD HH:MM:SS'
+
+  $query = "INSERT INTO ip_data (ip, isp, country, city, date_access) VALUES ('$ip', '$isp', '$country', '$city', '$date_access')";
+  mysqli_query($koneksi, $query);
+}
+?>

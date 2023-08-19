@@ -108,11 +108,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <?php foreach ($data as $row): ?>
                                             <tr>
                                                 <td><?php echo $row['kode_kategori']; ?></td>
-                                                <td contenteditable="true" class="editable-cell" data-column="NamaKategori"><?php echo $row['NamaKategori']; ?></td>
+                                                <td contenteditable="false" class="editable-cell" data-column="NamaKategori" data-original-value="<?php echo $row['NamaKategori']; ?>"><?php echo $row['NamaKategori']; ?></td>
                                                 <td><?php echo $row['Tanggal']; ?></td>
                                                 <td class="text-center">
-                                                    <button class="btn btn-primary btn-circle btn-sm edit-save-cat" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-pen"></i></button>    
-                                                    
+                                                    <button class="btn btn-primary btn-circle btn-sm edit-save-cat" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-pen"></i></button>
+                                                    <button class="btn btn-danger btn-circle btn-sm cancel-edit-cat" style="display: none;" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-times"></i></button>    
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
