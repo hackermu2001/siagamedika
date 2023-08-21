@@ -69,13 +69,27 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> 
                             <?php
                                     $slideCount++;
                                     }
                                 }
                             }
                             ?>
+                                <div class="swiper-slide">
+                                    <div class="category-wrap">
+                                        <div class="product-grid">
+                                            <a href="product-page.php">
+                                            <div class="selengkapnya">
+                                                <div class="circle position-absolute start-50 translate-middle">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                    <p class="text-light text-center position-absolute top-100 start-50 translate-middle mt-3">Selengkapnya</p>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div> 
                         </div>
                     </div>
                 </div>

@@ -245,10 +245,6 @@ truncateTitlePrdContent.forEach(element => {
   new Swiper('.category-product', {
     speed: 600,
     loop: false,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
     slidesPerView: 'auto',
     breakpoints: {
       300: {
