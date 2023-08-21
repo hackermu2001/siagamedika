@@ -108,7 +108,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             <tr>
                                                 <td><?php echo $row['SKU_BRND']; ?></td>
                                                 <td contenteditable="false" class="editable-cell" data-column="NamaBrand" data-original-value="<?php echo $row['NamaBrand']; ?>"><?php echo $row['NamaBrand']; ?></td>
-                                                <td><?php echo $row['Tanggal']; ?></td>
+                                                <td><?php echo $row['Tanggal']; ?></td> 
                                                 <td class="text-center align-middle">    
                                                     <button class="btn btn-primary btn-circle btn-sm edit-save-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-pen"></i></button>
                                                     <button class="btn btn-danger btn-circle btn-sm cancel-edit-brand" style="display: none;" data-id_cat="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-times"></i></button>

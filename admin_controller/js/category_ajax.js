@@ -7,7 +7,7 @@ let i = 1;
           </tr>
       `;
       i++;
-      $(".cat_input").append(newRow_Cat);
+      $(".cat_input").append(newRow_Cat); 
   }
   
   function removeRowCat() {

@@ -15,7 +15,7 @@ let i = 1;
       $(`#row${button_id}`).remove();
   }
 // penggunaan ajax php sql - BRAND
-  $(document).ready(function() {
+  $(document).ready(function() { 
       // Menambah baris
       $("#add-row").click(addRowBrand);
       // Menghapus baris
@@ -133,7 +133,7 @@ let i = 1;
     $(document).on("click", ".cancel-edit-brand", function() {
     var $row = $(this).closest("tr");
     $row.removeClass("editing");
-    var $namaCell = $row.find(".editable-cell[data-column='NamaKategori']");
+    var $namaCell = $row.find(".editable-cell[data-column='NamaBrand']");
     $namaCell.attr("contenteditable", false);
     $row.find(".edit-save-brand").removeClass("btn-success").addClass("btn-primary").html('<i class="fas fa-pen"></i>');
     $(this).hide(); // Sembunyikan tombol Cancel

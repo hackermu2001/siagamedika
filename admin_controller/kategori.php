@@ -12,7 +12,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <html lang="en">
 <head>
     <?php include('layout/head.php') ?>
-    <meta name="description" content="">
+    <meta name="description" content=""> 
     <meta name="author" content=""> 
     <title>Siagamedika - Kategori</title>
     <?php include('layout/css.php')?>
