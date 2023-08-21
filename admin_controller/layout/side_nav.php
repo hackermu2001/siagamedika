@@ -56,6 +56,12 @@
                     <i class="fas fa-fw fa-images"></i>
                     <span>Imgur</span></a>
             </li>
+
+            <li class="nav-item <?php echo ($current_page == 'siagamedika') ? 'active' : ''; ?>">
+                <a class="nav-link " href="website_siagamedika.php">
+                    <i class="fas fa-fw fa-globe"></i>
+                    <span>Siagamedika</span></a>
+            </li>
            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
