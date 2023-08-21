@@ -77,8 +77,7 @@
                                 FROM produk p 
                                 INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
                                 INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
-                                WHERE (1=1)
-                                LIMIT $offset, $produkPerPage";
+                                WHERE (1=1) LIMIT $offset, $produkPerPage ORDER BY ";
 
                             $result = mysqli_query($koneksi, $query);
 
