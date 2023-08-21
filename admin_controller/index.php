@@ -236,4 +236,4 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     </script>
     <?php include('layout/script.php') ?>
 </body>
-</html>
+</html> 

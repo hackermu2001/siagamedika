@@ -139,7 +139,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
-    <script src="js/brand_ajax.js"></script>
+    <script src="js/brand_ajax.min.js"></script>
 
 </body>
 </html>

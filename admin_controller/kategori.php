@@ -140,6 +140,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
-    <script src="js/category_ajax.js"></script>
+    <script src="js/category_ajax.min.js"></script>
 </body>
 </html>
