@@ -36,7 +36,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item <?php echo ($current_page == 'product_add') ? 'active' : ''; ?>" href="product_add.php">Add Products</a>
-                        <a class="collapse-item <?php echo ($current_page == 'product_edit') ? 'active' : ''; ?>" href="product_edit.php">Update Products</a>
+                        <a class="collapse-item <?php echo ($current_page == 'product_edit') ? 'active' : ''; ?>" href="product_edit.php">Edit Products</a>
                         <a href="product_view.php" class="collapse-item <?php echo ($current_page == 'product_view') ? 'active' : ''; ?>">View Products</a>
                     </div>
                 </div>

@@ -97,7 +97,7 @@ header("Expires: 0");
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <textarea id="Deskripsi" type="text" rows="5" class="form-control" name="Deskripsi" style="white-space: pre-line !important;" placeholder="" required><?php echo nl2br($p['Keterangan']); ?></textarea>
+                                    <textarea id="Deskripsi" type="text" rows="5" class="form-control" name="Deskripsi" style="white-space: pre-line !important;" placeholder="" required><?php echo htmlspecialchars_decode(str_replace("<br />", "\n", $p['Keterangan'])); ?></textarea>
                                     <div class="invalid-feedback">
                                         Deskripsi harus diisi!
                                     </div>
