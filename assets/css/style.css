@@ -1406,7 +1406,7 @@ span.product_pagePrice{
   /* font-size: 10px; */
 }
 .product-box .modal-dialog .modal-content .modal-body .description{
-    color: #999;
+    color: #443939;
     font-size: 13px;
     font-weight: 500;
     margin-top: 10px;
@@ -1414,16 +1414,28 @@ span.product_pagePrice{
     overflow-x: hidden;
     height: 150px;
 }
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.product-box .modal-dialog .modal-content .modal-body .description::-webkit-scrollbar {
-  display: none;
+/* Menyembunyikan scrollbar bawaan */
+.product-box .modal-dialog .modal-content .modal-body .description {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.product-box .modal-dialog .modal-content .modal-body .description {
--ms-overflow-style: none;  /* IE and Edge */
-scrollbar-width: none;  /* Firefox */
+/* Gaya untuk scrollbar */
+.product-box .modal-dialog .modal-content .modal-body .description::-webkit-scrollbar {
+  width: 5px;
+}
+
+.product-box .modal-dialog .modal-content .modal-body .description::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.product-box .modal-dialog .modal-content .modal-body .description::-webkit-scrollbar-thumb {
+  background-color: #1977CC;
+  border-radius: 5px;
+}
+
+.product-box .modal-dialog .modal-content .modal-body .description::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
 }
 
 .product-box .modal-dialog .modal-content .modal-body .image{ padding: 0; }
