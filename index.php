@@ -92,16 +92,25 @@
                 </div>
                 <div class="row gy-4">
                     <!-- loop 4x -->
+                    <?php
+                    $Produk = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS NamaKategori,
+                    p.SKU_BRND,b.NamaBrand AS NamaBrand,p.Harga AS Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.Tokopedia AS Tokopedia,p.Blibli AS Blibli, 
+                    p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
+                    WHERE (1=1) ORDER BY p.KodeProduk DESC");
+                    foreach($Produk as $p){
+                        
+                    ?>
                     <div class="col-6 col-md-3">
+                        <?php echo $p['NamaProduk']; ?>
                         <div class="product-grid">
                             <div class="product-image">
                                 <a href="" class="image">
                                     <img src="assets/img/product_4.png" style="height: 250px;" class="img-fluid" alt="">
                                 </a>
                                 <ul class="product-links">
-                                    <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                    <li><a href="<?php echo $p['Tokopedia'] ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                    <li><a href="<?php echo $p['Shopee'] ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                    <li><a href="<?php echo $p['Blibli'] ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-content">
@@ -112,6 +121,9 @@
                             </div>
                         </div>
                     </div>
+                    <?php
+                    }
+                    ?>
                     <!-- loop -->
                 </div>
             </div>
