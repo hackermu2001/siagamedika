@@ -47,7 +47,7 @@
                                         <div class="category-wrap">
                                             <div class="product-grid">
                                                 <div class="product-image">
-                                                    <a href="" class="image">
+                                                    <a href="" class="image" title="<?php echo $p['NamaProduk']; ?>" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>">
                                                         <img src="<?php echo $p['Gambar']; ?>" class="img-fluid" alt="">
                                                     </a>
                                                     <ul class="product-links">
@@ -63,7 +63,7 @@
                                                     </ul>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3 class="title"><a href="product-page.php" title="<?php echo $p['NamaProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
+                                                    <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
                                                     <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
                                                     <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20"><i class="bi bi-whatsapp"></i> Contact</a>
                                                 </div>
@@ -85,3 +85,16 @@
         </div>
     </div>
 </div>
+<?php
+foreach ($categories as $index => $category) {
+    $produk = mysqli_query($koneksi, "SELECT * FROM produk WHERE kode_kategori = '{$index}'");
+    if (mysqli_num_rows($produk) > 0) {
+        foreach ($produk as $p) {
+    ?>
+<!-- Modal -->
+<?php include('layout/modal_prd_desc.php')?>
+<?php
+        }
+    }
+}
+?>
