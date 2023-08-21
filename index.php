@@ -85,6 +85,38 @@
             </div>
         </section><!-- End Why Us Section -->
 
+        <section id="produk_terbaru" class="produk_terbaru">
+            <div class="container">
+                 <div class="section-title">
+                    <h2>Produk Terbaru</h2>
+                </div>
+                <div class="row gy-4">
+                    <!-- loop 4x -->
+                    <div class="col-6 col-md-3">
+                        <div class="product-grid">
+                            <div class="product-image">
+                                <a href="" class="image">
+                                    <img src="assets/img/product_4.png" style="height: 250px;" class="img-fluid" alt="">
+                                </a>
+                                <ul class="product-links">
+                                    <li><a href="#" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                    <li><a href="#" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                    <li><a href="#" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">Serenity Medical Protective Mask 3 Ply Earloop</a></h3>
+                                <div class="price">Rp 1.472.000</div>
+                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
+                                    Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- loop -->
+                </div>
+            </div>
+        </section>
+
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container-fluid">

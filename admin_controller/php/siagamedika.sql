@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2023 at 07:39 AM
+-- Generation Time: Aug 21, 2023 at 07:06 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -38,7 +38,7 @@ CREATE TABLE `brand` (
 --
 
 INSERT INTO `brand` (`SKU_BRND`, `NamaBrand`, `Tanggal`) VALUES
-('BRND174', 'Socores Switzerland', '2023-08-14'),
+('BRND174', 'Socores Switzerland', '2023-08-19'),
 ('BRND288', 'Serenity', '2023-08-13'),
 ('BRND571', 'FamilyDr', '2023-08-13'),
 ('BRND616', 'GEA', '2023-08-12'),
@@ -65,6 +65,9 @@ CREATE TABLE `ip_data` (
 --
 
 INSERT INTO `ip_data` (`date_access`, `ip`, `isp`, `city`, `country`) VALUES
+('2023-08-20', '125.162.209.201', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
+('2023-08-21', '125.162.210.81', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
+('2023-08-20', '2001:448a:7023:49e8:c9d:2406:c8ae:16cf', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-19', '2001:448a:70b0:4a24:94e1:9d97:35c6:9270', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia');
 
 -- --------------------------------------------------------
@@ -90,7 +93,7 @@ INSERT INTO `kategori` (`kode_kategori`, `NamaKategori`, `Tanggal`) VALUES
 ('CAT593', 'Critical Care', '2023-08-13'),
 ('CAT885', 'Medical Equipment', '2023-08-11'),
 ('CAT900', 'Sterile Water', '2023-08-15'),
-('CAT941', 'Laboratorium', '2023-08-13');
+('CAT941', 'Laboratorium', '2023-08-19');
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,8 @@ INSERT INTO `produk` (`KodeProduk`, `NamaProduk`, `kode_kategori`, `SKU_BRND`, `
 (80, 'Micropipette Multi & Chanel Adjustable / Acura 855 (Vol. 0,5 – 10 ul)', 'CAT941', 'BRND903', 14755230, 'https://i.imgur.com/L0ceLRO.jpg', 'Merk : Socores Switzerland\r\nType : Micropipette Multi & Channel Socorex adjustable/Acura 855 (Vol.0,5-10 ul)\r\n\r\nProduct advantages\r\n• 8- and 12-channel models up to 350 μL\r\n• Light weight and perfect hand fitting\r\n• Precision digital display visible at all time\r\n• JustipTM adjustable tip ejector* fitting most tips\r\n• Swift-set user calibration system*\r\n• 360° rotation of volumetric module\r\n• Entirely autoclavable at 121°C\r\n\r\nDescription\r\n\r\nVolume : 0.5 – 10 μL,5 – 50 μL,20 – 200 μL,40 – 350 μL,\r\nDivision : 0.01 μL,0.1 μL,0.2 μL,0.4 μL\r\nInaccuracy (E%) :-Min. vol. ;< ± 3.5%,< ± 1.0%,< ± 0.9%,< ± 1.0%\r\n:-Mid. vol. ;< ± 2.5%,< ± 0.9%,< ± 0.8%,< ± 0.9%\r\n:-Max. vol ;< ± 1.5%,< ± 0.8%,< ± 0.7%,< ± 0.8%\r\nImprecision (CV%) :-Min. vol. ;< 3.0%1),< 1.0%,< 0.6%,< 0.6%\r\n:-Mid. vol. ;< 2.0%,< 0.7%,< 0.5%,< 0.5%\r\n:-Max. vol :< < 1.0%,< 0.4%,< 0.3%,< 0.3%\r\n\r\nProduk ini telah terdaftar kedalam E-Katalog (LKPP)\r\nFranko Jakarta\r\nHarga diatas belum termasuk ongkos kirim dan biaya instalasi.', '', '', ''),
 (81, 'Micropipette Fix / Acura 815 Fix Volume', 'CAT941', 'BRND174', 3099120, 'https://i.imgur.com/rfeE6j5.jpg', 'Merk : Socores – Switzerland<br />Type : Micropipette Socorex Fix/ Acura 815 Fix Volume<br /><br />Product advantages<br />• Slim ergonomic design and light weight<br />• Soft plunger activation<br />• JustipTM adjustable tip ejector* fitting most tips<br />• User calibration with integrated key<br />• Colour coded smartie cap<br />• Selection includes macropipette volumes<br />• Entirely autoclavable at 121°C<br /><br /><br />Volume = 1 μL,5 μL,10 μL,10Y μL,20 μL,25 μL,50 μL,100 μL,200 μL,250 μL,500 μL,1000 μL<br />Inaccuracy (E%) = < ± 2.0%,< ± 1.4%,< ± 0.7%,< ± 0.7%,< ± 0.75%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.6%<br />Imprecision (CV%) = < 1.0%,< 1.0%,< 0.7%,< 0.8%,< 0.5%,< 0.6%,< 0.4%,< 0.3%,< 0.3%,< 0.4%,< 0.3%,< 0.2%<br />Tip style = Ultra 10 μL,Ultra 10 μL,Ultra 10 μL,200 μL,200 μL,200 μL,200 μL,200 μL,200 μL,1000 μL,1000 μL,1000 μL<br /><br />Produk ini telah terdaftar kedalam E-Katalog (LKPP)<br />Franko Jakarta<br />Harga diatas belum termasuk ongkos kirim dan biaya instalasi.', '', '', ''),
 (89, 'Doppler BT – 220 C Bistos Hand held Fetal Doppler', 'CAT885', 'BRND800', 1472000, 'https://i.imgur.com/9TNyWDW.jpg', 'Doppler BT – 220 C Bistos Hand held Fetal Doppler<br /><br />Rp 1.472.000<br /><br />Merk : Bistos<br />Type : BT – 220 C<br />Display : Mono, 2.4″ Color TFT LCD<br />Dimensions : Body 132 mm x 66 mm x 27 mm<br />: probe 162 mm x 29.5 mm x 27.3 mm<br />Utrasound Frequency :3 MHz<br />Ultrasound Intensity :10 mW/cm2 or less<br />Fetal Heart Rate Range : L:50-240 bpm (+/-2% or +/- 2bpm)<br />: C:30-240 bpm (+/- 2% or +/- 2bpm)<br />AST Function : Acoustic stimulator<br />Mother Heart Rate Range : 40-200 bpm (+/- 2% or +/- 2 bpm)<br />Body Fat Measurement* : BIA & Impedance of upper Half body<br />Audio Output :1.2W (built in speaker), 3.5 mm Phone jack<br />Computer Interface : Sound Card (BCM220)<br />Battery Life :3 hrs<br />Accessories :carrying case, disposable batteries (2 x 1.5V AA), gel (60ml)<br />Option :Rechargeable battery (NIMH 1.2V AA X2)Rechargeable USB Cable<br />color : white<br />PC Sofware :BCM-220 Record and play fetal heart sound (.wav format)<br /><br />Description<br /><br />Monitor your baby’s heart beat right from your home! – FDA Approved for Safe Use<br />HI-bebe is a pocket size Doppler for obstetricians, midwives and pregnat woman.<br /><br />High-sensitivity doppler probe (2/3 MHz available)<br />2.4 inch color TFT LCD display<br />Acoustic stimulator and waterproof probe<br />Body fat analysis<br />Mother HR function<br />Optional rechargeable battery<br /><br />Produk ini telah terdaftar kedalam E-Katalog (LKPP)<br />Franko Jakarta<br />Harga diatas belum termasuk ongkos kirim dan biaya instalasi.<br /><br />Untuk informasi lebih mengenai produk ini, silahkan klik Disini<br />https://drive.google.com/file/d/121hdrJ--6yoUo-yuK6hljjvgW0ffqHbQ/view?usp=sharing', '', '', ''),
-(90, 'Urilyzer Auto - automated urine test strip analyzer', 'CAT941', 'BRND903', 864603420, 'https://i.imgur.com/fZXvFmu.png', 'The Urilyzer® Auto is a newly designed fully-automated urine test strip analyzer introducing the pipetting technique in combination with a new measuring head to analyze the CombiScreen® 11 Auto urine test strip. In addition the system has a physical ­measurement cell module for determination of specific gravity, color and turbidity. The system is specifically designed to improve the accuracy and safety of urine test strip evaluation.', NULL, NULL, NULL);
+(90, 'Urilyzer Auto - automated urine test strip analyzer', 'CAT941', 'BRND903', 864603420, 'https://i.imgur.com/fZXvFmu.png', 'The Urilyzer® Auto is a newly designed fully-automated urine test strip analyzer introducing the pipetting technique in combination with a new measuring head to analyze the CombiScreen® 11 Auto urine test strip. In addition the system has a physical ­measurement cell module for determination of specific gravity, color and turbidity. The system is specifically designed to improve the accuracy and safety of urine test strip evaluation.', NULL, NULL, NULL),
+(97, 'FamilyDr AGM-513S set 25 Strip', 'CAT885', 'BRND571', 175000, 'https://i.imgur.com/UofS5Wc.png', 'FamilyDr AGM-513S di desain simpel dalam pengunaan sehingga memonitor gula darah menjadi lebih nyaman.\r\n\r\nSpesifikasi :\r\n- Sampel darah yang digunakan darah utuh kapiler dan vena.\r\n- Volume Sampel 0,5µℓ\r\n- Rentang pengukuran 20-600 mg/dL\r\n- Waktu pengukuran 5 detik\r\n- Kapasitas 500 memori\r\n- Manajemen Data Micro USB\r\n\r\nPerhatian :\r\nSebaiknya gunakan semua tes strip dalam 4 bulan setelah pembukaan pertama.\r\n\r\nIsi Paket Penjualan :\r\nAGM-513S Unit, 25 Strip, Lancing Device, Lancet, Batterai, Tas, Buku Manual, Kartu Garansi\r\n\r\nNomor Registrasi Alat Kesehatan :\r\n20101025181', 'https://www.tokopedia.com/siagamedikastore/familydr-agm-513s-set', 'https://www.blibli.com/p/familydr-agm-513s/ps--SID-60039-00059', 'https://shopee.co.id/FamilyDr-AGM-513S-set-i.399419659.6783396028?sp_atk=259356a3-3d6a-46c2-b10c-23defeb69a9d');
 
 -- --------------------------------------------------------
 
@@ -188,7 +192,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `user`
