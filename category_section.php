@@ -62,7 +62,7 @@
                                                     <?php } ?>
                                                     </ul>
                                                 </div>
-                                                <div class="product-content">
+                                                <div class="product-content"> 
                                                     <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
                                                     <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
                                                     <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20"><i class="bi bi-whatsapp"></i> Contact</a>
