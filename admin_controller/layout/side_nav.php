@@ -66,6 +66,22 @@
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
+            <div class="sidebar-heading">
+                Addons
+            </div>
+
+            <li class="nav-item <?php echo ($current_page == 'seo') ? 'active' : ''; ?>">
+                <a class="nav-link " href="seo.php">
+                    <i class="fas fa-fw fa-search"></i>
+                    <span>SEO</span></a>
+            </li>
+
+            <li class="nav-item <?php echo ($current_page == 'banner') ? 'active' : ''; ?>">
+                <a class="nav-link " href="banner.php">
+                    <i class="fas fa-fw fa-cubes"></i>
+                    <span>Banner</span></a>
+            </li>
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
