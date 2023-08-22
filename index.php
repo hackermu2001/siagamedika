@@ -93,10 +93,11 @@
                 <div class="row gy-4">
                     <!-- loop 4x -->
                     <?php
-                    $Produk = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS NamaKategori,
+                    $HasilQuery = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS NamaKategori,
                     p.SKU_BRND,b.NamaBrand AS NamaBrand,p.Harga AS Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.Tokopedia AS Tokopedia,p.Blibli AS Blibli, 
                     p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
                     WHERE (1=1) ORDER BY p.KodeProduk DESC");
+                    $Produk = mysqli_fetch_all($HasilQuery, MYSQLI_ASSOC);
                     foreach($Produk as $p){
                         
                     ?>
@@ -108,14 +109,18 @@
                                     <img src="assets/img/product_4.png" style="height: 250px;" class="img-fluid" alt="">
                                 </a>
                                 <ul class="product-links">
-                                    <li><a href="<?php echo $p['Tokopedia'] ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
-                                    <li><a href="<?php echo $p['Shopee'] ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
-                                    <li><a href="<?php echo $p['Blibli'] ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                    <li><a href="<?php echo $p['Tokopedia']; ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                    <li><a href="<?php echo $p['Shopee']; ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                    <li><a href="<?php echo $p['Blibli']; ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product-content">
-                                <h3 class="title"><a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">Serenity Medical Protective Mask 3 Ply Earloop</a></h3>
-                                <div class="price">Rp 1.472.000</div>
+                                <h3 class="title">
+                                    <a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">
+                                        Serenity Medical Protective Mask 3 Ply Earloop
+                                    </a>
+                                </h3>
+                                <div class="price"><?php echo $p['Harga']; ?></div>
                                 <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
                                     Contact</a>
                             </div>
