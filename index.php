@@ -93,38 +93,41 @@
                 <div class="row gy-4">
                     <!-- loop 4x -->
                     <?php
-                    $HasilQuery = mysqli_query($koneksi,"SELECT p.KodeProduk AS KodeProduk,p.NamaProduk AS NamaProduk,k.NamaKategori AS NamaKategori,
-                    p.SKU_BRND,b.NamaBrand AS NamaBrand,p.Harga AS Harga,p.Gambar AS Gambar,p.Keterangan AS Keterangan,p.Tokopedia AS Tokopedia,p.Blibli AS Blibli, 
-                    p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
-                    WHERE (1=1) ORDER BY p.KodeProduk DESC");
-                    $Produk = mysqli_fetch_all($HasilQuery, MYSQLI_ASSOC);
-                    foreach($Produk as $p){
+                        $HasilQuery = mysqli_query($koneksi, "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori,
+                            p.SKU_BRND, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, 
+                            p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
+                            WHERE (1=1) ORDER BY p.KodeProduk DESC");
+                        $Produk = mysqli_fetch_all($HasilQuery, MYSQLI_ASSOC);
                         
+                        for ($i = 0; $i < min(4, count($Produk)); $i++) {
+                            $p = $Produk[$i];
                     ?>
                     <div class="col-6 col-md-3">
-                        <?php echo $p['NamaProduk']; ?>
                         <div class="product-grid">
                             <div class="product-image">
-                                <a href="" class="image">
-                                    <img src="assets/img/product_4.png" style="height: 250px;" class="img-fluid" alt="">
+                                <a href="" class="image" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>">
+                                    <img src="<?php echo $p['Gambar']; ?>" style="height: 250px;" class="img-fluid" alt="">
                                 </a>
+                                <span class="product-discount-label">New!</span>
                                 <ul class="product-links">
+                                <?php if (!empty($p['Tokopedia'])) { ?>
                                     <li><a href="<?php echo $p['Tokopedia']; ?>" data-tip="Tokopedia"><i class="ft-tokopedia"></i></a></li>
+                                <?php } ?>
+                                <?php if (!empty($p['Shopee'])) { ?>
                                     <li><a href="<?php echo $p['Shopee']; ?>" data-tip="Shopee"><i class="ft-shopee"></i></a></li>
+                                <?php } ?>
+                                <?php if (!empty($p['Blibli'])) { ?>
                                     <li><a href="<?php echo $p['Blibli']; ?>" data-tip="Blibli"><i class="ft-blibli"></i></a></li>
+                                <?php } ?>
                                 </ul>
                             </div>
                             <div class="product-content">
-                                <h3 class="title">
-                                    <a href="#" title="Serenity Medical Protective Mask 3 Ply Earloop">
-                                        Serenity Medical Protective Mask 3 Ply Earloop
-                                    </a>
-                                </h3>
-                                <div class="price"><?php echo $p['Harga']; ?></div>
-                                <a class="whatsapp-btn" href="#"><i class="bi bi-whatsapp"></i>
-                                    Contact</a>
+                                <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
+                                <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
+                                <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20""><i class="bi bi-whatsapp"></i> Contact</a>
                             </div>
                         </div>
+                        <?php include('layout/modal_prd_desc.php') ?>
                     </div>
                     <?php
                     }
