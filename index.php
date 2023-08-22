@@ -97,7 +97,7 @@
                             p.SKU_BRND, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, 
                             p.Shopee AS Shopee FROM produk p INNER JOIN kategori k INNER JOIN brand b ON (p.kode_kategori=k.kode_kategori AND p.SKU_BRND=b.SKU_BRND) 
                             WHERE (1=1) ORDER BY p.KodeProduk DESC");
-                        $Produk = mysqli_fetch_all($HasilQuery, MYSQLI_ASSOC);
+                        $Produk = mysqli_fetch_all($HasilQuery, MYSQLI_ASSOC); 
                         
                         for ($i = 0; $i < min(4, count($Produk)); $i++) {
                             $p = $Produk[$i];
