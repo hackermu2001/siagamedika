@@ -1,26 +1,25 @@
-<?php 
+<?php
 include '../../../koneksi.php';
 
+$kodeSEO = $_POST['kodeSEO'];
+$pageURL = $_POST['pageURL'];
 $PageTitle = $_POST['PageTitle'];
-$MetaDiscription = $_POST['MetaDesc'];
+$Description = $_POST['Description'];
 $FokusKeyword = $_POST['FokusKeyword'];
-$Content = $_POST['Content'];
 $WaktuBuat = $_POST['WaktuBuat'];
-$WaktuUpdte = $_POST['WaktuUpdate'];
+$WaktuUpdate = $_POST['WaktuUpdate'];
 
-try{
-    $sql = "INSERT INTO seo (KodeSEO,PageTitle,MetaDescription,FokusKeyword,Content,WaktuBuat,WaktuUpdate) 
-            VALUES('','$PageTitle','$MetaDiscription','$FokusKeyword','$Content','$WaktuBuat','$WaktuUpdte')";
+try {
+    $sql = "INSERT INTO seo (kodeSEO, page_url, PageTitle, Description, FokusKeyword, WaktuBuat, WaktuUpdate) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $koneksi->prepare($sql);
+    $stmt->bind_param("sssssss", $kodeSEO, $pageURL, $PageTitle, $Description, $FokusKeyword, $WaktuBuat, $WaktuUpdate);
 
     $stmt->execute();
 
     header("location:seo.php");
+} catch(Exception $e) {
+    echo "Error Saat Menyimpan Data : " . $e->getMessage();
 }
-catch(PDOException $e){
-    echo "Error Saat Menyimpan Data : ".$e->getMessage();
-}
-
 ?>
-
