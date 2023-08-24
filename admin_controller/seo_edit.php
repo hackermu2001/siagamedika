@@ -54,9 +54,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <div class="card-body">
                             <form action="php/function_php/seo_update.php" class="needs-validation" novalidate method="post">
                                     <div class="form-row">
+                                        <?php
+                                        $KodeSEO = $_GET['id'];
+                                        $SQL = "SELECT KodeSEO,page_url,PageTitle,Description,FokusKeyword,WaktuBuat,WaktuUpdate FROM seo 
+                                                WHERE KodeSEO='$KodeSEO'";
+                                        $SEO = mysqli_query($koneksi, $SQL) ;
+                                        $s = mysqli_fetch_assoc($SEO);
+                                        ?>
                                         <div class="col-md-6 form-group">
                                             <label for="PageTitle">Title</label>
-                                            <input type="text" class="form-control" name="PageTitle" placeholder="Isi Judul..." id="PageTitle" required>
+                                            <input type="hidden" class="form-control" name="KodeSEO" value="<?php echo $KodeSEO; ?>">
+                                            <input type="text" class="form-control" name="PageTitle" placeholder="Isi Judul..." id="PageTitle" required 
+                                                    value="<?php echo $s['PageTitle']; ?>">
                                             <div class="invalid-feedback">
                                                 Judul tidak boleh kosong !
                                             </div>
@@ -64,7 +73,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <div class="col-md-6 form-group">
                                             <label for="page_url">Link Halaman</label>
                                             <select type="text" class="form-control" name="page_url" required disabled>
-                                                <option>H</option>
+                                                <option><?php echo $s['page_url'] ?></option>
                                             </select>
 
                                             <div class="invalid-feedback">
@@ -73,7 +82,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="Description">Description</label>
-                                            <textarea type="text" class="form-control" placeholder="Isi Deskripsi.." rows="7" name="Description" id="Description" required></textarea>
+                                            <textarea type="text" class="form-control" placeholder="Isi Deskripsi.." rows="7" name="Description" 
+                                                id="Description" required><?php echo $s['Description']; ?></textarea>
                                             <div class="invalid-feedback">
                                                 Deskripsi tidak boleh kosong !
                                             </div>
@@ -82,7 +92,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 <label for="Tags">Keyword</label>
                                                 <input type="text" class="form-control" id="tagInput" placeholder="Tambah Keyword...">
                                                 <div class="input-tags-list d-inline-block flex-wrap" id="inputTagsList" style="gap: 5px; margin-top: 5px;"></div>
-                                                <input type="hidden" id="hiddenFokusKeyword" name="FokusKeyword" value="">
+                                                <input type="hidden" id="hiddenFokusKeyword" name="FokusKeyword" value="<?php echo $s['FokusKeyword']; ?>">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                     </div>

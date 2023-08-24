@@ -1,24 +1,24 @@
 <?php 
-include './koneksi.php';
+include '../../../koneksi.php';
 
-$KodeSEO = $_GET['id'];
+$KodeSEO = $_POST['KodeSEO'];
 
 $PageTitle = $_POST['PageTitle'];
-$MetaDiscription = $_POST['MetaDesc'];
+$MetaDiscription = $_POST['Description'];
 $FokusKeyword = $_POST['FokusKeyword'];
-$Content = $_POST['Content'];
-$WaktuBuat = $_POST['WaktuBuat'];
-$WaktuUpdte = $_POST['WaktuUpdate'];
+$WaktuUpdte = date("d F Y");
+
+$joinedKeywords = implode(', ', array_map('trim', explode(',', $FokusKeyword)));
 
 try{
-    $sql = "UPDATE seo SET PageTitle='$PageTitle',MetaDescription='$MetaDiscription',FokusKeyword='$FokusKeyword',Content='$Content',WaktuBuat='$WaktuBuat', 
+    $sql = "UPDATE seo SET PageTitle='$PageTitle',Description='$MetaDiscription',FokusKeyword='$joinedKeywords', 
                 WaktuUpdate='$WaktuUpdte' WHERE KodeSEO='$KodeSEO'";
     
     $stmt = $koneksi->prepare($sql);
 
     $stmt->execute();
 
-    header("location:seo.php");
+    header("location:../../seo.php");
 }
 catch(PDOException $e){
     echo "Error Saat Update Data : ".$e->getMessage();
