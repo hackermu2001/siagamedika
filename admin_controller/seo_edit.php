@@ -43,43 +43,50 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Search Engine Optimization</h1>
-                        <a href="website_siagamedika.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Add SEO</a>
+                        <h1 class="h3 mb-0 text-gray-800">Edit SEO-ID</h1>
+                        <a href="seo.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View SEO</a>
                     </div>
 
                     <div class="card shadow mb-4">
                         <div class="card-header">
-                            <h6 class="m-0 font-weight-bold text-primary">Data SEO</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Edit SEO</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered text-nowrap" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Halaman</th>
-                                            <th>Judul</th>
-                                            <th>Deskripsi</th>
-                                            <th>Focus Keyword</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $KodeSEO = $_GET['id'];
-                                        $SQL = "SELECT KodeSEO,PageTitle,Description,FokusKeyword,Content,WaktuBuat,WaktuUpdate FROM seo WHERE KodeSEO='$KodeSEO'";
-                                        $DataSEO = mysqli_query($koneksi,$SQL);
-                                        $s = mysqli_fetch_assoc($DataSEO); 
-                                        ?>
-                                        <tr>
-                                            <td></td>
-                                            <td><?php echo $s['PageTitle'] ?></td>
-                                            <td><?php echo $s['Des'] ?></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <form action="php/function_php/seo_update.php" class="needs-validation" novalidate method="post">
+                                    <div class="form-row">
+                                        <div class="col-md-6 form-group">
+                                            <label for="PageTitle">Title</label>
+                                            <input type="text" class="form-control" name="PageTitle" placeholder="Isi Judul..." id="PageTitle" required>
+                                            <div class="invalid-feedback">
+                                                Judul tidak boleh kosong !
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label for="page_url">Link Halaman</label>
+                                            <select type="text" class="form-control" name="page_url" required disabled>
+                                                <option>H</option>
+                                            </select>
+
+                                            <div class="invalid-feedback">
+                                                Link halaman tidak boleh kosong !
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            <label for="Description">Description</label>
+                                            <textarea type="text" class="form-control" placeholder="Isi Deskripsi.." rows="7" name="Description" id="Description" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Deskripsi tidak boleh kosong !
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 form-group tags-input">
+                                                <label for="Tags">Keyword</label>
+                                                <input type="text" class="form-control" id="tagInput" placeholder="Tambah Keyword...">
+                                                <div class="input-tags-list d-inline-block flex-wrap" id="inputTagsList" style="gap: 5px; margin-top: 5px;"></div>
+                                                <input type="hidden" id="hiddenFokusKeyword" name="FokusKeyword" value="">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                    </div>
+                            </form>
                         </div>
                     </div>
                     
@@ -101,5 +108,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
+    <script src="js/seo.js"></script>
 </body>
 </html>

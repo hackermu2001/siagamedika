@@ -57,7 +57,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Halaman</th>
                                             <th>Judul</th>
                                             <th>Deskripsi</th>
                                             <th>Focus Keyword</th>
@@ -73,23 +72,49 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         ?>
                                         <tr>
                                         <td class="align-middle text-center"><?php echo $No++; ?></td>
-                                        <td class="align-middle text-center"><?php echo $s['page_url']; ?></td>
-                                        <td class="align-middle text-center"><?php echo $s['PageTitle']; ?></td>
-                                        <td class="align-middle text-center"><?php echo $s['Description']; ?></td>
-                                        <td class="align-middle text-left flex-wrap"><?php echo $FK = $s['FokusKeyword']; ?></td>
+                                        <td class="align-middle text-left text-nowrap">
+                                            <ul class="list-unstyled">
+                                                <li class="list-unstyled">
+                                                    <?php echo $s['PageTitle']; ?>
+                                                </li>
+                                                <li class="list-unstyled">
+                                                    <span class="badge badge-success"><?php echo $s['page_url']; ?></span>    
+                                                </li>
+                                            </ul>
+                                        </td>
+                                        <td class="align-middle text-left text-wrap" width="300">
+                                            <?php
+                                            $description = $s['Description'];
+                                            $maxCharacters = 100; // Jumlah maksimal karakter yang ingin Anda tampilkan
+
+                                            if (strlen($description) > $maxCharacters) {
+                                                $truncatedDescription = substr($description, 0, $maxCharacters) . "...";
+                                                echo $truncatedDescription;
+                                            } else {
+                                                echo $description;
+                                            }
+                                            ?>
+                                        </td>
+                                        <td class="align-middle text-left text-wrap">
+                                            <?php
+                                            $keywords = explode(', ', $s['FokusKeyword']); // Pisahkan keyword menjadi array
+                                            foreach ($keywords as $keyword) {
+                                                echo '<span class="badge badge-pill badge-primary">' . $keyword . '</span> ';
+                                            }
+                                            ?>
+                                        </td>
                                         <td class="align-middle text-center"> 
                                             <a href="seo_edit.php?id=<?php echo $s['KodeSEO']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            <button class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" 
-                                                        data-id="<?php echo $s['KodeSEO']; ?>">
+                                            <button class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" data-id="<?php echo $s['KodeSEO']; ?>">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </td>
                                         </tr>
                                         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
                                                 aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
@@ -102,7 +127,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                <a id="deleteLink" class="btn btn-danger" href="./php/function_php/seo_delete.php">Delete</a>
+                                                                <a id="deleteLink" class="btn btn-danger" href="./php/function_php/seo_delete.php"><i class="fas fa-trash mr-2"></i>Delete</a>
                                                             </div>
                                                         </div>
                                                     </div>

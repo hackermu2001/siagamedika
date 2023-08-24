@@ -25,9 +25,6 @@ try {
     $sql = "INSERT INTO seo (kodeSEO, page_url, PageTitle, Description, FokusKeyword, WaktuBuat, WaktuUpdate) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    // Assuming you have a default value for kodeSEO
-    // $kodeSEO = "your_default_value";
-
     $stmt = $koneksi->prepare($sql);
     $stmt->bind_param("sssssss", $kodeSEO, $pageText, $PageTitle, $Description, $joinedKeywords, $now, $now);
 

@@ -64,9 +64,31 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             <label for="page_url">Link Halaman</label>
                                             <select type="text" class="form-control" name="page_url" required>
                                                 <option disabled selected value="">Choose...</option>
-                                                <option value="1">Halaman Home</option>
-                                                <option value="2">Halaman Produk</option>
+                                                <?php
+                                                // Assume you have a connection to the database
+                                                include '../koneksi.php';
+
+                                                // Query to check if "Halaman Home" exists in the database
+                                                $checkHomeQuery = "SELECT COUNT(*) as count FROM seo WHERE page_url = 'Halaman Home'";
+                                                $resultHome = mysqli_query($koneksi, $checkHomeQuery);
+                                                $rowHome = mysqli_fetch_assoc($resultHome);
+                                                $isHomePageExist = $rowHome['count'] > 0;
+
+                                                // Query to check if "Halaman Produk" exists in the database
+                                                $checkProductQuery = "SELECT COUNT(*) as count FROM seo WHERE page_url = 'Halaman Produk'";
+                                                $resultProduct = mysqli_query($koneksi, $checkProductQuery);
+                                                $rowProduct = mysqli_fetch_assoc($resultProduct);
+                                                $isProductPageExist = $rowProduct['count'] > 0;
+
+                                                if (!$isHomePageExist) {
+                                                    echo '<option value="1">Halaman Home</option>';
+                                                }
+                                                if (!$isProductPageExist) {
+                                                    echo '<option value="2">Halaman Produk</option>';
+                                                }
+                                                ?>
                                             </select>
+
                                             <div class="invalid-feedback">
                                                 Link halaman tidak boleh kosong !
                                             </div>
