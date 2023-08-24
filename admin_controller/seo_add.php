@@ -51,28 +51,38 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <h6 class="m-0 font-weight-bold text-primary">Register SEO</h6>
                         </div>
                         <div class="card-body">
-                            <form action="php/function_php/seo_insert.php" method="post">
+                            <form action="php/function_php/seo_insert.php" class="needs-validation" novalidate method="post">
                                     <div class="form-row">
                                         <div class="col-md-6 form-group">
                                             <label for="PageTitle">Title</label>
-                                            <input type="email" class="form-control" name="PageTitle" placeholder="Isi Judul..." id="PageTitle">
+                                            <input type="text" class="form-control" name="PageTitle" placeholder="Isi Judul..." id="PageTitle" required>
+                                            <div class="invalid-feedback">
+                                                Judul tidak boleh kosong !
+                                            </div>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="page_url">Link Halaman</label>
-                                            <select type="text" class="form-control" name="page_url">
-                                                <option disabled selected>Choose...</option>
+                                            <select type="text" class="form-control" name="page_url" required>
+                                                <option disabled selected value="">Choose...</option>
                                                 <option value="1">Halaman Home</option>
                                                 <option value="2">Halaman Produk</option>
                                             </select>
+                                            <div class="invalid-feedback">
+                                                Link halaman tidak boleh kosong !
+                                            </div>
                                         </div>
                                         <div class="col-md-6 form-group">
                                             <label for="Description">Description</label>
-                                            <textarea type="text" class="form-control" placeholder="Isi Deskripsi.." rows="7" name="Description" id="Description"></textarea>
+                                            <textarea type="text" class="form-control" placeholder="Isi Deskripsi.." rows="7" name="Description" id="Description" required></textarea>
+                                            <div class="invalid-feedback">
+                                                Deskripsi tidak boleh kosong !
+                                            </div>
                                         </div>
                                         <div class="col-md-6 form-group tags-input">
                                                 <label for="Tags">Keyword</label>
-                                                <input type="text" class="form-control" id="tagInput" placeholder="Tambah Keyword..." name="FokusKeyword">
-                                                <div class="input-tags-list d-inline-block flex-wrap" id="inputTagsList" style="gap: 5px; margin-top: 5px;"></div>  
+                                                <input type="text" class="form-control" id="tagInput" placeholder="Tambah Keyword...">
+                                                <div class="input-tags-list d-inline-block flex-wrap" id="inputTagsList" style="gap: 5px; margin-top: 5px;"></div>
+                                                <input type="hidden" id="hiddenFokusKeyword" name="FokusKeyword" value="">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                     </div>
@@ -97,6 +107,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
-    <script src="js/seo_ajax.js"></script>
+    <script src="js/seo.js"></script>
 </body>
 </html>

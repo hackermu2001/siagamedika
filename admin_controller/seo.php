@@ -60,16 +60,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                             <th>Judul</th>
                                             <th>Deskripsi</th>
                                             <th>Focus Keyword</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
+                                        <td class="align-middle text-center"></td>
+                                        <td class="align-middle text-center"></td>
+                                        <td class="align-middle text-center"></td>
+                                        <td class="align-middle text-center"></td>
+                                        <td class="align-middle text-center"></td>
+                                        <td class="align-middle text-center"> 
+                                            <a href="" class="btn btn-primary btn-circle btn-sm edit-btn">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                            <button class="btn btn-danger btn-circle btn-sm delete-btn">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
                                     </tbody>
                                 </table>
                             </div>
