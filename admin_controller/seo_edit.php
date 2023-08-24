@@ -42,8 +42,15 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    <?php
+                    $KodeSEO = $_GET['id'];
+                    $SQL = "SELECT KodeSEO,page_url,PageTitle,Description,FokusKeyword,WaktuBuat,WaktuUpdate FROM seo 
+                    WHERE KodeSEO='$KodeSEO'";
+                    $SEO = mysqli_query($koneksi, $SQL) ;
+                    $s = mysqli_fetch_assoc($SEO);
+                    ?>
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Edit SEO-ID</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Edit SEO-<?php echo $KodeSEO ?></h1>
                         <a href="seo.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-eye fa-sm text-white-50"></i> View SEO</a>
                     </div>
 
@@ -54,13 +61,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <div class="card-body">
                             <form action="php/function_php/seo_update.php" class="needs-validation" novalidate method="post">
                                     <div class="form-row">
-                                        <?php
-                                        $KodeSEO = $_GET['id'];
-                                        $SQL = "SELECT KodeSEO,page_url,PageTitle,Description,FokusKeyword,WaktuBuat,WaktuUpdate FROM seo 
-                                                WHERE KodeSEO='$KodeSEO'";
-                                        $SEO = mysqli_query($koneksi, $SQL) ;
-                                        $s = mysqli_fetch_assoc($SEO);
-                                        ?>
+                                        
                                         <div class="col-md-6 form-group">
                                             <label for="PageTitle">Title</label>
                                             <input type="hidden" class="form-control" name="KodeSEO" value="<?php echo $KodeSEO; ?>">

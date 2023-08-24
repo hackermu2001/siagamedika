@@ -20,6 +20,7 @@ if ($pageSelected == '1') {
 }
 
 try {
+    date_default_timezone_set("Asia/Makassar");
     $now = date('Y-m-d H:i:s'); // Get current date and time
 
     $sql = "INSERT INTO seo (kodeSEO, page_url, PageTitle, Description, FokusKeyword, WaktuBuat, WaktuUpdate) 
