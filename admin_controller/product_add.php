@@ -164,5 +164,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <!-- End of Page Wrapper -->
 
     <?php include('layout/script.php') ?>
+    <script src="js/product.min.js"></script>
 </body>
 </html>

@@ -47,14 +47,3 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
-    <script src="js/validate.min.js"></script>
-
-    <script>
-    $(document).ready(function () {
-        $('.delete-btn').click(function () {
-            var id = $(this).data('id');
-            var deleteLink = './php/function_php/seo_delete.php?id=' + id;
-            $('#deleteLink').attr('href', deleteLink);
-        });
-    });
-    </script>

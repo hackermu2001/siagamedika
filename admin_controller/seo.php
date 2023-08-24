@@ -66,7 +66,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $SQL = "SELECT KodeSEO,page_url,PageTitle,Description,FokusKeyword,Content,WaktuBuat,WaktuUpdate FROM seo";
+                                        $SQL = "SELECT KodeSEO,page_url,PageTitle,Description,FokusKeyword,WaktuBuat,WaktuUpdate FROM seo";
                                         $DataSEO = mysqli_query($koneksi,$SQL);
                                         $No=1;
                                         foreach($DataSEO AS $s){ 
@@ -76,7 +76,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <td class="align-middle text-center"><?php echo $s['page_url']; ?></td>
                                         <td class="align-middle text-center"><?php echo $s['PageTitle']; ?></td>
                                         <td class="align-middle text-center"><?php echo $s['Description']; ?></td>
-                                        <td class="align-middle text-left"><?php echo $FK = $s['FokusKeyword']; ?></td>
+                                        <td class="align-middle text-left flex-wrap"><?php echo $FK = $s['FokusKeyword']; ?></td>
                                         <td class="align-middle text-center"> 
                                             <a href="seo_edit.php?id=<?php echo $s['KodeSEO']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                 <i class="fas fa-pen"></i>
@@ -85,7 +85,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                         data-id="<?php echo $s['KodeSEO']; ?>">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+                                        </td>
+                                        </tr>
+                                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
                                                 aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -105,8 +107,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                         </div>
                                                     </div>
                                             </div>
-                                        </td>
-                                        </tr>
                                         <?php
                                         } 
                                         ?>
@@ -134,5 +134,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
+    <script>
+    $(document).ready(function () {
+        $('.delete-btn').click(function () {
+            var id = $(this).data('id');
+            var deleteLink = './php/function_php/seo_delete.php?id=' + id;
+            $('#deleteLink').attr('href', deleteLink);
+        });
+    });
+    </script>
 </body>
 </html>

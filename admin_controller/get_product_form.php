@@ -180,5 +180,6 @@ header("Expires: 0");
 
     
     <?php include('layout/script.php') ?>
+    <script src="js/product.min.js"></script>
 </body>
 </html>

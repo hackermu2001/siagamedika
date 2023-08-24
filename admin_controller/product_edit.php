@@ -174,6 +174,6 @@ $result = mysqli_query($koneksi, $query);
 
     
     <?php include('layout/script.php') ?>
-    <script src="js/product_ajax.js"></script>
+    <script src="js/product.min.js"></script>
 </body>
 </html>
