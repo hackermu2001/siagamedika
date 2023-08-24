@@ -9,83 +9,66 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  const $tagInput = $('#tagInput');
-  const $inputTagsList = $('#inputTagsList');
-  const $hiddenFokusKeyword = $('#hiddenFokusKeyword'); // hidden input element
+    const $tagInput = $('#tagInput');
+    const $inputTagsList = $('#inputTagsList');
+    const $hiddenFokusKeyword = $('#hiddenFokusKeyword'); // hidden input element
 
-  $tagInput.on('keydown', function(event) {
-      if (event.key === 'Enter' || event.key === ',') {
-          event.preventDefault();
-          addTag($tagInput.val().trim());
-          $tagInput.val('');
-      }
-  });
+    // Retrieve the initial values from the hidden input and generate badges
+    const initialKeywords = $hiddenFokusKeyword.val().split(',').map(keyword => keyword.trim());
+    initialKeywords.forEach(keyword => addTag(keyword));
 
-  const defaultKeywordsText = `
-      Distributor alat kesehatan,
-      Alat medis terbaik,
-      Distributor peralatan kesehatan,
-      Peralatan medis berkualitas,
-      Alat kesehatan profesional,
-      Supplier alat medis terpercaya,
-      Peralatan kesehatan canggih,
-      Distributor alat diagnosa,
-      Alat medis modern,
-      Distributor alat bedah
-  `;
+    $tagInput.on('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ',') {
+            event.preventDefault();
+            const enteredTags = $tagInput.val().trim();
+            const tagsArray = enteredTags.split(',').map(tag => tag.trim());
+            tagsArray.forEach(tag => addTag(tag));
+            $tagInput.val('');
+        }
+    });
 
-  const defaultKeywords = defaultKeywordsText.split(',').map(keyword => keyword.trim());
+    function addTag(tagText) {
+        if (tagText === '') return;
 
-  // Add default tags when the page loads
-  defaultKeywords.forEach(keyword => addTag(keyword));
+        const $badge = $('<span>', {
+            class: 'badge badge-info',
+            style: 'margin: 2px 5px; cursor: pointer;'
+        }).append(
+            tagText,
+            $('<i>', {
+                class: 'fas fa-times text-white',
+                style: 'margin-left: 3px;'
+            }).on('click', function() {
+                $(this).closest('.badge').remove();
+                updateHiddenInput();
+            })
+        );
 
-  function addTag(tagText) {
-      if (tagText === '') return;
+        $inputTagsList.append($badge);
+        updateHiddenInput();
+    }
 
-      // Remove spaces from the tag text
-      // tagText = tagText.replace(/\s/g, '');
-
-      const $badge = $('<span>', {
-          class: 'badge badge-info',
-          style: 'margin: 2px 5px; cursor: pointer;'
-      }).append(
-          tagText,
-          $('<i>', {
-              class: 'fas fa-times text-white',
-              style: 'margin-left: 3px;'
-          }).on('click', function() {
-              $(this).closest('.badge').remove();
-              updateHiddenInput(); // Update the hidden input value when badge is removed
-          })
-      );
-
-      $inputTagsList.append($badge);
-      updateHiddenInput(); // Update the hidden input value when new badge is added
-  }
-
-  function updateHiddenInput() {
-      const badgeTexts = $inputTagsList.find('.badge').map(function() {
-          return $(this).text().trim(); // Remove leading and trailing spaces
-      }).get();
-      const joinedKeywords = badgeTexts.join(', ');
-      $hiddenFokusKeyword.val(joinedKeywords);
-  }
+    function updateHiddenInput() {
+        const badgeTexts = $inputTagsList.find('.badge').map(function() {
+            return $(this).text().trim();
+        }).get();
+        const joinedKeywords = badgeTexts.join(', ');
+        $hiddenFokusKeyword.val(joinedKeywords);
+    }
 });
 
 (function() {
     'use strict';
     window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
     }, false);
-  })();
+})();

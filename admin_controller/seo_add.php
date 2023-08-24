@@ -104,7 +104,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 <label for="Tags">Keyword</label>
                                                 <input type="text" class="form-control" id="tagInput" placeholder="Tambah Keyword...">
                                                 <div class="input-tags-list d-inline-block flex-wrap" id="inputTagsList" style="gap: 5px; margin-top: 5px;"></div>
-                                                <input type="hidden" id="hiddenFokusKeyword" name="FokusKeyword" value="">
+                                                <input type="hidden" id="hiddenFokusKeyword" name="FokusKeyword" value="Distributor alat kesehatan, Alat medis terbaik, Distributor peralatan kesehatan, Peralatan medis berkualitas, Alat kesehatan profesional, Supplier alat medis terpercaya, Peralatan kesehatan canggih, Distributor alat diagnosa, Alat medis modern, Distributor alat bedah">
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                     </div>
