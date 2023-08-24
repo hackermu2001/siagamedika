@@ -1,9 +1,11 @@
 <?php
 
-include './koneksi.php';
+include '../../../koneksi.php';
 
 $KodeSeo = $_GET['id'];
 
 mysqli_query($koneksi,"DELETE FROM seo WHERE KodeSeo='$KodeSeo'");
+
+header("location: ../../seo.php")
 
 ?>

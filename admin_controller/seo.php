@@ -16,6 +16,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <meta name="author" content=""> 
     <title>Siagamedika - SEO</title>
     <?php include('layout/css.php')?>
+    <?php include('../koneksi.php')?>
 </head>
 
 <body id="page-top">
@@ -64,19 +65,51 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td class="align-middle text-center"></td>
-                                        <td class="align-middle text-center"></td>
-                                        <td class="align-middle text-center"></td>
-                                        <td class="align-middle text-center"></td>
-                                        <td class="align-middle text-center"></td>
+                                        <?php
+                                        $SQL = "SELECT KodeSEO,page_url,PageTitle,Description,FokusKeyword,Content,WaktuBuat,WaktuUpdate FROM seo";
+                                        $DataSEO = mysqli_query($koneksi,$SQL);
+                                        $No=1;
+                                        foreach($DataSEO AS $s){ 
+                                        ?>
+                                        <tr>
+                                        <td class="align-middle text-center"><?php echo $No++; ?></td>
+                                        <td class="align-middle text-center"><?php echo $s['page_url']; ?></td>
+                                        <td class="align-middle text-center"><?php echo $s['PageTitle']; ?></td>
+                                        <td class="align-middle text-center"><?php echo $s['Description']; ?></td>
+                                        <td class="align-middle text-left"><?php echo $FK = $s['FokusKeyword']; ?></td>
                                         <td class="align-middle text-center"> 
-                                            <a href="" class="btn btn-primary btn-circle btn-sm edit-btn">
+                                            <a href="seo_edit.php?id=<?php echo $s['KodeSEO']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            <button class="btn btn-danger btn-circle btn-sm delete-btn">
+                                            <button class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" 
+                                                        data-id="<?php echo $s['KodeSEO']; ?>">
                                                 <i class="fas fa-trash"></i>
                                             </button>
+                                            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+                                                aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Anda Yakin Menghapus Data ini?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                <a id="deleteLink" class="btn btn-danger" href="./php/function_php/seo_delete.php">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
                                         </td>
+                                        </tr>
+                                        <?php
+                                        } 
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

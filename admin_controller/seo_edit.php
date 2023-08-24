@@ -16,6 +16,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <meta name="author" content=""> 
     <title>Siagamedika - SEO</title>
     <?php include('layout/css.php')?>
+    <?php include '../koneksi.php';?>
 </head>
 
 <body id="page-top">
@@ -63,10 +64,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $KodeSEO = $_GET['id'];
+                                        $SQL = "SELECT KodeSEO,PageTitle,Description,FokusKeyword,Content,WaktuBuat,WaktuUpdate FROM seo WHERE KodeSEO='$KodeSEO'";
+                                        $DataSEO = mysqli_query($koneksi,$SQL);
+                                        $s = mysqli_fetch_assoc($DataSEO); 
+                                        ?>
                                         <tr>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $s['PageTitle'] ?></td>
+                                            <td><?php echo $s['Des'] ?></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
