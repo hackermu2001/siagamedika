@@ -7,7 +7,7 @@ $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaK
     FROM produk p 
     INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
     INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
-    WHERE (1=1)";
+    WHERE (1=1) ";
 
 if (!empty($selectedCategory)) {
     $query .= " AND k.kode_kategori = '$selectedCategory'";
@@ -60,6 +60,9 @@ $result = mysqli_query($koneksi, $query);
         $keywords = "";
     }
     ?>
+     <title><?php echo $pageTitle; ?></title>
+    <meta content="<?php echo $description; ?>" name="description">
+    <meta content="<?php echo $keywords; ?>" name="keywords">
 
     <?php include('layout/header.php')?>
 
@@ -129,10 +132,14 @@ $result = mysqli_query($koneksi, $query);
                             $totalPages = ceil($totalProduk / $produkPerPage);
 
                             // Query untuk mendapatkan data produk dengan batasan pagination
-                            if (!empty($selectedCategory)) {
+                            //if (!empty($selectedCategory)) {
                                 // Add the category filter to the query
-                                $query .= " AND k.kode_kategori = '$selectedCategory'";
-                            }
+                                $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, 
+                                            b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, 
+                                            p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee FROM produk p INNER JOIN kategori k ON 
+                                            p.kode_kategori = k.kode_kategori INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND WHERE (1=1) AND 
+                                            k.kode_kategori = '$selectedCategory'";
+                            //}
                             
                             $query .= " LIMIT $offset, $produkPerPage";
 
