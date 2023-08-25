@@ -7,6 +7,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: login.php");
     exit;
 }
+
+// Check if the "id" parameter exists in the URL
+if (!isset($_GET["id"])) {
+    header("Location: seo.php"); // Redirect to an error page or any other desired action
+    exit;
+}
+
+// Preventing going back
+header("Cache-Control: private, no-store, max-age=0, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
 ?>
 <!DOCTYPE html>
 <html lang="en">

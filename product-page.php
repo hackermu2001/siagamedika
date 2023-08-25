@@ -5,9 +5,33 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Daftar Produk - PT. Siaga Medika Abadi Karya</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <?php
+    // Include your database connection
+    include 'koneksi.php';
+
+    // Define the page_url for Home
+    $homePageUrl = 'Halaman Produk';
+
+    // Query to retrieve data from the database based on the page_url for Home
+    $query = "SELECT PageTitle, Description, FokusKeyword FROM seo WHERE page_url = '$homePageUrl'";
+    $result = mysqli_query($koneksi, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $pageTitle = $row['PageTitle'];
+        $description = $row['Description'];
+        $keywords = $row['FokusKeyword'];
+    } else {
+        // Default values in case no data is retrieved from the database
+        $pageTitle = "Daftar Produk - PT. Siaga Medika Abadi Karya: Perusahaan Ritel Alat Kesehatan Terbaik di Makassar";
+        $description = "";
+        $keywords = "";
+    }
+    ?>
+
+    <title><?php echo $pageTitle; ?></title>
+    <meta content="<?php echo $description; ?>" name="description">
+    <meta content="<?php echo $keywords; ?>" name="keywords">
 
     <?php include('layout/header.php')?>
 
