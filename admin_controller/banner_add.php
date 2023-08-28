@@ -51,17 +51,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </div>
                         <div class="card-body">
                             <form>
-                            <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                            <input type="text" class="form-control" id="Title" placeholder="Isi Judul...">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                            <input type="Gambar" class="form-control" id="Gambar" placeholder="Isi Link Imgur...">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="Tautan" placeholder="Isi Tautan...">
-                                        </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                    <label for="">Judul</label>
+                                    <input type="text" class="form-control" id="Title" placeholder="Isi Judul...">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                    <label for="">Gambar</label>
+                                    <input type="Gambar" class="form-control" id="Gambar" placeholder="Isi Link Imgur...">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tautan</label>
+                                    <input type="text" class="form-control" id="Tautan" placeholder="Isi Tautan...">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Tanggal Berakhir</label>
+                                    <input type="date" class="form-control" title="Tanggal Akhir">
+                                </div>
                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                             </form>
                         </div>
