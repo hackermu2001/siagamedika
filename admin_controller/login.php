@@ -62,7 +62,7 @@ if (isset($_COOKIE["remember_username"])) {
                                             Login
                                         </button>
                                         <hr>
-                                        <a href="index.html" class="btn btn-success btn-user btn-block">
+                                        <a href="index.php" class="btn btn-success btn-user btn-block">
                                             <i class="fab fa-whatsapp fa-fw"></i> IT Team
                                         </a>
                                     </form>
