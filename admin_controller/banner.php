@@ -16,6 +16,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <meta name="author" content=""> 
     <title>Siagamedika - Banner</title>
     <?php include('layout/css.php')?>
+    <?php include '../koneksi.php';?>
 </head>
 
 <body id="page-top">
@@ -56,17 +57,26 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <tr>
                                         <th>No.</th>
                                         <th>Judul</th>
-                                        <th>Start Date</th>
+                                        <th>Link Imgur</th>
                                         <th>End Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $SQL = "SELECT KodeBanner,Judul,GambarURL,TautanURL,TglMulai,TglAkhir FROM banner";
+                                        $Banner = mysqli_query($koneksi,$SQL);
+                                        $No = 1;
+                                        foreach($Banner AS $b){
+                                        ?>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $No++  ?></td>
+                                            <td><?php echo $b['Judul']; ?></td>
+                                            <td><?php echo $b['GambarURL']; ?></td>
+                                            <td><?php echo $b['TglAkhir']; ?></td>
                                         </tr>
+                                        <?php 
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>

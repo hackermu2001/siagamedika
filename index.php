@@ -48,15 +48,23 @@
                     <div class="modal-content">
                     <div id="carouselExampleControls" class="carousel slide modal-body p-0" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                            <?php
+                            $SQL = "SELECT KodeBanner,Judul,GambarURL,TautanURL,TglMulai,TglAkhir FROM banner";
+                            $Banner = mysqli_query($koneksi,$SQL);
+                            $No = 1;
+                            foreach($Banner AS $b){ 
+                            ?>
+                            <div class="carousel-item">
                                 <div class="banner-container">
                                     <button type="button" class="btn-close close-right text-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                     <a href="index.php">
-                                        <img src="assets/img/image-cover.png" class="img-fluid" alt="...">
+                                        <img src="<?php echo $b['GambarURL']; ?>" class="img-fluid" alt="...">
                                     </a>
                                 </div>
                             </div>
-                           
+                            <?php 
+                            }
+                            ?>
                         </div>
                         <!-- Kontrol Carousel -->
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">

@@ -16,6 +16,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <meta name="author" content=""> 
     <title>Siagamedika - Banner</title>
     <?php include('layout/css.php')?>
+    <?php include('../koneksi.php')?>
 </head>
 
 <body id="page-top">
@@ -50,24 +51,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <h6 class="m-0 font-weight-bold text-primary">Banner Form</h6>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form action="php/function_php/banner_insert.php" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                     <label for="">Judul</label>
-                                    <input type="text" class="form-control" id="Title" placeholder="Isi Judul...">
+                                    <input type="text" class="form-control" name="Judul" placeholder="Isi Judul...">
                                     </div>
                                     <div class="form-group col-md-6">
                                     <label for="">Gambar</label>
-                                    <input type="Gambar" class="form-control" id="Gambar" placeholder="Isi Link Imgur...">
+                                    <input type="Gambar" class="form-control" name="GambarURL" placeholder="Isi Link Imgur...">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tautan</label>
-                                    <input type="text" class="form-control" id="Tautan" placeholder="Isi Tautan...">
+                                    <input type="text" class="form-control" name="TautanURL" placeholder="Isi Tautan...">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tanggal Berakhir</label>
-                                    <input type="date" class="form-control" title="Tanggal Akhir">
+                                    <input type="date" class="form-control" name="TglAkhir" title="Tanggal Akhir">
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                             </form>
