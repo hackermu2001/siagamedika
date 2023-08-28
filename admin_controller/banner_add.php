@@ -43,33 +43,27 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Banner</h1>
-                        <a href="banner_add.php" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Add Banner</a>
+                        <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Add Banner</a>
                     </div>
                     <div class="card">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Banner Data</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Banner Form</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered text-nowrap" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                        <th>No.</th>
-                                        <th>Judul</th>
-                                        <th>Start Date</th>
-                                        <th>End Date</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <form>
+                            <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                            <input type="text" class="form-control" id="Title" placeholder="Isi Judul...">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                            <input type="Gambar" class="form-control" id="Gambar" placeholder="Isi Link Imgur...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="Tautan" placeholder="Isi Tautan...">
+                                        </div>
+                                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>

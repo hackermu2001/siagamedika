@@ -43,7 +43,34 @@
     <?php include('layout/nav.php');?>
     
 
-   
+            <div class="modal fade" id="Banner" tabindex="-1" aria-labelledby="BannerLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                    <div id="carouselExampleControls" class="carousel slide modal-body p-0" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="banner-container">
+                                    <button type="button" class="btn-close close-right text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <a href="index.php">
+                                        <img src="assets/img/image-cover.png" class="img-fluid" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <!-- Kontrol Carousel -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
@@ -113,8 +140,8 @@
                  <div class="section-title">
                     <h2>Produk Terbaru</h2>
                 </div>
+
                 <div class="row gy-4">
-                    <!-- loop 4x -->
                     <?php
                         $HasilQuery = mysqli_query($koneksi, "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori,
                             p.SKU_BRND, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, 
@@ -145,9 +172,9 @@
                                 </ul>
                             </div>
                             <div class="product-content">
-                                <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
+                                <h3 class="title"><a href="#" title="<?php echo $p['NamaProduk']; ?>" data-bs-toggle="modal" data-bs-target="#product_<?php echo $p['KodeProduk']; ?>"><?php echo $p['NamaProduk']; ?></a></h3>
                                 <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
-                                <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20""><i class="bi bi-whatsapp"></i> Contact</a>
+                                <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20"><i class="bi bi-whatsapp"></i> Contact</a>
                             </div>
                         </div>
                         <?php include('layout/modal_prd_desc.php') ?>
@@ -479,6 +506,13 @@
           data: data
         })
       })
+      window.onload = function() {
+    // Setelah 10 detik, tampilkan modal
+    setTimeout(function() {
+      var modal = new bootstrap.Modal(document.getElementById('Banner'));
+      modal.show();
+    }, 5000); // 10000 milidetik (10 detik)
+  };
    </script>
 
 </body>
