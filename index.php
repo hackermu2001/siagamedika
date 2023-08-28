@@ -54,7 +54,7 @@
                             $No = 1;
                             foreach($Banner AS $b){ 
                             ?>
-                            <div class="carousel-item">
+                            <div class="carousel-item active">
                                 <div class="banner-container">
                                     <button type="button" class="btn-close close-right text-light" data-bs-dismiss="modal" aria-label="Close"></button>
                                     <a href="index.php">
