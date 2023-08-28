@@ -1,5 +1,5 @@
 <?php
-include './koneksi.php';
+include '../../../koneksi.php';
 
 $KodeBanner = $_GET['id'];
 
@@ -10,7 +10,7 @@ try{
 
     $stmt->execute();
 
-    header("location:banner.php");
+    header("location:../../banner.php");
 }
 catch(PDOException $e){
     echo "Errro saat mengahapus Data Banner : ".$e->getMessage();

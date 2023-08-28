@@ -43,42 +43,50 @@
     <?php include('layout/nav.php');?>
     
 
-            <div class="modal fade" id="Banner" tabindex="-1" aria-labelledby="BannerLabel" aria-hidden="true">
+    <?php
+    $SQL = "SELECT KodeBanner,Judul,GambarURL,TautanURL,TglMulai,TglAkhir FROM banner";
+    $Banner = mysqli_query($koneksi,$SQL);
+    $No = 1;
+
+    if (mysqli_num_rows($Banner) > 0) { // Cek apakah ada data dalam database
+        echo '<div class="modal fade" id="Banner" tabindex="-1" aria-labelledby="BannerLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                    <div id="carouselExampleControls" class="carousel slide modal-body p-0" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <?php
-                            $SQL = "SELECT KodeBanner,Judul,GambarURL,TautanURL,TglMulai,TglAkhir FROM banner";
-                            $Banner = mysqli_query($koneksi,$SQL);
-                            $No = 1;
-                            foreach($Banner AS $b){ 
-                            ?>
-                            <div class="carousel-item active">
-                                <div class="banner-container">
-                                    <button type="button" class="btn-close close-right text-light" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    <a href="index.php">
-                                        <img src="<?php echo $b['GambarURL']; ?>" class="img-fluid" alt="...">
-                                    </a>
-                                </div>
-                            </div>
-                            <?php 
-                            }
-                            ?>
+                        <div id="carouselExampleControls" class="carousel slide modal-body p-0" data-bs-ride="carousel">
+                            <div class="carousel-inner">';
+
+        $active = true; // Menandai apakah carousel-item pertama harus aktif
+        foreach($Banner AS $b){ 
+            $carouselClass = ($active) ? "carousel-item active" : "carousel-item";
+            echo '<div class="' . $carouselClass . '">
+                        <div class="banner-container">
+                            <button type="button" class="btn-close close-right text-light" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <a href="' . $b['TautanURL'] . '" target="_blank">
+                                <img src="' . $b['GambarURL'] . '" class="img-fluid" alt="...">
+                            </a>
                         </div>
-                        <!-- Kontrol Carousel -->
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                        </div>
-                    </div>
-                </div>
+                    </div>';
+            $active = false; // Setelah iterasi pertama, atur menjadi false
+        }
+
+        echo '</div>
+                <!-- Kontrol Carousel -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+        </div>
+    </div>';
+    } // Tutup if
+
+    ?>
+
+
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">

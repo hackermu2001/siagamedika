@@ -129,6 +129,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
     
     <?php include('layout/script.php') ?>
-    <script src="js/seo.js"></script>
+    <script src="js/seo.min.js"></script>
 </body>
 </html>
