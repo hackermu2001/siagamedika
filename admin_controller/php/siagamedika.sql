@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 24, 2023 at 09:59 AM
+-- Generation Time: Aug 29, 2023 at 06:49 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `baner`
+-- Table structure for table `banner`
 --
 
-CREATE TABLE `baner` (
+CREATE TABLE `banner` (
   `KodeBanner` int(11) NOT NULL,
   `Judul` varchar(250) NOT NULL,
   `GambarURL` text NOT NULL,
@@ -82,13 +82,19 @@ CREATE TABLE `ip_data` (
 --
 
 INSERT INTO `ip_data` (`date_access`, `ip`, `isp`, `city`, `country`) VALUES
+('2023-08-28', '125.162.208.26', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-20', '125.162.209.201', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-23', '125.162.210.116', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
+('2023-08-25', '125.162.210.57', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-22', '125.162.210.69', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-21', '125.162.210.81', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-24', '125.162.210.99', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
+('2023-08-28', '180.246.37.139', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-20', '2001:448a:7023:49e8:c9d:2406:c8ae:16cf', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
-('2023-08-19', '2001:448a:70b0:4a24:94e1:9d97:35c6:9270', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia');
+('2023-08-19', '2001:448a:70b0:4a24:94e1:9d97:35c6:9270', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
+('2023-08-26', '2001:448a:70b0:a97:b99a:2c04:843b:75d2', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
+('2023-08-28', '2001:448a:70b0:e541:2417:4d0f:d055:76ad', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
+('2023-08-28', '2001:448a:70b0:e541:d5be:96ee:94af:5861', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia');
 
 -- --------------------------------------------------------
 
@@ -173,13 +179,6 @@ CREATE TABLE `seo` (
   `WaktuUpdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
---
--- Dumping data for table `seo`
---
-
-INSERT INTO `seo` (`KodeSEO`, `page_url`, `PageTitle`, `Description`, `FokusKeyword`, `WaktuBuat`, `WaktuUpdate`) VALUES
-(25, 'Halaman Home', 'PT SiagaMedika Abadi Karya - Home', 'perusahaan retail alat kesehatan', 'Distributor alat kesehatan, Alat medis terbaik, Distributor peralatan kesehatan, Peralatan medis berkualitas, Alat kesehatan profesional, Supplier alat medis terpercaya, Peralatan kesehatan canggih, Distributor alat diagnosa, Alat medis modern, Distributor alat bedah', '2023-08-24 01:26:48', '2023-08-24 01:26:48');
-
 -- --------------------------------------------------------
 
 --
@@ -198,9 +197,9 @@ CREATE TABLE `user` (
 --
 
 --
--- Indexes for table `baner`
+-- Indexes for table `banner`
 --
-ALTER TABLE `baner`
+ALTER TABLE `banner`
   ADD PRIMARY KEY (`KodeBanner`);
 
 --
@@ -244,10 +243,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `baner`
+-- AUTO_INCREMENT for table `banner`
 --
-ALTER TABLE `baner`
-  MODIFY `KodeBanner` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `banner`
+  MODIFY `KodeBanner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -259,7 +258,7 @@ ALTER TABLE `produk`
 -- AUTO_INCREMENT for table `seo`
 --
 ALTER TABLE `seo`
-  MODIFY `KodeSEO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `KodeSEO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `user`
