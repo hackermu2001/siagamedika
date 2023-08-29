@@ -72,10 +72,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         ?>
                                         <tr>
                                         <td class="align-middle text-center"><?php echo $No++; ?></td>
-                                        <td class="align-middle text-left text-nowrap">
+                                        <td class="align-middle text-left text-wrap" style="width: 400px;">
                                             <ul class="list-unstyled">
                                                 <li class="list-unstyled">
-                                                    <?php echo $s['PageTitle']; ?>
+                                                    <b><?php echo $s['PageTitle']; ?></b>
                                                 </li>
                                                 <li class="list-unstyled">
                                                     <span class="badge badge-success"><?php echo $s['page_url']; ?></span>    
@@ -94,15 +94,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 echo $description;
                                             }
                                             ?>
-                                        </td>
-                                        <td class="align-middle text-left text-wrap">
+                                        </td> 
+                                        <td class="align-middle text-left text-nowrap">
                                             <?php
                                             $keywords = explode(', ', $s['FokusKeyword']); // Pisahkan keyword menjadi array
-                                            foreach ($keywords as $keyword) {
-                                                echo '<span class="badge badge-pill badge-primary">' . $keyword . '</span> ';
-                                            }
+                                            $numKeywords = count($keywords); // Hitung jumlah keyword
+
+                                            echo '<span class="badge badge-pill badge-primary">' . $keywords[0] . '</span>';
+                                            echo ' <span class="badge badge-pill badge-warning">+' . $numKeywords . '</span>';
                                             ?>
                                         </td>
+
                                         <td class="align-middle text-center"> 
                                             <a href="seo_edit.php?id=<?php echo $s['KodeSEO']; ?>" class="btn btn-primary btn-circle btn-sm edit-btn">
                                                 <i class="fas fa-pen"></i>
