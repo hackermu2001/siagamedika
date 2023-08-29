@@ -23,7 +23,7 @@
         $keywords = $row['FokusKeyword'];
     } else {
         // Default values in case no data is retrieved from the database
-        $pageTitle = "PT. Siaga Medika Abadi Karya: Perusahaan Ritel Alat Kesehatan Terbaik di Makassar";
+        $pageTitle = "Undefined!";
         $description = "";
         $keywords = "";
     }
