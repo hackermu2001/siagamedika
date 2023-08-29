@@ -18,4 +18,4 @@
 
   <!-- Template Main CSS File -->
   <link rel="stylesheet" href="assets/css/fontello.css">
-  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.min.css" rel="stylesheet">
