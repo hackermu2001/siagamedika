@@ -17,5 +17,5 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link rel="stylesheet" href="assets/css/fontello.css">
+  <link rel="stylesheet" href="assets/css/fontello.css"> 
   <link href="assets/css/style.min.css" rel="stylesheet">
