@@ -60,7 +60,7 @@ $result = mysqli_query($koneksi, $query);
         $keywords = "";
     }
     ?>
-     <title><?php echo $pageTitle; ?></title>
+    <title><?php echo $pageTitle; ?></title>
     <meta content="<?php echo $description; ?>" name="description">
     <meta content="<?php echo $keywords; ?>" name="keywords">
 

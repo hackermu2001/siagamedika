@@ -28,6 +28,9 @@
         $keywords = "";
     }
     ?>
+    <title><?php echo $pageTitle; ?></title>
+    <meta content="<?php echo $description; ?>" name="description">
+    <meta content="<?php echo $keywords; ?>" name="keywords">
     <?php include('layout/header.php')?>
 
 </head>

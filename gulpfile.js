@@ -6,7 +6,7 @@ const concat = require('gulp-concat');
 // Tugas untuk minifikasi CSS
 gulp.task('minify-css', () => {
     return gulp.src('assets/css/*.css')  // Mengubah path CSS
-        .pipe(concat('styles.min.css'))
+        .pipe(concat('style.min.css'))
         .pipe(cssmin())
         .pipe(gulp.dest('assets/css'));
 });
