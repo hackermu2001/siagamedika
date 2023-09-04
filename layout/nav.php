@@ -5,7 +5,7 @@
 
             <!-- <h1 class="logo me-auto"><a href="index.html">Medilab</a></h1> -->
             <!-- Uncomment below if you prefer to use an image logo -->
-            <a href="index.php" class="logo me-auto"><img src="assets/img/logo2.png" alt="" class="img-fluid"></a>
+            <a href="index.php" class="logo me-auto"><img src="assets/img/logo2.png" alt="logo" class="img-fluid"></a>
 
             <nav id="navbar" class="navbar order-last order-lg-0">
                 <ul>

@@ -37,11 +37,7 @@
 </head>
 
 <body>
-
-    <?php include('layout/topbar.php');?>
-    <?php include('layout/nav.php');?>
-
-    <?php
+<?php
     $SQL = "SELECT KodeBanner,Judul,GambarURL,TautanURL,TglMulai,TglAkhir FROM banner";
     $Banner = mysqli_query($koneksi,$SQL);
 
@@ -89,6 +85,8 @@
     <?php
     }
     ?>
+    <?php include('layout/topbar.php');?>
+    <?php include('layout/nav.php');?>
 
     
     <!-- ======= Hero Section ======= -->
@@ -101,7 +99,7 @@
     </section><!-- End Hero -->
 
     <main id="main">
-
+    
         <!-- ======= Why Us Section ======= -->
         <section id="why-us" class="why-us">
             <div class="container">
