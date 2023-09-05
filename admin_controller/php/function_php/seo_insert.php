@@ -16,7 +16,35 @@ if ($pageSelected == '1') {
 } elseif ($pageSelected == '2') {
     $pageText = 'Halaman Produk';
 } else {
-    $pageText = 'Undefined Page'; // Set a default value if needed
+    // Mengekstrak SKU_BRND dari pilihan yang dipilih
+    $SQLBrand = "SELECT SKU_BRND, NamaBrand FROM brand WHERE SKU_BRND = ?";
+    $stmtBrand = $koneksi->prepare($SQLBrand);
+    $stmtBrand->bind_param("s", $pageSelected);
+    $stmtBrand->execute();
+    $stmtBrand->bind_result($SKU_BRND, $NamaBrand);
+    $stmtBrand->store_result();
+
+    // Memeriksa apakah SKU_BRND ditemukan dalam database
+    if ($stmtBrand->num_rows > 0) {
+        $stmtBrand->fetch();
+        $pageText = "Halaman Brand : $SKU_BRND - $NamaBrand";
+    } else {
+        // Mengekstrak kode_kategori dari pilihan yang dipilih
+        $SQLCategory = "SELECT kode_kategori, NamaKategori FROM kategori WHERE kode_kategori = ?";
+        $stmtCategory = $koneksi->prepare($SQLCategory);
+        $stmtCategory->bind_param("s", $pageSelected);
+        $stmtCategory->execute();
+        $stmtCategory->bind_result($selectedKodeKategori, $NamaKategori);
+        $stmtCategory->store_result();
+
+        // Memeriksa apakah kode_kategori ditemukan dalam database
+        if ($stmtCategory->num_rows > 0) {
+            $stmtCategory->fetch();
+            $pageText = "Halaman Kategori : $selectedKodeKategori - $NamaKategori";
+        } else {
+            $pageText = 'Undefined Page';
+        }
+    }
 }
 
 try {

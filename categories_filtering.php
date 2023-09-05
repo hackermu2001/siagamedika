@@ -11,7 +11,7 @@ $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaK
 
 if (!empty($selectedCategory)) {
     $query .= " AND k.kode_kategori = '$selectedCategory'";
-}
+} 
 
 $targetKodeKategori = $_GET['category'];
 
@@ -36,14 +36,8 @@ $result = mysqli_query($koneksi, $query);
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <?php
-    // $KodeKategori = $_GET['category'];
-    // $SQLCategory = "SELECT kode_kategori,NamaKategori FROM kategori WHERE kode_kategori='$KodeKategori'";
-    // $Category = mysqli_query($koneksi, $SQLCategory);
-    // $k = mysqli_fetch_assoc($Category);
-
-    ?>
-    <title><?php echo $k['NamaKategori']; ?></title>
+    
+    <title>Undefined!</title>
     <meta content="<?php echo $description; ?>" name="description">
     <meta content="<?php echo $keywords; ?>" name="keywords">
 

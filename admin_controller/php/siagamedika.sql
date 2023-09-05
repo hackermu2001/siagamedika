@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 29, 2023 at 06:49 AM
+-- Generation Time: Sep 05, 2023 at 07:42 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -38,6 +38,13 @@ CREATE TABLE `banner` (
   `WaktuUpdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
+--
+-- Dumping data for table `banner`
+--
+
+INSERT INTO `banner` (`KodeBanner`, `Judul`, `GambarURL`, `TautanURL`, `TglMulai`, `TglAkhir`, `WaktuBuat`, `WaktuUpdate`) VALUES
+(12, 'Banner2', 'https://i.imgur.com/VcjUQBX.jpeg', 'https://imgur.com/gallery/mWQ4uPA', '2023-09-04', '2023-09-13', '2023-09-04 08:23:11', '2023-09-04 08:23:11');
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +66,7 @@ INSERT INTO `brand` (`SKU_BRND`, `NamaBrand`, `Tanggal`) VALUES
 ('BRND288', 'Serenity', '2023-08-13'),
 ('BRND571', 'FamilyDr', '2023-08-13'),
 ('BRND616', 'GEA', '2023-08-12'),
+('BRND701', 'Human Meditek', '2023-09-04'),
 ('BRND714', 'Solida', '2023-08-13'),
 ('BRND800', 'Bistos', '2023-08-11'),
 ('BRND903', 'Urilyzer', '2023-08-13');
@@ -82,6 +90,7 @@ CREATE TABLE `ip_data` (
 --
 
 INSERT INTO `ip_data` (`date_access`, `ip`, `isp`, `city`, `country`) VALUES
+('2023-08-31', '120.188.84.170', 'INDOSAT Internet Network Provider', 'East Java', 'Indonesia'),
 ('2023-08-28', '125.162.208.26', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-20', '125.162.209.201', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-23', '125.162.210.116', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
@@ -89,12 +98,15 @@ INSERT INTO `ip_data` (`date_access`, `ip`, `isp`, `city`, `country`) VALUES
 ('2023-08-22', '125.162.210.69', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-21', '125.162.210.81', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-24', '125.162.210.99', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
+('2023-09-04', '125.162.213.0', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
+('2023-08-29', '125.162.215.251', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-28', '180.246.37.139', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-20', '2001:448a:7023:49e8:c9d:2406:c8ae:16cf', 'PT Telekomunikasi Indonesia', 'South Sulawesi', 'Indonesia'),
 ('2023-08-19', '2001:448a:70b0:4a24:94e1:9d97:35c6:9270', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
 ('2023-08-26', '2001:448a:70b0:a97:b99a:2c04:843b:75d2', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
 ('2023-08-28', '2001:448a:70b0:e541:2417:4d0f:d055:76ad', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
-('2023-08-28', '2001:448a:70b0:e541:d5be:96ee:94af:5861', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia');
+('2023-08-28', '2001:448a:70b0:e541:d5be:96ee:94af:5861', 'PT Telekomunikasi Indonesia', 'Jakarta', 'Indonesia'),
+('2023-09-04', '27.111.44.6', 'PT. Inet Global Indo', 'Jakarta', 'Indonesia');
 
 -- --------------------------------------------------------
 
@@ -161,7 +173,10 @@ INSERT INTO `produk` (`KodeProduk`, `NamaProduk`, `kode_kategori`, `SKU_BRND`, `
 (81, 'Micropipette Fix / Acura 815 Fix Volume', 'CAT941', 'BRND174', 3099120, 'https://i.imgur.com/rfeE6j5.jpg', 'Merk : Socores – Switzerland<br />Type : Micropipette Socorex Fix/ Acura 815 Fix Volume<br /><br />Product advantages<br />• Slim ergonomic design and light weight<br />• Soft plunger activation<br />• JustipTM adjustable tip ejector* fitting most tips<br />• User calibration with integrated key<br />• Colour coded smartie cap<br />• Selection includes macropipette volumes<br />• Entirely autoclavable at 121°C<br /><br /><br />Volume = 1 μL,5 μL,10 μL,10Y μL,20 μL,25 μL,50 μL,100 μL,200 μL,250 μL,500 μL,1000 μL<br />Inaccuracy (E%) = < ± 2.0%,< ± 1.4%,< ± 0.7%,< ± 0.7%,< ± 0.75%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.7%,< ± 0.6%<br />Imprecision (CV%) = < 1.0%,< 1.0%,< 0.7%,< 0.8%,< 0.5%,< 0.6%,< 0.4%,< 0.3%,< 0.3%,< 0.4%,< 0.3%,< 0.2%<br />Tip style = Ultra 10 μL,Ultra 10 μL,Ultra 10 μL,200 μL,200 μL,200 μL,200 μL,200 μL,200 μL,1000 μL,1000 μL,1000 μL<br /><br />Produk ini telah terdaftar kedalam E-Katalog (LKPP)<br />Franko Jakarta<br />Harga diatas belum termasuk ongkos kirim dan biaya instalasi.', '', '', ''),
 (89, 'Doppler BT – 220 C Bistos Hand held Fetal Doppler', 'CAT885', 'BRND800', 1472000, 'https://i.imgur.com/9TNyWDW.jpg', 'Doppler BT – 220 C Bistos Hand held Fetal Doppler<br /><br />Rp 1.472.000<br /><br />Merk : Bistos<br />Type : BT – 220 C<br />Display : Mono, 2.4″ Color TFT LCD<br />Dimensions : Body 132 mm x 66 mm x 27 mm<br />: probe 162 mm x 29.5 mm x 27.3 mm<br />Utrasound Frequency :3 MHz<br />Ultrasound Intensity :10 mW/cm2 or less<br />Fetal Heart Rate Range : L:50-240 bpm (+/-2% or +/- 2bpm)<br />: C:30-240 bpm (+/- 2% or +/- 2bpm)<br />AST Function : Acoustic stimulator<br />Mother Heart Rate Range : 40-200 bpm (+/- 2% or +/- 2 bpm)<br />Body Fat Measurement* : BIA & Impedance of upper Half body<br />Audio Output :1.2W (built in speaker), 3.5 mm Phone jack<br />Computer Interface : Sound Card (BCM220)<br />Battery Life :3 hrs<br />Accessories :carrying case, disposable batteries (2 x 1.5V AA), gel (60ml)<br />Option :Rechargeable battery (NIMH 1.2V AA X2)Rechargeable USB Cable<br />color : white<br />PC Sofware :BCM-220 Record and play fetal heart sound (.wav format)<br /><br />Description<br /><br />Monitor your baby’s heart beat right from your home! – FDA Approved for Safe Use<br />HI-bebe is a pocket size Doppler for obstetricians, midwives and pregnat woman.<br /><br />High-sensitivity doppler probe (2/3 MHz available)<br />2.4 inch color TFT LCD display<br />Acoustic stimulator and waterproof probe<br />Body fat analysis<br />Mother HR function<br />Optional rechargeable battery<br /><br />Produk ini telah terdaftar kedalam E-Katalog (LKPP)<br />Franko Jakarta<br />Harga diatas belum termasuk ongkos kirim dan biaya instalasi.<br /><br />Untuk informasi lebih mengenai produk ini, silahkan klik Disini<br />https://drive.google.com/file/d/121hdrJ--6yoUo-yuK6hljjvgW0ffqHbQ/view?usp=sharing', '', '', ''),
 (90, 'Urilyzer Auto - automated urine test strip analyzer', 'CAT941', 'BRND903', 864603420, 'https://i.imgur.com/fZXvFmu.png', 'The Urilyzer® Auto is a newly designed fully-automated urine test strip analyzer introducing the pipetting technique in combination with a new measuring head to analyze the CombiScreen® 11 Auto urine test strip. In addition the system has a physical ­measurement cell module for determination of specific gravity, color and turbidity. The system is specifically designed to improve the accuracy and safety of urine test strip evaluation.', NULL, NULL, NULL),
-(97, 'FamilyDr AGM-513S set 25 Strip', 'CAT885', 'BRND571', 175000, 'https://i.imgur.com/UofS5Wc.png', 'FamilyDr AGM-513S di desain simpel dalam pengunaan sehingga memonitor gula darah menjadi lebih nyaman.\r\n\r\nSpesifikasi :\r\n- Sampel darah yang digunakan darah utuh kapiler dan vena.\r\n- Volume Sampel 0,5µℓ\r\n- Rentang pengukuran 20-600 mg/dL\r\n- Waktu pengukuran 5 detik\r\n- Kapasitas 500 memori\r\n- Manajemen Data Micro USB\r\n\r\nPerhatian :\r\nSebaiknya gunakan semua tes strip dalam 4 bulan setelah pembukaan pertama.\r\n\r\nIsi Paket Penjualan :\r\nAGM-513S Unit, 25 Strip, Lancing Device, Lancet, Batterai, Tas, Buku Manual, Kartu Garansi\r\n\r\nNomor Registrasi Alat Kesehatan :\r\n20101025181', 'https://www.tokopedia.com/siagamedikastore/familydr-agm-513s-set', 'https://www.blibli.com/p/familydr-agm-513s/ps--SID-60039-00059', 'https://shopee.co.id/FamilyDr-AGM-513S-set-i.399419659.6783396028?sp_atk=259356a3-3d6a-46c2-b10c-23defeb69a9d');
+(97, 'FamilyDr AGM-513S set 25 Strip', 'CAT885', 'BRND571', 175000, 'https://i.imgur.com/UofS5Wc.png', 'FamilyDr AGM-513S di desain simpel dalam pengunaan sehingga memonitor gula darah menjadi lebih nyaman.\r\n\r\nSpesifikasi :\r\n- Sampel darah yang digunakan darah utuh kapiler dan vena.\r\n- Volume Sampel 0,5µℓ\r\n- Rentang pengukuran 20-600 mg/dL\r\n- Waktu pengukuran 5 detik\r\n- Kapasitas 500 memori\r\n- Manajemen Data Micro USB\r\n\r\nPerhatian :\r\nSebaiknya gunakan semua tes strip dalam 4 bulan setelah pembukaan pertama.\r\n\r\nIsi Paket Penjualan :\r\nAGM-513S Unit, 25 Strip, Lancing Device, Lancet, Batterai, Tas, Buku Manual, Kartu Garansi\r\n\r\nNomor Registrasi Alat Kesehatan :\r\n20101025181', 'https://www.tokopedia.com/siagamedikastore/familydr-agm-513s-set', 'https://www.blibli.com/p/familydr-agm-513s/ps--SID-60039-00059', 'https://shopee.co.id/FamilyDr-AGM-513S-set-i.399419659.6783396028?sp_atk=259356a3-3d6a-46c2-b10c-23defeb69a9d'),
+(98, 'Head Lamp BT-410 Medical Head Lamp', 'CAT885', 'BRND800', 1274000, 'https://i.imgur.com/hf2s83Q.jpg', 'Head Lamp BT-410 Medical Head Lamp<br /><br />Rp 1.274.444<br /><br />Merk : Bistos<br />Type : BT-410<br /><br />Specification<br /><br />Extensive LED lifetime (more than 50,000 hours)<br />More than 4 hours of continuous use<br />loupe (3.5 times)<br />Illumination: 15,000 Ix (at 25 cm working distance)<br />Color Temperature: 6,000 Kelvin<br />Weight: 119g<br />Headband size: 534 -638 mm<br />Operation hour: 4 hours<br />Recharge up to: 800 times<br />Battery type: lithium-ion (built-in protected circuit module)<br /><br /><br />Description<br /><br />Features<br /><br />A head lamp with a 2-way adjustable headband – made from a durable, but yet comfortable plastic. It comes with a single sweat cover that snaps on and off for easy cleaning.<br />The top lamp with the fixed feature<br />2 batteries with a single charger, ready to be charged up.<br />3.5x loupe (optional use – you can use your own loupes or prescription eyewear without any problems).<br />An operator’s manual.<br />Bistos America’s dependable service (not that you’ll ever need it – our products are dependable)<br /><br />Produk ini telah terdaftar kedalam E-Katalog (LKPP)<br />Franko Jakarta<br />Harga diatas belum termasuk ongkos kirim dan biaya instalasi.<br /><br />Untuk informasi lebih mengenai produk ini, silahkan klik Disini :<br />https://drive.google.com/file/d/1sALieJd2W4BIkdgOJRXgICRM5AaVDzU2/view?usp=sharing', NULL, NULL, NULL),
+(99, 'Neo Back Correction Shoulder Belt JC-7003', 'CAT885', 'BRND701', 778000000, 'https://i.imgur.com/68i4PTT.jpg', 'Merk : HUMAN MEDITEK\r\nType : HMTS-30E\r\n\r\nFeatures:\r\nValidated for a wide range of instruments\r\nRecord keeping system\r\nExcellent load capacity\r\nLow cost per cycle\r\nEasy to install and to operate\r\nGentle on your instrument\r\n\r\n\r\nDescription\r\n\r\nHMTS-30E\r\nA compact design associated to the highest degree of flexibility define the HMTS-30E. By providing rapid cycles for all types of\r\ninstrument loads, this plasma sterilizer will be your solution for a quick turnaround of instruments in the operating rooms.\r\nLike the rest of the HMTS line of products, this model is easy to operate, gentle on your instruments and will satisfy all your\r\ndocumentation requirements. Validated for a wide range of medical devices, including endoscopes with long and narrow lumens,\r\nthe versality and flexibility of the HMTS-30E are unrivale.\r\nProduk ini telah terdaftar kedalam E-Katalog (LKPP)\r\nFranko Jakarta\r\nHarga diatas belum termasuk ongkos kirim dan biaya instalasi.\r\nUntuk informasi lebih mengenai produk ini, silahkan klik Disini :\r\nhttps://drive.google.com/file/d/1_nOaBPOaU7_ma0mYxqFcrnXlOp0DTNue/view?usp=sharing', '', '', ''),
+(100, 'Low Temp Plasma Sterilizer HMTS-80', 'CAT885', 'BRND701', 1300000000, 'https://i.imgur.com/4MNJeO7.jpg', 'Dimensions, Weight Size\r\n– Width : 750 mm\r\n– Height : 1670 mm\r\n– Depth : 835 mm\r\nWeight : 430 kg\r\nSterilization Chamber :\r\n• Total Volume : 80 L\r\n• Usable Volume : 71 L\r\n• Dimensions (W x H x D) : Ø 400mm x 650mm\r\n• Shelf Strength : 35 kg\r\n• Shelf Dimensions (W x D) : Upper : 380 mm x 635 mm\r\nLower : 260 mm x 635 mm\r\n\r\nProduk ini telah terdaftar kedalam E-Katalog (LKPP)\r\nFranko Jakarta\r\nHarga diatas belum termasuk ongkos kirim dan biaya instalasi.\r\n\r\nUntuk informasi lebih mengenai produk ini, silahkan klik Disini :\r\nhttps://drive.google.com/file/d/1sUG00D3XwSXK6GkBjXvbfCMH-eyrW5P9/view?usp=sharing', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -178,6 +193,14 @@ CREATE TABLE `seo` (
   `WaktuBuat` timestamp NOT NULL DEFAULT current_timestamp(),
   `WaktuUpdate` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `seo`
+--
+
+INSERT INTO `seo` (`KodeSEO`, `page_url`, `PageTitle`, `Description`, `FokusKeyword`, `WaktuBuat`, `WaktuUpdate`) VALUES
+(46, 'Halaman Home', 'PT. Siaga Medika Abadi Karya: Perusahaan Ritel Alat Kesehatan Terbaik di Makassar', 'PT Siagamedika Abadi Karya adalah perusahaan yang mengkhususkan diri dalam distribusi alat kesehatan berkualitas tinggi kepada berbagai lembaga medis dan fasilitas kesehatan. Sebagai salah satu distributor terkemuka di industri ini, kami berkomitmen untuk menyediakan solusi alat kesehatan yang inovatif dan canggih guna mendukung perawatan kesehatan', 'Distributor alat kesehatan, Alat medis terbaik, Distributor peralatan kesehatan, Peralatan medis berkualitas, Alat kesehatan profesional, Supplier alat medis terpercaya, Peralatan kesehatan canggih, Distributor alat diagnosa, Alat medis modern, Distributor alat bedah', '2023-08-29 13:28:48', '2023-08-29 13:28:48'),
+(47, 'Halaman Produk', 'Daftar Produk - PT. Siaga Medika Abadi Karya: Perusahaan Ritel Alat Kesehatan Terbaik di Makassar', 'PT Siagamedika Abadi Karya adalah perusahaan yang mengkhususkan diri dalam distribusi alat kesehatan berkualitas tinggi kepada berbagai lembaga medis dan fasilitas kesehatan. Sebagai salah satu distributor terkemuka di industri ini, kami berkomitmen untuk menyediakan solusi alat kesehatan yang inovatif dan canggih guna mendukung perawatan kesehatan', 'Distributor alat kesehatan, Alat medis terbaik, Peralatan kesehatan canggih, Distributor alat diagnosa, Alat medis modern, Distributor alat bedah', '2023-08-29 13:41:16', '2023-08-29 13:41:16');
 
 -- --------------------------------------------------------
 
@@ -246,19 +269,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `KodeBanner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `KodeBanner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `KodeProduk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `seo`
 --
 ALTER TABLE `seo`
-  MODIFY `KodeSEO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `KodeSEO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user`

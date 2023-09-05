@@ -51,6 +51,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <h6 class="m-0 font-weight-bold text-primary">Register SEO</h6>
                         </div>
                         <div class="card-body">
+                        <?php
+                            // Mendapatkan opsi yang sudah dipilih dari database atau form lainnya
+                            $selectedOptions = [];
+
+                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                // Misalnya, Anda menyimpan opsi yang sudah dipilih dalam $_POST['selected_options']
+                                if (isset($_POST['selected_options'])) {
+                                    $selectedOptions = $_POST['selected_options'];
+                                }
+                            }
+                            ?>
                             <form action="php/function_php/seo_insert.php" class="needs-validation" novalidate method="post">
                                     <div class="form-row">
                                         <div class="col-md-6 form-group">
@@ -86,23 +97,76 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 if (!$isProductPageExist) {
                                                     echo '<option value="2">Halaman Produk</option>'; 
                                                 }
-                                                
-                                                $SQLCategory = "SELECT kode_kategori,NamaKategori FROM kategori";
+                                                ?>
+
+                                                <?php
+                                                $SQLCategory = "SELECT kode_kategori, NamaKategori FROM kategori";
                                                 $Category = mysqli_query($koneksi, $SQLCategory);
-                                                foreach ($Category AS $k){
-                                                
-                                                    echo "<option value=".$k['kode_kategori']."> Halman Kategori : ".$k['NamaKategori']."</option>";
-                                                
-                                                } 
+
+                                                // Buat array untuk menyimpan opsi yang akan ditampilkan
+                                                $kategoriOptions = [];
+
+                                                foreach ($Category as $k) {
+                                                    $kode_kategori = $k['kode_kategori'];
+                                                    $NamaKategori = $k['NamaKategori'];
+                                                    $optionText = "Halaman Kategori : $kode_kategori - $NamaKategori";
+                                                    
+                                                    // Tambahkan opsi ke dalam array
+                                                    $kategoriOptions[$kode_kategori] = $optionText;
+                                                }
+
+                                                // Query untuk memeriksa apakah setiap opsi sudah ada di tabel seo
+                                                $sqlCheckCategory = "SELECT DISTINCT page_url FROM seo WHERE page_url IN ('" . implode("', '", array_values($kategoriOptions)) . "')";
+                                                $resultCheckCategory = mysqli_query($koneksi, $sqlCheckCategory);
+
+                                                // Buat array untuk menyimpan opsi yang telah ada di tabel seo
+                                                $existingCategories = [];
+
+                                                while ($row = mysqli_fetch_assoc($resultCheckCategory)) {
+                                                    $existingCategories[] = $row['page_url'];
+                                                }
+
+                                                // Tampilkan opsi yang belum ada di tabel seo
+                                                foreach ($kategoriOptions as $kode_kategori => $optionText) {
+                                                    if (!in_array($optionText, $existingCategories)) {
+                                                        echo "<option value='$kode_kategori'>$optionText</option>";
+                                                    }
+                                                }
                                                 ?>
+                                                
                                                 <?php
-                                                $SQLBrand = "SELECT SKU_BRND,NamaBrand FROM brand";
+                                                $SQLBrand = "SELECT SKU_BRND, NamaBrand FROM brand";
                                                 $Brand = mysqli_query($koneksi, $SQLBrand);
-                                                foreach($Brand AS $b){
-                                                ?>
-                                                <option value="<?php echo $b['SKU_BRND'] ?>">Halaman Brand : <?php echo $b['NamaBrand']; ?></option>
-                                                <?php
-                                                } 
+
+                                                // Buat array untuk menyimpan opsi yang akan ditampilkan
+                                                $brandOptions = [];
+
+                                                foreach ($Brand as $b) {
+                                                    $SKU_BRND = $b['SKU_BRND'];
+                                                    $NamaBrand = $b['NamaBrand'];
+                                                    $optionText = "Halaman Brand : $SKU_BRND - $NamaBrand";
+                                                    
+                                                    // Tambahkan opsi ke dalam array
+                                                    $brandOptions[$SKU_BRND] = $optionText;
+                                                }
+
+                                                // Query untuk memeriksa apakah setiap opsi sudah ada di tabel seo
+                                                $sqlCheckBrand = "SELECT DISTINCT page_url FROM seo WHERE page_url IN ('" . implode("', '", array_values($brandOptions)) . "')";
+                                                $resultCheckBrand = mysqli_query($koneksi, $sqlCheckBrand);
+
+                                                // Buat array untuk menyimpan opsi yang telah ada di tabel seo
+                                                $existingBrands = [];
+
+                                                while ($row = mysqli_fetch_assoc($resultCheckBrand)) {
+                                                    $existingBrands[] = $row['page_url'];
+                                                }
+
+                                                // Tampilkan opsi yang belum ada di tabel seo
+                                                foreach ($brandOptions as $SKU_BRND => $optionText) {
+                                                    if (!in_array($optionText, $existingBrands)) {
+                                                        echo "<option value='$SKU_BRND'>$optionText</option>";
+                                                    }
+                                                }
                                                 ?>
                                             </select>
 

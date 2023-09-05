@@ -17,7 +17,7 @@
     if (!$selectedBrand) {
         header("Location: product-page.php");
         exit(); // Make sure to exit after redirection
-    }
+    } 
     $targetSKU_BRND = $_GET['brand'];
 
     // Query to count the total number of products associated with the specified brand
