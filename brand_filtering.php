@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    
     <title>Brand Filtering</title>
     <meta content="<?php echo $description; ?>" name="description">
     <meta content="<?php echo $keywords; ?>" name="keywords">

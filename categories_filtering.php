@@ -36,7 +36,14 @@ $result = mysqli_query($koneksi, $query);
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>categories_filtering</title>
+    <?php
+    // $KodeKategori = $_GET['category'];
+    // $SQLCategory = "SELECT kode_kategori,NamaKategori FROM kategori WHERE kode_kategori='$KodeKategori'";
+    // $Category = mysqli_query($koneksi, $SQLCategory);
+    // $k = mysqli_fetch_assoc($Category);
+
+    ?>
+    <title><?php echo $k['NamaKategori']; ?></title>
     <meta content="<?php echo $description; ?>" name="description">
     <meta content="<?php echo $keywords; ?>" name="keywords">
 

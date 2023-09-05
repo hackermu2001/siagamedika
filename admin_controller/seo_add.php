@@ -86,6 +86,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 if (!$isProductPageExist) {
                                                     echo '<option value="2">Halaman Produk</option>'; 
                                                 }
+                                                
+                                                $SQLCategory = "SELECT kode_kategori,NamaKategori FROM kategori";
+                                                $Category = mysqli_query($koneksi, $SQLCategory);
+                                                foreach ($Category AS $k){
+                                                
+                                                    echo "<option value=".$k['kode_kategori']."> Halman Kategori : ".$k['NamaKategori']."</option>";
+                                                
+                                                } 
+                                                ?>
+                                                <?php
+                                                $SQLBrand = "SELECT SKU_BRND,NamaBrand FROM brand";
+                                                $Brand = mysqli_query($koneksi, $SQLBrand);
+                                                foreach($Brand AS $b){
+                                                ?>
+                                                <option value="<?php echo $b['SKU_BRND'] ?>">Halaman Brand : <?php echo $b['NamaBrand']; ?></option>
+                                                <?php
+                                                } 
                                                 ?>
                                             </select>
 

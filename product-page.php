@@ -15,13 +15,15 @@
     // Query to retrieve data from the database based on the page_url for Home
     $query = "SELECT PageTitle, Description, FokusKeyword FROM seo WHERE page_url = '$homePageUrl'";
     $result = mysqli_query($koneksi, $query);
-
+    
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $pageTitle = $row['PageTitle'];
         $description = $row['Description'];
         $keywords = $row['FokusKeyword'];
-    } else {
+    }
+
+    else{
         // Default values in case no data is retrieved from the database
         $pageTitle = "Undefined!";
         $description = "";
