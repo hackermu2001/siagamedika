@@ -84,7 +84,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                     echo '<option value="1">Halaman Home</option>';
                                                 }
                                                 if (!$isProductPageExist) {
-                                                    echo '<option value="2">Halaman Produk</option>';
+                                                    echo '<option value="2">Halaman Produk</option>'; 
                                                 }
                                                 ?>
                                             </select>

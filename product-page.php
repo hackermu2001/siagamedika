@@ -144,7 +144,7 @@
                             } else {
                                 echo '<center> <span class="m-0 my-5">Tidak ada produk ditemukan.</span> </center>';
                             }
-                            ?>
+                            ?> 
                                                            
                             <div class="product-pagination d-flex justify-content-center">
                                 <ul>
