@@ -2089,11 +2089,11 @@ section.blog-content{
   color: #1977cc;
 }
 
-#footer .footer-newsletter {
+#footer .footer-search {
   font-size: 15px;
 }
 
-#footer .footer-newsletter h4 {
+#footer .footer-search h4 {
   font-size: 16px;
   font-weight: bold;
   color: #444444;
@@ -2101,7 +2101,7 @@ section.blog-content{
   padding-bottom: 12px;
 }
 
-#footer .footer-newsletter form {
+#footer .footer-search form {
   margin-top: 30px;
   background: #fff;
   padding: 6px 10px;
@@ -2111,13 +2111,13 @@ section.blog-content{
   border: 1px solid #bfdcf7;
 }
 
-#footer .footer-newsletter form input[type=email] {
+#footer .footer-search form input[type=text] {
   border: 0;
   padding: 4px 8px;
   width: calc(100% - 100px);
 }
 
-#footer .footer-newsletter form input[type=submit] {
+#footer .footer-search form input[type=submit] {
   position: absolute;
   top: 0;
   right: 0;
@@ -2132,7 +2132,7 @@ section.blog-content{
   border-radius: 50px;
 }
 
-#footer .footer-newsletter form input[type=submit]:hover {
+#footer .footer-search form input[type=submit]:hover {
   background: #1c84e3;
 }
 

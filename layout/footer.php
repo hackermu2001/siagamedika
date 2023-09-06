@@ -47,11 +47,11 @@ include 'koneksi.php';
                 </ul>
             </div>
 
-            <div class="col-lg-4 col-md-6 footer-newsletter">
-                <h4>Join Our Newsletter</h4>
-                <p>Join our newsletter and stay updated with Siaga Medika!</p>
+            <div class="col-lg-4 col-md-6 footer-search">
+                <h4>Search Our Product</h4>
+                <p>Join our #Campaign and stay updated with Siaga Medika!</p>
                 <form action="" method="post">
-                    <input type="email" name="email"><input type="submit" value="Subscribe">
+                    <input type="text" name="text"><input type="submit" value="Search">
                 </form>
             </div>
 

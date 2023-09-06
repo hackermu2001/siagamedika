@@ -1,3 +1,14 @@
+<?php
+// Contoh teks yang mengandung tautan
+$keteranganProduk = nl2br($p['Keterangan']);
+
+// Temukan tautan dalam teks dan ubah menjadi tautan HTML
+$keteranganProduk = preg_replace(
+    '/(https?:\/\/[^\s]+)/',
+    '<a href="$1" target="_blank">$1</a>',
+    $keteranganProduk
+);
+?>
 <!-- Modal -->
 <div class="product-box">
         <div class="modal fade" id="product_<?php echo $p['KodeProduk']; ?>" tabindex="-1" aria-labelledby="product_<?php echo $p['KodeProduk']; ?>Label" aria-hidden="true" data-bs-target="#staticBackdrop">
@@ -12,7 +23,7 @@
                 <div class="col-md-6 col-12 content">
                     <h3 class="title"><?php echo $p['NamaProduk']; ?></h3>
                     <div class="price"><?php echo "Rp ".number_format($p['Harga'],0,',','.'); ?></div>
-                    <div class="description"><?php echo nl2br($p['Keterangan']); ?></div>
+                    <div class="description"><?php echo $keteranganProduk; ?></div>
                     <div class="prod-list-item">
                         <span>Connect to us :</span>
                         <ul class="product-social">
