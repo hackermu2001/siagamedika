@@ -1,19 +1,53 @@
-<?php
-include('koneksi.php');
+<!DOCTYPE html>
+<html lang="en">
 
-$selectedCategory = isset($_GET['category']) ? $_GET['category'] : '';
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <?php
+    include('koneksi.php');
 
-$query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
-    FROM produk p 
-    INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
-    INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
-    WHERE (1=1) ";
+    // 1. Periksa apakah parameter "category" telah didefinisikan di URL
+    if (isset($_GET['category'])) {
+        $selectedCategory = $_GET['category'];
 
-if (!empty($selectedCategory)) {
-    $query .= " AND k.kode_kategori = '$selectedCategory'";
-} 
+        // 2. Gunakan nilai dari parameter "category" untuk mencari data SEO yang sesuai dari database
+        $sqlSeo = "SELECT PageTitle, Description, FokusKeyword FROM seo WHERE page_url LIKE ?";
+        $stmt = mysqli_prepare($koneksi, $sqlSeo);
+        $param = "%Halaman Kategori : $selectedCategory%";
+        mysqli_stmt_bind_param($stmt, 's', $param);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $pageTitle, $description, $keywords);
+        
+        // 3. Tampilkan data SEO tersebut di dalam elemen <title> dan dalam elemen <meta>
+        if (mysqli_stmt_fetch($stmt)) {
+            // Mengganti judul halaman menjadi PageTitle jika PageTitle tidak kosong, jika kosong, gunakan "Undefined!"
+            echo '<title>' . (!empty($pageTitle) ? $pageTitle : 'Undefined!') . '</title>';
+            echo '<meta content="' . $description . '" name="description">';
+            echo '<meta content="' . $keywords . '" name="keywords">';
+        } else {
+            // Jika data SEO tidak ditemukan, tampilkan "Undefined!" untuk judul halaman
+            echo '<title>Undefined!</title>';
+            // Anda dapat memutuskan apakah ingin menggunakan deskripsi dan kata kunci yang sama atau kosong
+            echo '<meta content="" name="description">';
+            echo '<meta content="" name="keywords">';
+        }
+        mysqli_stmt_close($stmt);
+    }
 
-$targetKodeKategori = $_GET['category'];
+    $selectedCategory = isset($_GET['category']) ? $_GET['category'] : '';
+
+    $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
+        FROM produk p 
+        INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
+        INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
+        WHERE (1=1) ";
+
+    if (!empty($selectedCategory)) {
+        $query .= " AND k.kode_kategori = '$selectedCategory'";
+    } 
+
+    $targetKodeKategori = $_GET['category'];
 
     // Query to count the total number of products in the specified category
     $queryBarangKategori = "SELECT COUNT(*) as total_barangKategori FROM produk WHERE kode_kategori = '$targetKodeKategori'";
@@ -27,20 +61,8 @@ $targetKodeKategori = $_GET['category'];
     $totalBarangKategoriRow = mysqli_fetch_assoc($resultBarangKategori);
     $totalBarangKategori = $totalBarangKategoriRow['total_barangKategori'];
 
-$result = mysqli_query($koneksi, $query);
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    
-    <title>Undefined!</title>
-    <meta content="<?php echo $description; ?>" name="description">
-    <meta content="<?php echo $keywords; ?>" name="keywords">
-
+    $result = mysqli_query($koneksi, $query);
+    ?>
     <?php include('layout/header.php')?>
 
 </head>

@@ -5,9 +5,40 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     
-    <title>Brand Filtering</title>
-    <meta content="<?php echo $description; ?>" name="description">
-    <meta content="<?php echo $keywords; ?>" name="keywords">
+    <?php
+    include('koneksi.php');
+
+    // 1. Periksa apakah parameter "brand" telah didefinisikan di URL
+    if (isset($_GET['brand'])) {
+        $selectedBrand = $_GET['brand'];
+
+        // 2. Gunakan nilai dari parameter "brand" untuk mencari data SEO yang sesuai dari database
+        $sqlSeo = "SELECT PageTitle, Description, FokusKeyword FROM seo WHERE page_url LIKE ?";
+        $stmt = mysqli_prepare($koneksi, $sqlSeo);
+        $param = "%Halaman Brand : $selectedBrand%";
+        mysqli_stmt_bind_param($stmt, 's', $param);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_result($stmt, $pageTitle, $description, $keywords);
+        
+        // 3. Tampilkan data SEO tersebut di dalam elemen <title> dan dalam elemen <meta>
+        if (mysqli_stmt_fetch($stmt)) {
+            // Mengganti judul halaman menjadi PageTitle jika PageTitle tidak kosong, jika kosong, gunakan "Undefined!"
+            echo '<title>' . (!empty($pageTitle) ? $pageTitle : 'Undefined!') . '</title>';
+            echo '<meta content="' . $description . '" name="description">';
+            echo '<meta content="' . $keywords . '" name="keywords">';
+        } else {
+            // Jika data SEO tidak ditemukan, tampilkan "Undefined!" untuk judul halaman
+            echo '<title>Undefined!</title>';
+            // Anda dapat memutuskan apakah ingin menggunakan deskripsi dan kata kunci yang sama atau kosong
+            echo '<meta content="" name="description">';
+            echo '<meta content="" name="keywords">';
+        }
+            mysqli_stmt_close($stmt);
+        }
+
+    $selectedBrand = isset($_GET['brand']) ? $_GET['brand'] : '';
+?>
+    
     <?php include('layout/header.php')?>
 </head>
 
