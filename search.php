@@ -114,6 +114,7 @@ $query .= " ORDER BY p.KodeProduk DESC";
                             <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&text=Halo,%20apakah%20Stock%20dari%20<?php echo $p['NamaProduk'];  ?>%20ready%20?%20" target="_blank"><i class="bi bi-whatsapp"></i> Contact</a>
                         </div>
                     </div>
+                    <?php include('layout/modal_prd_desc.php')?>
                 </div>
                 <?php
             }
