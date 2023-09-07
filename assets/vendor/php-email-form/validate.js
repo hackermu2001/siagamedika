@@ -12,27 +12,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let formData = new FormData(form);
 
-    fetch(form.getAttribute('action'), {
-      method: 'POST',
-      body: formData,
-      headers: { 'X-Requested-With': 'XMLHttpRequest' },
-    })
-      .then(response => {
-        if (response.ok) {
-          loadingMessage.classList.remove('d-block'); // Hide loading message
-          successMessage.textContent = "Message has been sent successfully.";
-          successMessage.classList.add('d-block');
-          form.reset(); // Reset the form fields
+    // Ambil nilai dari formulir
+    let name = formData.get('name');
+    let senderMail = formData.get('senderMail');
+    let subject = formData.get('subject');
+    let message = formData.get('message');
 
-          // Reload the page after a short delay
-          setTimeout(function () {
-            location.reload();
-          }, 1000); // Delay in milliseconds before reloading (3 seconds in this example)
-        } else {
-          loadingMessage.classList.remove('d-block'); // Hide loading message
-          errorMessage.innerHTML = "An error occurred while sending the email.";
-          errorMessage.classList.add('d-block');
-        }
-      });
+    // Nomor WhatsApp penerima
+    let phoneNumber = '6285341746323'; // Ganti dengan nomor tujuan Anda
+
+    // Pesan yang akan dikirimkan
+    let whatsappMessage = `Nama: ${name}\nEmail: ${senderMail}\nSubject: ${subject}\nPesan: ${message}`;
+
+    // URL untuk mengirim pesan WhatsApp
+    let url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(whatsappMessage)}`;
+
+    // Buka URL WhatsApp di tab baru
+    window.open(url, '_blank');
+
+    // Tampilkan pesan sukses atau reset formulir jika diperlukan
+    loadingMessage.classList.remove('d-block'); // Hide loading message
+    successMessage.textContent = "Message has been sent successfully.";
+    successMessage.classList.add('d-block');
+    form.reset(); // Reset the form fields
   });
 });
