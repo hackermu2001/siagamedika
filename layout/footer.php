@@ -49,7 +49,7 @@ include 'koneksi.php';
 
             <div class="col-lg-4 col-md-6 footer-search">
                 <h4>Search Our Product</h4>
-                <p>Join our #Campaign and stay updated with Siaga Medika!</p>
+                <p>Temukan produk kesehatan terbaik di Siagamedika dan jaga kesehatan Anda. Cari sekarang!</p>
                 <form action="" method="post">
                     <input type="text" name="text"><input type="submit" value="Search">
                 </form>

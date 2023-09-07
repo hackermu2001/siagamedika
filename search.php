@@ -33,35 +33,38 @@
             </div>
         </section>
         <!-- End Breadcrumbs Section -->
-        <section class="blog-post">
+        <section class="product-page">
             <div class="container">
-                     <!-- Post content-->
-                     <article>
-                         <!-- Post header-->
-                         <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
-                            <!-- Post categories-->
-                            <a class="badge tag-teal text-decoration-none link-light" href="#!">Web Design</a>
-                            <a class="badge tag-teal text-decoration-none link-light" href="#!">Freebies</a>
-                        </header>
-                        <!-- Post content-->
-                        <section class="mb-3 blog-content">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, accusantium voluptate molestias ratione vero quos, atque deserunt ipsam, ut odio saepe. Voluptas consequatur exercitationem placeat provident voluptate neque deleniti tempora.</p>
-                        </section>
-                        <div class="share-list">
-                            <span>Share:</span>
-                            <ul class="social-list">
-								<li><a class="facebook" href="#"><i class="bi-facebook"></i></a></li>
-								<li><a class="twitter" href="#"><i class="bi-twitter"></i></a></li>
-								<li><a class="dribble" href="#"><i class="bi-whatsapp"></i></a></li>
-								<li><a class="google" href="#"><i class="bi-line"></i></a></li>
-								<li><a class="pinterest" href="#"><i class="bi-link"></i></a></li>
-							</ul>
+                <div class="search-container_searchpage border border-primary-subtle">
+                    <input type="text" id="search" placeholder="Cari Barang disini..." />
+                    <button id="search-button"><i class="fas fa-search me-2"></i>Search</button>
+                </div>
+                <div class="row gy-4 my-3">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="product-grid"> 
+                            <div class="product-image">
+                                <a href="" class="image" data-bs-toggle="modal" data-bs-target="#product_100">
+                                    <img src="https://i.imgur.com/4MNJeO7.jpg" class="img-fluid" style="height: 250px;" alt="">
+                                </a>
+                                <ul class="product-links">
+                                                                                                                                                                                </ul>
+                            </div>
+                            <div class="product-content">
+                                <h3 class="title"><a href="#" title="Low Temp Plasma Sterilizer HMTS-80" data-bs-toggle="modal" data-bs-target="#product_100">Low Temp Plasma Sterilizer HMTS-80</a></h3>
+                                <div class="price">Rp 1.300.000.000</div>
+                                <a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=6285341746323&amp;text=Halo,%20apakah%20Stock%20dari%20Low Temp Plasma Sterilizer HMTS-80%20ready%20?%20" target="_blank"><i class="bi bi-whatsapp"></i> Contact</a>
+                            </div>
                         </div>
-                    </article>
+                    </div>
+                </div>
+                <div class="product-pagination d-flex justify-content-center">
+                    <ul>
+                        <li><a href=""><i class="bi bi-arrow-left"></i></a></li>        
+                        <li><a href="" class="active">1</a></li>
+                        <li><a href="" class="">2</a></li>
+                        <li><a href=""><i class="bi bi-arrow-right"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </section>
        
