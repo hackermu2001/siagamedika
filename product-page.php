@@ -171,10 +171,6 @@
                                     <?php } ?>
                                 </ul>
                             </div>
-
-
-
-
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-5">
