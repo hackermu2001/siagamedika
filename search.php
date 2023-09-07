@@ -43,7 +43,7 @@
                         <button id="search-button" type="submit"><i class="fas fa-search me-2"></i>Search</button>
                     </form>
                 </div>
-                <div class="row gy-4 my-3">
+                <div id="search-results" class="row gy-4 my-3">
                         <?php
                             $produkPerPage = 12; // Jumlah produk per halaman
                             $currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Halaman saat ini
@@ -59,28 +59,14 @@
 
                             $totalPages = ceil($totalProduk / $produkPerPage); // Hitung total halaman
 
-                            // Periksa apakah ada kata kunci pencarian yang dikirimkan melalui URL
-                            if (isset($_GET['q'])) {
-                                $searchKeyword = $_GET['q'];
-
-                                // Query untuk pencarian produk berdasarkan kata kunci
-                                $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
-                                    FROM produk p 
-                                    INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
-                                    INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
-                                    WHERE p.NamaProduk LIKE '%$searchKeyword%'
-                                    ORDER BY p.KodeProduk DESC 
-                                    LIMIT $offset, $produkPerPage";
-                            } else {
-                                // Query untuk mendapatkan data produk tanpa pencarian
-                                $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
-                                    FROM produk p 
-                                    INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
-                                    INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
-                                    ORDER BY p.KodeProduk DESC 
-                                    LIMIT $offset, $produkPerPage";
-                            }
-
+                            // Query untuk mendapatkan data produk dengan batasan pagination
+                            $query = "SELECT p.KodeProduk AS KodeProduk, p.NamaProduk AS NamaProduk, k.NamaKategori AS NamaKategori, b.NamaBrand AS NamaBrand, p.Harga AS Harga, p.Gambar AS Gambar, p.Keterangan AS Keterangan, p.Tokopedia AS Tokopedia, p.Blibli AS Blibli, p.Shopee AS Shopee 
+                            FROM produk p 
+                            INNER JOIN kategori k ON p.kode_kategori = k.kode_kategori 
+                            INNER JOIN brand b ON p.SKU_BRND = b.SKU_BRND 
+                            WHERE (1=1) 
+                            ORDER BY p.KodeProduk DESC 
+                            LIMIT $offset, $produkPerPage";
                 
 
                             $result = mysqli_query($koneksi, $query);
@@ -122,31 +108,30 @@
                                 echo '<center> <span class="m-0 my-5">Tidak ada produk ditemukan.</span> </center>';
                             }
                             ?> 
-                            <?php if (mysqli_num_rows($result) > 0) { ?>
-                                <div class="product-pagination d-flex justify-content-center">
-                                    <ul>
-                                        <?php if ($currentPage > 1) { ?>
-                                            <li><a href="?q=<?php echo $searchKeyword; ?>&page=<?php echo $currentPage - 1; ?>"><i class="bi bi-arrow-left"></i></a></li>
-                                        <?php } ?>
+                                                           
+                            <div class="product-pagination d-flex justify-content-center">
+                                <ul>
+                                    <?php if ($currentPage > 1) { ?>
+                                        <li><a href="?page=<?php echo $currentPage - 1; ?>"><i class="bi bi-arrow-left"></i></a></li>
+                                    <?php } ?>
 
-                                        <?php
-                                        // Tentukan nomor halaman pertama dan terakhir yang akan ditampilkan
-                                        $firstPage = max(1, $currentPage - 1);
-                                        $lastPage = min($totalPages, $currentPage + 1);
+                                    <?php
+                                    // Tentukan nomor halaman pertama dan terakhir yang akan ditampilkan
+                                    $firstPage = max(1, $currentPage - 1);
+                                    $lastPage = min($totalPages, $currentPage + 1);
 
-                                        // Tampilkan tautan halaman
-                                        for ($page = $firstPage; $page <= $lastPage; $page++) {
-                                            $isActive = $page == $currentPage ? 'active' : '';
-                                        ?>
-                                            <li><a href="?q=<?php echo $searchKeyword; ?>&page=<?php echo $page; ?>" class="<?php echo $isActive; ?>"><?php echo $page; ?></a></li>
-                                        <?php } ?>
+                                    // Tampilkan tautan halaman
+                                    for ($page = $firstPage; $page <= $lastPage; $page++) {
+                                        $isActive = $page == $currentPage ? 'active' : '';
+                                    ?>
+                                        <li><a href="?page=<?php echo $page; ?>" class="<?php echo $isActive; ?>"><?php echo $page; ?></a></li>
+                                    <?php } ?>
 
-                                        <?php if ($currentPage < $totalPages) { ?>
-                                            <li><a href="?q=<?php echo $searchKeyword; ?>&page=<?php echo $currentPage + 1; ?>"><i class="bi bi-arrow-right"></i></a></li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
-                            <?php } ?>
+                                    <?php if ($currentPage < $totalPages) { ?>
+                                        <li><a href="?page=<?php echo $currentPage + 1; ?>"><i class="bi bi-arrow-right"></i></a></li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
                 </div>
             </div>
         </section>
@@ -155,7 +140,28 @@
 
     <?php include('layout/footer.php')?>
     <?php include('layout/script.php')?>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    // Tangkap perubahan pada input pencarian
+    $('#search').on('input', function() {
+        // Ambil kata kunci pencarian
+        var searchKeyword = $(this).val();
+
+        // Kirim permintaan AJAX ke search.php dengan kata kunci pencarian
+        $.ajax({
+            type: 'GET',
+            url: 'search.php',
+            data: { q: searchKeyword },
+            success: function(response) {
+                // Tampilkan hasil pencarian ke dalam div atau elemen lainnya
+                $('#search-results').html(response);
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>
