@@ -95,10 +95,10 @@
             <h1 class="text-primary-emphasis">Welcome to PT Siaga Medika</h1>
             <h2>Perusahaan Ritel Alat Kesehatan Terbaik di Makassar</h2>
             <!-- <a href="#about" class="btn-get-started scrollto">Get Started</a> -->
-            <div class="search-container mt-3">
-                <input type="text" id="search" placeholder="Cari Barang disini..." />
+            <form method="get" action="search.php" class="search-container mt-3">
+                <input type="text" id="search" name="q" placeholder="Cari Barang disini..." />
                 <button id="search-button"><i class="fas fa-search me-2"></i>Search</button>
-            </div>
+            </form>
         </div>
     </section><!-- End Hero -->
 

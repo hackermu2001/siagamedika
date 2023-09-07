@@ -66,7 +66,7 @@ $query .= " ORDER BY p.KodeProduk DESC";
             <div class="container">
                 <div class="search-container_searchpage border border-primary-subtle">
                     <form method="GET" action="search.php">
-                        <input type="text" id="search" name="q" placeholder="Cari Barang disini..." />
+                        <input type="text" id="search" name="q" placeholder="Cari Barang disini..." value="<?php echo $searchQuery; ?>" />
                         <button id="search-button" type="submit"><i class="fas fa-search me-2"></i>Search</button>
                     </form>
                 </div>
