@@ -11,7 +11,7 @@ gulp.task('minify-css', () => {
         .pipe(gulp.dest('assets/css'));
 });
 
-// Tugas untuk minifikasi JavaScript
+// Tugas untuk minifikasi JavaScript di folder assets/js
 gulp.task('minify-js', () => {
     return gulp.src('assets/js/*.js')  // Mengubah path JavaScript
         .pipe(concat('main.min.js'))
@@ -19,5 +19,13 @@ gulp.task('minify-js', () => {
         .pipe(gulp.dest('assets/js'));
 });
 
+// Tugas untuk minifikasi JavaScript di folder vendor/php-wa-form
+gulp.task('minify-php-wa-form-js', () => {
+    return gulp.src('assets/vendor/php-wa-form/*.js')  // Ubah path ke folder vendor/php-wa-form
+        .pipe(concat('validate.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('assets/vendor/php-wa-form'));
+});
+
 // Tugas default
-gulp.task('default', gulp.series('minify-css', 'minify-js'));
+gulp.task('default', gulp.series('minify-css', 'minify-js', 'minify-php-wa-form-js'));
