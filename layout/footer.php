@@ -50,8 +50,8 @@ include 'koneksi.php';
             <div class="col-lg-4 col-md-6 footer-search">
                 <h4>Search Our Product</h4>
                 <p>Temukan produk kesehatan terbaik di Siagamedika dan jaga kesehatan Anda. Cari sekarang!</p>
-                <form action="" method="post">
-                    <input type="text" name="text"><input type="submit" value="Search">
+                <form method="get" action="search.php">
+                    <input type="text" name="q"><input type="submit" value="Search">
                 </form>
             </div>
 
@@ -70,11 +70,10 @@ include 'koneksi.php';
         </div>
     </div>
     <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="ft-tokopedia"></i></a>
-        <a href="#" class="facebook"><i class="ft-blibli"></i></a>
-        <a href="#" class="instagram"><i class="ft-shopee"></i></a>
-        <a href="#" class="google-plus"><i class="bi bi-whatsapp"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.tokopedia.com/siagamedikastore" class="tokopedia"><i class="ft-tokopedia"></i></a>
+        <a href="https://www.blibli.com/merchant/siagamed/SID-60039" class="blibli"><i class="ft-blibli"></i></a>
+        <a href="https://shopee.co.id/siaga_medika_store" class="shopee"><i class="ft-shopee"></i></a>
+        <a href="https://wa.me/6285341746323" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
     </div>
 </div>
 </footer><!-- End Footer -->
