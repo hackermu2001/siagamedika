@@ -86,6 +86,10 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <h2>Daftar Produk</h2>
+                    <form method="get" action="search.php" class="search-container mt-3">
+                        <input type="text" id="search" name="q" placeholder="Cari Barang disini..." />
+                        <button id="search-button"><i class="fas fa-search me-2"></i>Search</button>
+                    </form>
                     <ol>
                         <li><a href="index.php">Home</a></li>
                         <li>Category</li>
