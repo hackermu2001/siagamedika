@@ -68,25 +68,17 @@
 
     <main id="main">
 
-        <!-- ======= Breadcrumbs Section ======= -->
-        <section class="breadcrumbs">
+       <!-- ======= Breadcrumbs Section ======= -->
+       <section class="breadcrumbs">
             <div class="container">
-
                 <div class="d-flex justify-content-between align-items-center">
-                    <h2>Daftar Produk</h2>
-                    <form method="get" action="search.php" class="search-container mt-3">
-                        <input type="text" id="search" name="q" placeholder="Cari Barang disini..." />
-                        <button id="search-button"><i class="fas fa-search me-2"></i>Search</button>
-                    </form>
-                    <ol>
-                        <li><a href="index.php">Home</a></li>
-                        <li>Brand</li>
-                        <?php if (!empty($selectedBrand)) { ?>
-                        <li><?php echo $selectedBrand; ?></li>
-                        <?php } ?>
-                    </ol>
+                    <div class="search-container_searchpage border border-primary-subtle mb-2 rounded-0">
+                        <form method="GET" action="search.php">
+                            <input type="text" id="search" class="form-control rounded-0" name="q" placeholder="Cari Barang disini..." value="" />
+                            <button id="search-button" class="rounded-0" type="submit"><i class="fas fa-search me-2"></i>Search</button>
+                        </form>
+                    </div>
                 </div>
-
             </div>
         </section><!-- End Breadcrumbs Section -->
 
