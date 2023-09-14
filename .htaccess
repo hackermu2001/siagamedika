@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^ptsiagamedika.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www.ptsiagamedika.com$
+RewriteCond %{REQUEST_URI} !^/repositories/siagamedika/
+RewriteRule ^(.*)$ /repositories/siagamedika/$1 [L]
