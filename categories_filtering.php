@@ -175,7 +175,7 @@
                                 echo '<center> <span class="m-0 my-5">Tidak ada produk ditemukan.</span> </center>';
                             }
                             ?>
-                                                           
+                        <?php if ($totalProduk > $produkPerPage) { ?>                                     
                         <div class="product-pagination d-flex justify-content-center">
                             <ul>
                                 <?php if ($currentPage > 1) { ?>
@@ -199,7 +199,7 @@
                                 <?php } ?>
                             </ul>
                         </div>
-
+                        <?php } ?>
 
 
 

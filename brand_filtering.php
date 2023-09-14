@@ -163,7 +163,7 @@
                                 echo '<center> <span class="m-0 my-5">Tidak ada produk ditemukan.</span> </center>';
                             }
                             ?>
-                                                           
+                            <?php if (mysqli_num_rows($result) > $produkPerPage) { ?>                          
                             <div class="product-pagination d-flex justify-content-center">
                                 <ul>
                                     <?php if ($currentPage > 1) { ?>
@@ -184,6 +184,7 @@
                                     <?php } ?>
                                 </ul>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-5">
