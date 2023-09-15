@@ -1,6 +1,6 @@
 <?php 
 //Production Siagamedika
-$koneksi = mysqli_connect("194.163.42.23","u9973847_tokoadm","@Siaga123","u9973847_ecommerce");
+$koneksi = mysqli_connect("194.163.42.23","u9973847_siagamedika","siaga12345","u9973847_ecommerce");
 
 //UAT Siagamedika
 // $koneksi = mysqli_connect("localhost","root","","siagamedika");
