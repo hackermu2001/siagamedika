@@ -7,7 +7,5 @@ $koneksi = mysqli_connect("localhost", "u9973847_admin", "3SlK,tBxSHNI", "u99738
 
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
-} else {
-    echo "Koneksi sudah oke"; // Tambahkan pesan ini jika koneksi berhasil
 }
 ?>
