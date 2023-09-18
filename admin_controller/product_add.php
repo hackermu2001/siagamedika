@@ -97,7 +97,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
-                                        <input type="number" class="form-control" name="numHarga" id="numHarga" placeholder="Rp." required min="0">
+                                        <input type="number" class="form-control" name="numHarga" id="numHarga" placeholder="Rp." required min="0" step="1">
                                         <div class="invalid-feedback">
                                             Harga Harus diisi.
                                         </div>
