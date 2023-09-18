@@ -112,7 +112,7 @@ header("Expires: 0");
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="harga">Harga</label>
-                                        <input id="numHarga" type="number" class="form-control" name="numHarga" placeholder="Rp." value="<?php echo $p['Harga']; ?>" min="0" required>
+                                        <input id="numHarga" type="number" class="form-control" name="numHarga" placeholder="Rp." value="<?php echo $p['Harga']; ?>" min="0" step="1" required>
                                         <div class="invalid-feedback">
                                             Harga Harus diisi.
                                         </div>
