@@ -7,4 +7,4 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://ptsiagamedika.com/assets/css/fontello.css">
+    <link rel="stylesheet" href="css/fontello.css">
