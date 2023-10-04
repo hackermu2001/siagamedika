@@ -1,6 +1,8 @@
 <?php
 // Production Siagamedika
-$koneksi = mysqli_connect("localhost", "u9973847_admin", "3SlK,tBxSHNI", "u9973847_siagamedika");
+// $koneksi = mysqli_connect("localhost", "u9973847_admin", "3SlK,tBxSHNI", "u9973847_siagamedika");
+
+$koneksi = mysqli_connect("83.136.216.72","u1567541_agusvirga","V2e2Sy7E3s","u1567541_siagamedika");
 
 // UAT Siagamedika
 // $koneksi = mysqli_connect("localhost", "root", "", "siagamedika");
