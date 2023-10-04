@@ -369,9 +369,10 @@
 
                 <div class="blogs-slider swiper" data-aos="fade-up" data-aos-delay="100">
                     <div class="swiper-wrapper">
-
-                    <?php
+                        <?php
                         $count = 0;
+                        $displayedArticles = array(); // Array untuk melacak berita yang sudah ditampilkan
+
                         foreach ($newsData['articles'] as $article) {
                             $title = $article['title'];
                             $description = $article['description'];
@@ -387,37 +388,45 @@
                                 continue;
                             }
 
+                            // Check if the article has already been displayed
+                            if (in_array($url, $displayedArticles)) {
+                                continue; // Skip displaying this article
+                            }
+
                             $count++;
 
                             // Stop the loop if at least 4 blog cards have been displayed
-                            if ($count > 6) {
+                            if ($count > 4) {
                                 break;
                             }
-                        ?>
 
-                            <!-- start blog item -->
-                            <div class="swiper-slide"> 
-                                <div class="blog-wrap">
-                                        <div class="card blog-card">
-                                            <div class="card-header blog-card-header">
-                                                <img src="<?php echo $article['urlToImage']; ?>" alt="" />
-                                            </div>
-                                            <div class="card-body blog-card-body">
-                                                <h4 class="blog-title"><a href="<?php echo $article['url']; ?>"><?php echo $article['title']; ?></a></h4>
-                                                <p class="blog-description"><?php echo $article['description']; ?></p>
-                                                <div class="user">
-                                                    <img src="assets/img/logo1.png" alt="" />
-                                                    <div class="user-info">
-                                                        <h5>Admin</h5>
-                                                        <small><?php echo $formattedDate; ?></small>
-                                                    </div>
-                                                </div>
+                            // Add the article URL to the displayed articles array
+                            $displayedArticles[] = $url;
+                        ?>
+                        <!-- start blog item -->
+                        <div class="swiper-slide"> 
+                            <div class="blog-wrap">
+                                <div class="card blog-card">
+                                    <div class="card-header blog-card-header">
+                                        <img src="<?php echo $urlToImage; ?>" alt="" />
+                                    </div>
+                                    <div class="card-body blog-card-body">
+                                        <h4 class="blog-title"><a href="<?php echo $url; ?>"><?php echo $title; ?></a></h4>
+                                        <p class="blog-description"><?php echo $description; ?></p>
+                                        <div class="user">
+                                            <img src="assets/img/logo1.png" alt="" />
+                                            <div class="user-info">
+                                                <h5>Admin</h5>
+                                                <small><?php echo $formattedDate; ?></small>
                                             </div>
                                         </div>
+                                    </div>
                                 </div>
-                            </div><!-- End blog item -->
-                        <?php } ?>
-
+                            </div>
+                        </div><!-- End blog item -->
+                        <?php
+                        }
+                        ?>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
