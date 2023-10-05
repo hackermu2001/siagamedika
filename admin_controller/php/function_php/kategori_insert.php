@@ -26,7 +26,15 @@ if ($number > 0)
             } else {
                 // Jika nama belum ada dalam database, lanjutkan proses insert
                 $Tanggal = date("Y-m-d"); // Tanggal hari ini
-                $kode_kategori = "CAT" . rand(100, 999); // Contoh CAT100-999
+                $baseCAT = "CAT" . rand(100, 999); // CAT dasar
+                $counter = 1; // Inisialisasi hitungan
+
+                // Membuat CAT baru dengan nomor urutan jika CAT sebelumnya sudah ada
+                $kode_kategori = $baseCAT;
+                while (in_array(strtolower($kode_kategori), $existingNames)) {
+                    $counter++;
+                    $kode_kategori = $baseCAT . " (" . $counter . ")";
+                }
 
                 mysqli_query($koneksi, "INSERT INTO kategori (NamaKategori, Tanggal, kode_kategori) VALUES ('$nama', '$Tanggal', '$kode_kategori')");
             }
