@@ -121,27 +121,34 @@ let i = 1;
                       }
                   }
               });
+              // Setelah menyimpan, aktifkan kembali tombol Hapus
+            $row.find(".delete-brand").hide();
           } else {
               // Aktifkan mode edit
               $row.addClass("editing");
               $namaCell.attr("contenteditable", true);
               $(this).removeClass("btn-primary").addClass("btn-success").html('<i class="fas fa-check"></i>');
                $row.find(".cancel-edit-brand").show(); // Tampilkan tombol Cancel
+
+               // Sembunyikan tombol Hapus saat memulai mode edit
+                $row.find(".delete-brand").hide();
           }
       });
       // Tambahkan event handler untuk tombol "Cancel"
     $(document).on("click", ".cancel-edit-brand", function() {
-    var $row = $(this).closest("tr");
-    $row.removeClass("editing");
-    var $namaCell = $row.find(".editable-cell[data-column='NamaBrand']");
-    $namaCell.attr("contenteditable", false);
-    $row.find(".edit-save-brand").removeClass("btn-success").addClass("btn-primary").html('<i class="fas fa-pen"></i>');
-    $(this).hide(); // Sembunyikan tombol Cancel
-    // Reset nilai dalam sel ke nilai asli sebelum edit
-    $namaCell.text($namaCell.data("original-value"));
-});
+        var $row = $(this).closest("tr");
+        $row.removeClass("editing");
+        var $namaCell = $row.find(".editable-cell[data-column='NamaBrand']");
+        $namaCell.attr("contenteditable", false);
+        $row.find(".edit-save-brand").removeClass("btn-success").addClass("btn-primary").html('<i class="fas fa-pen"></i>');
+        $(this).hide(); // Sembunyikan tombol Cancel
+        // Reset nilai dalam sel ke nilai asli sebelum edit
+        $namaCell.text($namaCell.data("original-value"));
+        // Setelah membatalkan edit, aktifkan kembali tombol Hapus
+        $row.find(".delete-brand").show();
+    });
 
-// Inisialisasi tombol "Cancel" menjadi tersembunyi saat memuat halaman
-$(".cancel-edit-brand").hide();
+    // Inisialisasi tombol "Cancel" menjadi tersembunyi saat memuat halaman
+    $(".cancel-edit-brand").hide();
   });
 // penutupan ajax php sql - BRAND

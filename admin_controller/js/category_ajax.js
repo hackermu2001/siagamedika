@@ -121,9 +121,8 @@ let i = 1;
                     }
                 }
             });
-    
             // Setelah menyimpan, aktifkan kembali tombol Hapus
-            $row.find(".delete-cat").show();
+            $row.find(".delete-cat").hide();
         } else {
             // Aktifkan mode edit
             $row.addClass("editing");

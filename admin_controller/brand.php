@@ -112,6 +112,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 <td class="text-center align-middle">    
                                                     <button class="btn btn-primary btn-circle btn-sm edit-save-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-pen"></i></button>
                                                     <button class="btn btn-danger btn-circle btn-sm cancel-edit-brand" style="display: none;" data-id_cat="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-times"></i></button>
+                                                    <button class="btn btn-danger btn-circle btn-sm delete-brand" data-sku="<?php echo $row['SKU_BRND']; ?>"><i class="fas fa-trash"></i></button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?> 
