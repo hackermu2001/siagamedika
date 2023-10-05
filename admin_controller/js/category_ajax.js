@@ -92,13 +92,13 @@ let i = 1;
               }
           });
       });
-      //edit
+      //edit form category
       $(document).on("click", ".edit-save-cat", function() {
         var $row = $(this).closest("tr");
         var id_cat = $(this).data("id_cat");
         var $namaCell = $row.find(".editable-cell[data-column='NamaKategori']");
         var isEditing = $row.hasClass("editing");
-
+    
         if (isEditing) {
             // Simpan perubahan
             // Periksa apakah nama yang dimasukkan tidak kosong
@@ -107,7 +107,7 @@ let i = 1;
                 alert("Nama Kategori tidak boleh kosong");
                 return;
             }
-
+    
             $.ajax({
                 url: "php/function_php/kategori_update.php", // Ganti dengan URL yang sesuai
                 method: "POST",
@@ -121,6 +121,9 @@ let i = 1;
                     }
                 }
             });
+    
+            // Setelah menyimpan, aktifkan kembali tombol Hapus
+            $row.find(".delete-cat").show();
         } else {
             // Aktifkan mode edit
             $row.addClass("editing");
@@ -128,22 +131,29 @@ let i = 1;
             $(this).removeClass("btn-primary").addClass("btn-success").html('<i class="fas fa-check"></i>');
             $row.find(".cancel-edit-cat").show(); // Tampilkan tombol Cancel
             
+            // Sembunyikan tombol Hapus saat memulai mode edit
+            $row.find(".delete-cat").hide();
         }
     });
+    
     // Tambahkan event handler untuk tombol "Cancel"
     $(document).on("click", ".cancel-edit-cat", function() {
-    var $row = $(this).closest("tr");
-    $row.removeClass("editing");
-    var $namaCell = $row.find(".editable-cell[data-column='NamaKategori']");
-    $namaCell.attr("contenteditable", false);
-    $row.find(".edit-save-cat").removeClass("btn-success").addClass("btn-primary").html('<i class="fas fa-pen"></i>');
-    $(this).hide(); // Sembunyikan tombol Cancel
-    // Reset nilai dalam sel ke nilai asli sebelum edit
-    $namaCell.text($namaCell.data("original-value"));
-});
-
-// Inisialisasi tombol "Cancel" menjadi tersembunyi saat memuat halaman
-$(".cancel-edit-cat").hide();
+        var $row = $(this).closest("tr");
+        $row.removeClass("editing");
+        var $namaCell = $row.find(".editable-cell[data-column='NamaKategori']");
+        $namaCell.attr("contenteditable", false);
+        $row.find(".edit-save-cat").removeClass("btn-success").addClass("btn-primary").html('<i class="fas fa-pen"></i>');
+        $(this).hide(); // Sembunyikan tombol Cancel
+        // Reset nilai dalam sel ke nilai asli sebelum edit
+        $namaCell.text($namaCell.data("original-value"));
+        
+        // Setelah membatalkan edit, aktifkan kembali tombol Hapus
+        $row.find(".delete-cat").show();
+    });
+    
+    // Inisialisasi tombol "Cancel" menjadi tersembunyi saat memuat halaman
+    $(".cancel-edit-cat").hide();
+    
 
   });
 // penutupan ajax php sql - kategori

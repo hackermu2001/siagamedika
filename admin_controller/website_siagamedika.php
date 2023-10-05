@@ -35,7 +35,7 @@ $current_page = 'siagamedika';
                 
 
                 <!-- Begin Page Content -->
-                <iframe src="https://ptsiagamedika.com" style="width: 125%; height: 125%;transform: scale(0.8);transform-origin: top left;" >
+                <iframe src="../index.php" style="width: 125%; height: 125%;transform: scale(0.8);transform-origin: top left;" >
                     
                 <!-- //tulis content -->
                     

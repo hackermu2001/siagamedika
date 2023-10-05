@@ -112,7 +112,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                                 <td><?php echo $row['Tanggal']; ?></td>
                                                 <td class="text-center">
                                                     <button class="btn btn-primary btn-circle btn-sm edit-save-cat" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-pen"></i></button>
-                                                    <button class="btn btn-danger btn-circle btn-sm cancel-edit-cat" style="display: none;" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-times"></i></button>    
+                                                    <button class="btn btn-danger btn-circle btn-sm cancel-edit-cat" style="display: none;" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-times"></i></button>
+                                                    <button class="btn btn-danger btn-circle btn-sm delete-cat" data-id_cat="<?php echo $row['kode_kategori']; ?>"><i class="fas fa-trash"></i></button>    
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
