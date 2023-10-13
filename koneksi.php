@@ -1,11 +1,16 @@
 <?php
-// Production Siagamedika
-$koneksi = mysqli_connect("localhost", "u9973847_admin", "3SlK,tBxSHNI", "u9973847_siagamedika");
+require 'vendor/autoload.php'; // Pastikan autoloader dari Composer sudah di-require
+use Dotenv\Dotenv;
 
-// $koneksi = mysqli_connect("localhost","u1567541_agusvirga","V2e2Sy7E3s","u1567541_siagamedika");
+$dotenv = Dotenv::createImmutable(__DIR__); // Sesuaikan dengan path ke file .env
+$dotenv->load();
 
-// UAT Siagamedika
-// $koneksi = mysqli_connect("localhost", "root", "", "siagamedika");
+$databaseHost = $_ENV['DB_HOST'];
+$databaseUsername = $_ENV['DB_USER'];
+$databasePassword = $_ENV['DB_PASSWORD'];
+$databaseName = $_ENV['DB_NAME'];
+
+$koneksi = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName);
 
 if (!$koneksi) {
     die("Koneksi database gagal: " . mysqli_connect_error());
